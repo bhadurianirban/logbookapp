@@ -1,0 +1,128 @@
+<div class="ui-g" style="width:100%;">
+    <p-table #trippingDialogData [value]="dialogTableData" [columns]="selectedColumns" [responsive]="true" [rows]="10"
+      [paginator]="true">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of selectedColumns">
+            <span>{{col.header}}</span>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+        <tr>
+          <td *ngFor="let col of selectedColumns">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  
+  <div class="ui-lg-12 ui-md-12 ui-sm-12">
+    <div [formGroup]="TrippingForm">
+      <div class="ui-g">
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="TripDate">Tripping Date  <span class="text-danger">*</span></label>
+          <div class="ui-inputgroup">
+            <p-calendar formControlName="TripDate" [dateFormat]="dateFormat" [maxDate]="maxDateValue" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="TripTime">Tripping Time  <span class="text-danger">*</span></label>
+          <div class="ui-inputgroup">
+            <!-- <p-calendar formControlName="TripTime" [readonlyInput]="true" [timeOnly]="true" [showIcon]="true"></p-calendar> -->
+            <input formControlName="TripTime" [ngxTimepicker]="TripTimePicker"class="ui-inputtext" style="width: 80% !important; float: left !important;" [format]="24" readonly>
+            <ngx-material-timepicker-toggle [for]="TripTimePicker">
+              <i class="pi pi-clock"></i>
+            </ngx-material-timepicker-toggle>
+            <ngx-material-timepicker #TripTimePicker></ngx-material-timepicker>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="Nature">Nature  <span class="text-danger">*</span></label>
+          <div class="ui-inputgroup">
+            <p-dropdown [options]="natures" optionLabel="Name" formControlName="Nature"  placeholder="Select Nature"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="ExpectedDate">Expected Revival Date </label>
+          <div class="ui-inputgroup">
+            <p-calendar formControlName="ExpectedDate" [dateFormat]="dateFormat" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g" style="width:100%;">
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="EndRelayReasonOne">End Relay Indication & Reason 1  <span class="text-danger">*</span></label>
+          <div class="ui-inputgroup">
+            <input type="text" name="EndRelayReasonOne" formControlName="EndRelayReasonOne" class="ui-inputtext"/>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="EndRelayReasonTwo">End Relay Indication & Reason 2 </label>
+          <div class="ui-inputgroup">
+            <input type="text" name="EndRelayReasonTwo" formControlName="EndRelayReasonTwo" class="ui-inputtext"/>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="LoadAffectedMW">Load Affected(MW) </label>
+          <div class="ui-inputgroup">
+            <input type="number" name="LoadAffectedMW" formControlName="LoadAffectedMW" class="ui-inputtext"/>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="GenerationEffectedMW">Generation Affected(MW) </label>
+          <div class="ui-inputgroup">
+            <input type="number" name="GenerationEffectedMW" formControlName="GenerationEffectedMW" class="ui-inputtext"/>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g" style="width:100%;">
+        <div class="ui-g-12">
+          <label for="ClearanceComment">Clearance Comments </label>
+          <div class="ui-inputgroup">
+            <input type="text" name="ClearanceComment" formControlName="ClearanceComment" class="ui-inputtext"/>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g" style="width:100%;">
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="AffectedArea">Affected Area </label>
+          <div class="ui-inputgroup">
+            <input type="text" name="AffectedArea" formControlName="AffectedArea" class="ui-inputtext"/>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="AffectedPlant">Affected Plant </label>
+          <div class="ui-inputgroup">
+            <input type="text" name="AffectedPlant" formControlName="AffectedPlant" class="ui-inputtext"/>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="RevivalDate">Revival Date  <span class="text-danger">*</span></label>
+          <div class="ui-inputgroup">
+            <p-calendar formControlName="RevivalDate" [dateFormat]="dateFormat" [minDate]="minRestoreDateValue" [maxDate]="maxDateValue" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+          </div>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12">
+          <label for="RevivalTime">Revival Time  <span class="text-danger">*</span></label>
+          <div class="ui-inputgroup">
+            <!-- <p-calendar formControlName="RevivalTime" [readonlyInput]="true" [timeOnly]="true" [showIcon]="true"></p-calendar> -->
+            <input formControlName="RevivalTime" [ngxTimepicker]="RevivalTimePicker"class="ui-inputtext" style="width: 80% !important; float: left !important;" [format]="24" readonly>
+            <ngx-material-timepicker-toggle [for]="RevivalTimePicker">
+              <i class="pi pi-clock"></i>
+            </ngx-material-timepicker-toggle>
+            <ngx-material-timepicker #RevivalTimePicker></ngx-material-timepicker>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g" style="width:100%">
+        <div class="ui-lg-10 ui-md-10 ui-sm-12">&nbsp;</div>
+        <div class="ui-lg-2 ui-md-2 ui-sm-12">
+          <p-button label="{{currLabel}}" type="button" (onClick)="handleSubmitClick()" [disabled]="!TrippingForm.valid"
+            styleClass="ui-button-success pull-left"></p-button>&nbsp;
+          <p-button label="Close" type="button" (onClick)="handleCloseClick()" styleClass="ui-button-danger pull-right"></p-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

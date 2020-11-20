@@ -1,0 +1,116 @@
+<form [formGroup]="userFormGroup" novalidate>
+  <div *ngIf="!isdelete">
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-sm-6">
+        <label for="Name">Name</label>
+        <div class="ui-inputgroup">
+        <input pInputText  formControlName="Name" type="text" placeholder="Name(required)" class="ui-inputtext">
+      </div>
+        <span class="help-block" *ngIf="(userFormGroup.get('Name').touched ||
+        userFormGroup.get('Name').dirty) &&
+        userFormGroup.get('Name').errors">
+          <span *ngIf="userFormGroup.get('Name').errors">
+            Please provide Name.
+          </span>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-sm-6">
+        <label for="EmployeeId">Employee Number</label>
+        <div class="ui-inputgroup">
+        <input pInputText formControlName="EmployeeId" type="number" placeholder="Employee Id(required)" class="ui-inputtext" >
+      </div>
+        <span class="help-block" *ngIf="(userFormGroup.get('EmployeeId').touched ||
+        userFormGroup.get('EmployeeId').dirty) &&
+        userFormGroup.get('EmployeeId').errors">
+          <span *ngIf="userFormGroup.get('EmployeeId').errors">
+            Please provide Employee Id.
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-sm-6">
+        <label>Designation:</label>
+        <p-autoComplete [(ngModel)]="designation" formControlName="DesignationId" [suggestions]="selectedDesignations" (completeMethod)="filterDesignation($event)"
+          field="Designation" dataKey="Id" [dropdown]="true" (onDropdownClick)="showDesignationDropdown()" placeholder="Designations"
+          [minLength]="1"   [style]="{'width':'100%'}" [inputStyle]="{'width':'90%'}"></p-autoComplete>
+
+        <span class="help-block" *ngIf="(userFormGroup.get('DesignationId').touched ||
+          userFormGroup.get('DesignationId').dirty) &&
+          userFormGroup.get('DesignationId').errors">
+          <span *ngIf="userFormGroup.get('DesignationId').errors">
+            Please provide Designation.
+          </span>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-sm-6">
+        <label for="ContactNumber">Contact Number</label>
+        <div class="ui-inputgroup">
+        <input pInputText formControlName="ContactNumber" type="text" placeholder="Contact Number(required)" class="ui-inputtext">
+      </div>
+        <span class="help-block" *ngIf="(userFormGroup.get('ContactNumber').touched ||
+        userFormGroup.get('ContactNumber').dirty) &&
+        userFormGroup.get('ContactNumber').errors">
+          <span *ngIf="userFormGroup.get('ContactNumber').errors">
+            Please provide Contact Number.
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-sm-6">
+        <label for="EmailId">Email Id</label>
+        <div class="ui-inputgroup">
+        <input pInputText formControlName="EmailId" type="text" placeholder="Email Id(required)" class="ui-inputtext">
+      </div>
+        <span class="help-block" *ngIf="(userFormGroup.get('EmailId').touched ||
+        userFormGroup.get('EmailId').dirty) &&
+        userFormGroup.get('EmailId').errors">
+          <span *ngIf="userFormGroup.get('EmailId').errors">
+            Please provide Email Id.
+          </span>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-sm-6">
+        <label for="Password">Password</label>
+        <div class="ui-inputgroup">
+        <input pInputText formControlName="Password" type="password" placeholder="Password(required)" class="ui-inputtext">
+      </div>
+        <span class="help-block" *ngIf="(userFormGroup.get('Password').touched ||
+        userFormGroup.get('Password').dirty) &&
+        userFormGroup.get('Password').errors">
+          <span *ngIf="userFormGroup.get('Password').errors">
+            Please provide Password.
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="ui-g">
+      <!-- <div class="ui-g-12 ui-md-6 ui-sm-6">
+        <label for="ConfirmPassword">Confirm Password</label>
+        <div class="ui-inputgroup">
+        <input formControlName="ConfirmPassword" type="password" placeholder="Confirm Password(required)" class="ui-inputtext">
+      </div>
+        <span class="help-block" *ngIf="(userFormGroup.get('ConfirmPassword').touched ||
+        userFormGroup.get('ConfirmPassword').dirty) &&
+        userFormGroup.get('ConfirmPassword').errors">
+          <span *ngIf="userFormGroup.get('ConfirmPassword').errors">
+            Please provide Confirm Password.
+          </span>
+        </span>
+      </div> -->
+      <div class="ui-g-12 ui-md-12 ui-sm-12">
+        <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+        <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isdelete" class="ui-g">
+    <div class="ui-lg-6 ui-md-6 ui-sm-6">
+      <label>Are you sure to delete this User:</label>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-sm-6">
+      <button pButton type="button" (click)="deleteData()" class="ui-button-danger" label="Delete User" class="pull-right"></button>
+    </div>
+  </div>
+</form>

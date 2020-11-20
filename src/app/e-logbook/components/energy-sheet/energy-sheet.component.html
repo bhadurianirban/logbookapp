@@ -1,0 +1,2345 @@
+<div class="ui-g childTab energyTabs">
+    <p-tabView>
+        <p-tabPanel header="SYSTEM REPORT OF BIHAR" headerStyleClass="subtabheaderbg">
+            <div class="ui-g">
+                <div class="ui-g-4">
+                    <div class="card" style="margin-top:10px;">
+                        <div class="card-header card-header-tabs card-header-fsctcsc">
+                            SYSTEM REPORT OF BIHAR 
+                        </div>
+                        <div class="card-body">
+                            <div class="ui-table" [formGroup]="SystemReportForm" style="width:100%;">
+                                <table>
+                                    <thead class="ui-table-thead">
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Energy (in MU)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="ui-table-tbody">
+                                        <tr>
+                                            <td>
+                                                BTPS Unit No.-6 ( 110 MW)
+                                                </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="BTPS_6" name="BTPS_6" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>BTPS Unit No.-7 (110 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="BTPS_7" name="BTPS_7" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>BTPS Unit No.-8 (250 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="BTPS_8" name="BTPS_8" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>BSPGCL Generation (470 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="BSPGCL_GEN" name="BSPGCL_GEN" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>KBUNL Unit No.-1 (110 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="KBUNL_1" name="KBUNL_1" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>KBUNL Unit No.-2 (110 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="KBUNL_2" name="KBUNL_2" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>KBUNL Stage-I (220 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="KBUNL_STAGE_1" name="KBUNL_STAGE_1" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>KBUNL Unit No.-3 (195 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="KBUNL_3" name="KBUNL_3" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>KBUNL Unit No.-4 (195 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="KBUNL_4" name="KBUNL_4" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>KBUNL Stage-II (390 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="KBUNL_STAGE_2" name="KBUNL_STAGE_2" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kanti Bijalee Utpadan Nigam Ltd. Generation ( 610 MW)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="KBUNL_GENERATION" name="KBUNL_GENERATION" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br/>
+                                <button pButton type="button" (click)="saveSystemReport()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                [disabled]="!SystemReportForm.valid"></button>
+                                <br/>
+                            </div>
+                            <div class="clearfix">&nbsp;</div>
+                            <div class="ui-table" [formGroup]="SystemReportNetForm" style="width:100%;">
+                                <table>
+                                    <tbody class="ui-table-tbody">
+                                        <tr>
+                                            <td>Power imported from Central Sector & Bilateral (through ER)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="central_sector_bilateral_energy" name="central_sector_bilateral_energy" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Power exchange from NR (C.S. Power) </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="NR_CS_power_exchange" name="NR_CS_power_exchange" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Net Power Drawal from Central Sector & Bilateral</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="central_sector_bilateral_power" name="central_sector_bilateral_power" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+    
+                                        <tr>
+                                            <td>Total Demand Met </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="total_demand_met_energy" name="total_demand_met_energy" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Demand Met in NBPDCL</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="total_demand_met_NBPDCL_energy" name="total_demand_met_NBPDCL_energy" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Demand Met in SBPDCL</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="total_demand_met_SBPDCL" name="total_demand_met_SBPDCL" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>ERLDC Schedule (Power Availability from CS) </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="ERLDC_Schedule_energy" name="ERLDC_Schedule_energy" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Energy under UI </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="energy_ui_energy" name="energy_ui_energy" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr> 
+                                            <td>Average frequency (In Hz) (24:00 hrs.) </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="average_frequency" name="average_frequency" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br/>
+                                <button pButton type="button" (click)="saveSystemReportNet()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                 [disabled]="!SystemReportNetForm.valid"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ui-g-4">
+                    <div class="card" style="margin-top:10px;">
+                        <div class="card-header card-header-tabs card-header-fsctcsc">
+                            Bihar State Hydel Power Corporation Generation
+                        </div>
+                        <div class="card-body">
+                            <div class="ui-table" [formGroup]="SugarMillsGenerationForm" style="width:100%;">
+                                <table>
+                                    <thead class="ui-table-thead">
+                                        <tr>
+                                            <th>Plant Description</th>
+                                            <th>Max Load (MW)</th>
+                                            <th>Time (HRS)</th>
+                                            <th>Import (in MU)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="ui-table-tbody">
+                                        <tr>
+                                            
+                                            <td>
+                                                Bharat Sugar Mill, Sidhwalia (Gopalganj)
+                                                </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="bharat_sm_8_max_load" name="bharat_sm_8_max_load"  class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="bharat_sm_8_time" name="bharat_sm_8_time" min="00:00" max="23:59" class="ui-inputdate">
+                                            </div>
+                                        </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="bharat_sm_8_import" name="bharat_sm_8_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hari Nagar Sugar Mill ( Ram Nagar)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="hari_nagar_sm_14_max_load" name="hari_nagar_sm_14_max_load"  class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="hari_nagar_sm_14_time" name="hari_nagar_sm_14_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="hari_nagar_sm_14_import" name="hari_nagar_sm_14_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Swadeshi Sugar Mill, Narkatiyaganj (Ramnagar)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="swadeshi_sm_10_max_load" name="swadeshi_sm_10_max_load"  class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                            <td><div class="ui-inputgroup">
+                                                <input pInputText type="time" formControlName="swadeshi_sm_10_time" name="swadeshi_sm_10_time" min="00:00" max="23:59" class="ui-inputdate">
+                                            </div></td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="swadeshi_sm_10_import" name="swadeshi_sm_10_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>HPCL Bio-Fuels Ltd., Lauria (Ramnagar)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="HPCL_biofuels_lauria_20_max_load" name="HPCL_biofuels_lauria_20_max_load"  class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                            <td><div class="ui-inputgroup">
+                                                <input pInputText type="time" formControlName="HPCL_biofuels_lauria_20_time" name="HPCL_biofuels_lauria_20_time" min="00:00" max="23:59" class="ui-inputdate">
+                                            </div></td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="HPCL_biofuels_lauria_20_import" name="HPCL_biofuels_lauria_20_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hasanpur Sugar Mill (Dalsinghsarai)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="hasanpur_sm_15_max_load" name="hasanpur_sm_15_max_load"  class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                            <td><div class="ui-inputgroup">
+                                                <input pInputText type="time" formControlName="hasanpur_sm_15_time" name="hasanpur_sm_15_time" min="00:00" max="23:59" class="ui-inputdate">
+                                            </div><br/></td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="hasanpur_sm_15_import" name="hasanpur_sm_15_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>HPCL Bio-Fuels Ltd., Sugauli(Motihari)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="HPCL_biofuels_sugauli_20_max_load" name="HPCL_biofuels_sugauli_20_max_load"  class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                            <td><div class="ui-inputgroup">
+                                                <input pInputText type="time" formControlName="HPCL_biofuels_sugauli_20_time" name="HPCL_biofuels_sugauli_20_time" min="00:00" max="23:59" class="ui-inputdate">
+                                            </div></td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="HPCL_biofuels_sugauli_20_import" name="HPCL_biofuels_sugauli_20_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sugar Mill Generation</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="sugar_mill_gen_97_max_load" name="sugar_mill_gen_97_max_load"  class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                            <td><div class="ui-inputgroup">
+                                                <input pInputText type="time" formControlName="sugar_mill_gen_97_time" name="sugar_mill_gen_97_time" min="00:00" max="23:59" class="ui-inputdate">
+                                            </div></td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="sugar_mill_gen_97_import" name="sugar_mill_gen_97_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br/>
+                                <button pButton type="button" (click)="saveSugarMillsGeneration()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                [disabled]="!SugarMillsGenerationForm.valid"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ui-g-4">
+                    <div class="card" style="margin-top:10px;">
+                        <div class="card-header card-header-tabs card-header-fsctcsc">
+                            Solar Power Generation
+                        </div>
+                        <div class="card-body">
+                            <div class="ui-table" [formGroup]="SolarPowerGenerationForm" style="width:100%;">
+                                <table>
+                                    <thead class="ui-table-thead">
+                                        <tr>
+                                            <th>Plant Description</th>
+                                            <th>Max Load (MW)</th>
+                                            <th>Time (HRS)</th>
+                                            <th>Import (in MU)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="ui-table-tbody">
+                                        <tr>
+                                            <td>Magadh SPP--Banka</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="magadh_spp_max_load" name="magadh_spp_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="magadh_spp_time" name="magadh_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                            </div>
+                                        </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="magadh_spp_import" name="magadh_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nalanda SPP--Banka</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="nalanda_spp_max_load" name="nalanda_spp_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="nalanda_spp_time" name="nalanda_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="nalanda_spp_import" name="nalanda_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bahera SPP--Sherghati</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="bahera_spp_max_load" name="bahera_spp_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="bahera_spp_time" name="bahera_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="bahera_spp_import" name="bahera_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Savkala SPP--Sherghati</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="savkala_spp_max_load" name="savkala_spp_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="savkala_spp_time" name="savkala_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="savkala_spp_import" name="savkala_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sunmark SPP--Sherghati</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="sunmark_spp_max_load" name="sunmark_spp_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="sunmark_spp_time" name="sunmark_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="sunmark_spp_import" name="sunmark_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alfa SPP--Rafiganj</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="alfa_spp_max_load" name="alfa_spp_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="alfa_spp_time" name="alfa_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="alfa_spp_import" name="alfa_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Response SPP-- Nawada</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="response_spp_max_load" name="response_spp_max_load" class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="response_spp_time" name="response_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="response_spp_import" name="response_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>GLAT SPP-- Nawada</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="glat_spp_max_load" name="glat_spp_max_load" class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="glat_spp_time" name="glat_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="glat_spp_import" name="glat_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Avantika SPP- Gaunha PSS (Ramnagar Gss)</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="avantika_spp_max_load" name="avantika_spp_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="avantika_spp_time" name="avantika_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="avantika_spp_import" name="avantika_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Murera SPP--Ramnagar</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="murera_spp_max_load" name="murera_spp_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="murera_spp_time" name="murera_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="murera_spp_import" name="murera_spp_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Solar Power Generation</td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="total_solar_power_max_load" name="total_solar_power_max_load"  class="ui-inputtext">
+                                            </div> 
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="time" formControlName="total_solar_power_time" name="total_solar_power_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ui-inputgroup">
+                                                    <input pInputText type="number" formControlName="total_solar_power_import" name="total_solar_power_import" class="ui-inputtext">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br/>
+                                <button pButton type="button" (click)="saveSolarPowerGeneration()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                [disabled]="!SolarPowerGenerationForm.valid"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="MAXIMUM & MINIMUM POWER DETAILS (in MW)" headerStyleClass="subtabheaderbg">
+
+                <div class="ui-g">
+                    <div class="ui-g-6">
+                        <div class="card" style="margin-top:10px;">
+                            <div class="card-header card-header-tabs card-header-fsctcsc">
+                                MAXIMUM & MINIMUM POWER DETAILS (in MW)
+                            </div>
+                            <div class="card-body">
+                                <div class="ui-table" [formGroup]="MaxMinPowerForm" style="width:100%;">
+                                    <table>
+                                        <thead class="ui-table-thead">
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Maximum MW</th>
+                                                <th>Maximum Time</th>
+                                                <th>Minimum MW</th>
+                                                <th>Minimum Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="ui-table-tbody">
+                                            <tr>
+                                                <td>BTPS Generation</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="BTPS_gen_max_power" name="BTPS_gen_max_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="BTPS_gen_max_time" name="BTPS_gen_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="BTPS_gen_min_power" name="BTPS_gen_min_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="BTPS_gen_min_time" name="BTPS_gen_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>KBUNL Stage-I Generation </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="KBUNL_gen_max_power" name="KBUNL_gen_max_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="KBUNL_gen_max_time" name="KBUNL_gen_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="KBUNL_gen_min_power" name="KBUNL_gen_min_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="KBUNL_gen_min_time" name="KBUNL_gen_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sugar (Total)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sugar_max_power" name="sugar_max_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="sugar_max_time" name="sugar_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sugar_min_power" name="sugar_min_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="sugar_min_time" name="sugar_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Solar (Total)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="solar_max_power" name="solar_max_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="solar_max_time" name="solar_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="solar_min_power" name="solar_min_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="solar_min_time" name="solar_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Net Power Drawal</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="net_power_max_power" name="net_power_max_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="net_power_max_time" name="net_power_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="net_power_min_power" name="net_power_min_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="net_power_min_time" name="net_power_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Demand Met</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="demand_max_power" name="demand_max_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="demand_max_time" name="demand_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="demand_min_power" name="demand_min_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="demand_min_time" name="demand_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nepal</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="nepal_max_power" name="nepal_max_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="nepal_max_time" name="nepal_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="nepal_min_power" name="nepal_min_power" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="nepal_min_time" name="nepal_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br/>
+                                    <button pButton type="button" (click)="saveMaxMinPower()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                    [disabled]="!MaxMinPowerForm.valid"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-6">
+                        <div class="card" style="margin-top:10px;">
+                            <div class="card-header card-header-tabs card-header-fsctcsc">
+                                Nepal Feeders Details
+                            </div>
+                            <div class="card-body">
+                                <div class="ui-table" [formGroup]="NepalFeedersForm" style="width:100%;">
+                                    <table>
+                                        <thead class="ui-table-thead">
+                                            <tr>
+                                                <th>Feeder</th>
+                                                <th>GSS</th>
+                                                <th>Max. Load (in MW)</th>
+                                                <th>Time (in Hrs)</th>
+                                                <th>Energy (in MU)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="ui-table-tbody">
+                                            <tr>
+                                                <td>132 KV Kushaha-1 (Duhabi)</td>
+                                                <td>Kataiya</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kushaha_1_max_load" name="kushaha_1_max_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="kushaha_1_time" name="kushaha_1_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kushaha_1_energy" name="kushaha_1_energy" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>132 KV Kushaha-2 (Lahan)</td>
+                                                <td>Kataiya</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kushaha_2_max_load" name="kushaha_2_max_load"  class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="kushaha_2_time" name="kushaha_2_time"  min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kushaha_2_energy" name="kushaha_2_energy"  class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>33 KV Raj Biraj</td>
+                                                <td>Kataiya</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="raj_biraj_max_load" name="raj_biraj_max_load"  class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="raj_biraj_time" name="raj_biraj_time"  min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="raj_biraj_energy" name="raj_biraj_energy"  class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>132 KV Surajpura </td>
+                                                <td>Ramnagar</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="surajpura_max_load" name="surajpura_max_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="surajpura_time" name="surajpura_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="surajpura_energy" name="surajpura_energy" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>33 KV Jaleshwar </td>
+                                                <td>Sitamarhi</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="jaleshwar_sitamarhi_max_load" name="jaleshwar_sitamarhi_max_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="jaleshwar_sitamarhi_time" name="jaleshwar_sitamarhi_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="jaleshwar_sitamarhi_energy" name="jaleshwar_sitamarhi_energy" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>33 KV Jaleshwar </td>
+                                                <td>Sursand (Pupri)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="jaleshwar_sursand_max_load" name="jaleshwar_sursand_max_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="jaleshwar_sursand_time" name="jaleshwar_sursand_time"  min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="jaleshwar_sursand_energy" name="jaleshwar_sursand_energy" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>33 KV Birganj </td>
+                                                <td>Raxaul</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="birganj_max_load" name="birganj_max_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="birganj_time" name="birganj_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="birganj_energy" name="birganj_energy" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>132KV Parwanipur</td>
+                                                <td>Raxaul</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="parwanipur_max_load" name="parwanipur_max_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="parwanipur_time" name="parwanipur_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="parwanipur_energy" name="parwanipur_energy" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>33 KV Sirha</td>
+                                                <td>Jainagar</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sirha_max_load" name="sirha_max_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="time" formControlName="sirha_time" name="sirha_time"  min="00:00:00" max="23:59:59" class="ui-inputdate">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sirha_energy" name="sirha_energy"  class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total Nepal </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Export to Nepal</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="nepal_energy" name="nepal_energy" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br/>
+                                    <button pButton type="button" (click)="saveNepalFeeders()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                    [disabled]="!NepalFeedersForm.valid"></button>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:100%; height:10px; display:block; clear:both;">&nbsp;</div>
+                <div class="ui-g">	
+                    <div class="ui-g-6">
+                        <div class="card" style="margin-top:10px;">
+                            <div class="card-header card-header-tabs card-header-fsctcsc">
+                                CONSTITUENTS GENERATION
+                            </div>
+                            <div class="card-body">
+                                <div [formGroup]="ConstituentsGenerationForm"  class="ui-table" style="width:100%;">
+                                    <table >
+                                        <thead class="ui-table-thead">
+                                            <tr>
+                                                <th>CENTRAL SECTOR (ISGS)</th>
+                                                <th>Load (in MW)</th>
+                                                <th></th>
+                                                <th>CONSTITUENTS</th>
+                                                <th>Load (in MW)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="ui-table-tbody">
+                                            <tr>
+                                                <td>Farakka STPS (Stage I,II & III)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="farakka_load"  formControlName="farakka_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>WBSEGCL</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="WBSEGCL_load" formControlName="WBSEGCL_load"  class="ui-inputtext">
+                                                       
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Talchar STPS</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number"  name="talchar_load" formControlName="talchar_load"  class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>GRIDCO</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="GRIDCO_load" formControlName="GRIDCO_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kahalgaon STPS (Stage I&II)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="kahalgaon_load" formControlName="kahalgaon_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>BSPGCL</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="BSPGCL_load" formControlName="BSPGCL_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Barh</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="barh_load"  formControlName="barh_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>KBUNL</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="KBUNL_load" formControlName="KBUNL_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chukha HPS</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="chukha_load" formControlName="chukha_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>DVC </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="DVC_load" formControlName="DVC_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rangit HPS </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="rangit_load" formControlName="rangit_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>CESC</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="CESC_load" formControlName="CESC_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tala HPS</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="tala_load" formControlName="tala_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>JSEB</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="JSEB_load" formControlName="JSEB_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Teesta HPS</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="teesta_load" formControlName="teesta_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>kurichu</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" name="kurichu_load" formControlName="kurichu_load" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br/>
+                                    <button pButton type="button" (click)="saveConstituentsGeneration()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                    [disabled]="!ConstituentsGenerationForm.valid"></button>
+                                    <button pButton type="button" (click)="onEditConstituentsGeneration(constituentGeneration)" label="Edit" icon="pi pi-pencil" class="ui-button-info"></button>&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-6">
+                        <div class="card" style="margin-top:10px;">
+                            <div class="card-header card-header-tabs card-header-fsctcsc">
+                                Khagaul
+                            </div>
+                            <div class="card-body">
+                                <div  class="ui-table" [formGroup]="KhagaulForm" style="width:100%;">
+                                    <table>
+                                        <tbody class="ui-table-tbody">
+                                            <tr>
+                                                <td>BSPTCL(ckt-1)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="BSPTCL_1" name="BSPTCL_1"  class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>BGCL(ckt-2)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="BGCL_2" name="BGCL_2"   class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>BGCL(ckt-3)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="BGCL_3" name="BGCL_3"   class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="Total" disabled="true" name="Total"  class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br/>
+                                    <button pButton type="button" (click)="saveKhagaul()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                    [disabled]="!KhagaulForm.valid"></button>
+                                    <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:10px;">
+                    <div class="card-header card-header-tabs card-header-fsctcsc">
+                        Miscellaneous Fields
+                    </div>
+                    <div class="card-body">
+                        <div class="ui-table" [formGroup]="MiscellaneousForm" style="width:100%;">
+                            <table>
+                                <thead class="ui-table-thead">
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Import</th>
+                                        <th>Export</th>
+                                        <th>Exchange (HRS)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="ui-table-tbody">
+                                    <tr>
+                                        <td>Lakhisarai</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="lakhisarai_import" name="lakhisarai_import"  class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="lakhisarai_export" name="lakhisarai_export"  class="ui-inputtext">
+                                        </div>
+                                    </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="lakhisarai_exchange" name="lakhisarai_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jamui</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="jamui_import" name="jamui_import"  class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="jamui_export" name="jamui_export"  class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="jamui_exchange" name="jamui_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pusauli</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="pusauli_import" name="pusauli_import"  class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="pusauli_export" name="pusauli_export"  class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="pusauli_exchange" name="pusauli_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dehri</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="dehri_import" name="dehri_import"  class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="dehri_export" name="dehri_export"  class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="dehri_exchange" name="dehri_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pur(PG)-Beg</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="pur_beg_import" name="pur_beg_import"  class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="pur_beg_export" name="pur_beg_export"  class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="pur_beg_exchange" name="pur_beg_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Banka</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="banka_import" name="banka_import"  class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="banka_export" name="banka_export"  class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="banka_exchange" name="banka_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sabour</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="sabour_import" name="sabour_import" class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="sabour_export" name="sabour_export"  class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="sabour_exchange" name="sabour_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sultanganj</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="sultanganj_import" name="sultanganj_import" class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="sultanganj_export" name="sultanganj_export"  class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="sultanganj_exchange" name="sultanganj_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kaffain</td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="kaffain_import" name="kaffain_import"  class="ui-inputtext">
+                                        </div> 
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="kaffain_export" name="kaffain_export"  class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="kaffain_exchange" name="kaffain_exchange" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>132kV Nepal</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ui-inputgroup">
+                                                <input pInputText type="number" formControlName="nepal_total" name="nepal_total" class="ui-inputtext">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br/>
+                            <button pButton type="button" (click)="saveMisc()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                            [disabled]="!MiscellaneousForm.valid"></button>
+                        </div>
+                    </div>
+                </div>
+        </p-tabPanel>
+        <p-tabPanel header="DETAILS OF CENTRAL SECTOR AND BILATERAL TRANSACTION (POWER EXCHANGE IN MU)" headerStyleClass="subtabheaderbg">
+                <div class="ui-g">
+                    <div class="ui-g-6">
+                        <div class="card" style="margin-top:10px;">
+                            <div class="card-header card-header-tabs card-header-fsctcsc">
+                                NBPDCL TIE- LINE EXCHANGE (in MU)
+                            </div>
+                            <div class="card-body">
+                                <div class="ui-table" [formGroup]="NBPDCLForm" style="width:100%;">
+                                    <table>
+                                        <thead class="ui-table-thead">
+                                            <tr>
+                                                <th>Sector</th>
+                                                <th>Tie line</th>
+                                                <th>Import</th>
+                                                <th>Export</th>
+                                                <th>Exchane (in MU)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="ui-table-tbody">
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Muzaffarpur (PG)- KBUNL</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="muzaffarpur_KBUNL_import" name="muzaffarpur_KBUNL_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="muzaffarpur_KBUNL_export" name="muzaffarpur_KBUNL_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="muzaffarpur_KBUNL_exchange" name="muzaffarpur_KBUNL_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>KBUNL Stage-II Units (ISGS)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="KBUNL_ISGS_import" name="KBUNL_ISGS_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="KBUNL_ISGS_export" name="KBUNL_ISGS_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="KBUNL_ISGS_exchange" name="KBUNL_ISGS_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Muzaffarpur (PG)- Hazipur</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="muzaffarpur_hazipur_import" name="muzaffarpur_hazipur_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="muzaffarpur_hazipur_export" name="muzaffarpur_hazipur_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="muzaffarpur_hazipur_exchange" name="muzaffarpur_hazipur_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Purnia (PG)- Madhepura</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnia_madhepura_import" name="purnia_madhepura_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnia_madhepura_export" name="purnia_madhepura_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnia_madhepura_exchange" name="purnia_madhepura_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Purnea (PG)- Purnea</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnea_purnea_import" name="purnea_purnea_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnea_purnea_export" name="purnea_purnea_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnea_purnea_exchange" name="purnea_purnea_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Purnia (PG)- Kisanganj</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnia_kisanganj_import" name="purnia_kisanganj_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnia_kisanganj_export" name="purnia_kisanganj_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnia_kisanganj_exchange" name="purnia_kisanganj_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Purnea(PG)-Begusarai</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnea_begusarai_import" name="purnea_begusarai_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnea_begusarai_export" name="purnea_begusarai_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="purnea_begusarai_exchange" name="purnea_begusarai_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Kishanganj (PG)-Kishanganj (New)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kishanganj_kishanganj_import" name="kishanganj_kishanganj_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kishanganj_kishanganj_export" name="kishanganj_kishanganj_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kishanganj_kishanganj_exchange" name="kishanganj_kishanganj_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>WB</td>
+                                                <td>Dalkola (WB)- Baisi</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="dalkola_baisi_import" name="dalkola_baisi_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="dalkola_baisi_export" name="dalkola_baisi_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="dalkola_baisi_exchange" name="dalkola_baisi_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DMTCL</td>
+                                                <td>Darbhanga (DMTCL)-Samastipur (N)</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_samastipur_import" name="darbhanga_samastipur_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_samastipur_export" name="darbhanga_samastipur_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_samastipur_exchange" name="darbhanga_samastipur_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DMTCL</td>
+                                                <td>Darbhanga (DMTCL)-Motipur</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_motipur_import" name="darbhanga_motipur_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_motipur_export" name="darbhanga_motipur_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_motipur_exchange" name="darbhanga_motipur_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DMTCL</td>
+                                                <td>Darbhanga (DMTCL)-Laukahi</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_laukahi_import" name="darbhanga_laukahi_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_laukahi_export" name="darbhanga_laukahi_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_laukahi_exchange" name="darbhanga_laukahi_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DMTCL</td>
+                                                <td>Darbhanga (DMTCL)-Darbhanga</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_darbhanga_import" name="darbhanga_darbhanga_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_darbhanga_export" name="darbhanga_darbhanga_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="darbhanga_darbhanga_exchange" name="darbhanga_darbhanga_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DMTCL</td>
+                                                <td>Motihari (DMTCL)-Motihari</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_motihari_import" name="motihari_motihari_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_motihari_export" name="motihari_motihari_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_motihari_exchange" name="motihari_motihari_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DMTCL</td>
+                                                <td>Motihari (DMTCL)-Bettiah</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_bettiah_import" name="motihari_bettiah_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_bettiah_export" name="motihari_bettiah_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_bettiah_exchange" name="motihari_bettiah_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DMTCL</td>
+                                                <td>Motihari (DMTCL)-Raxaul</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_raxaul_import" name="motihari_raxaul_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_raxaul_export" name="motihari_raxaul_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="motihari_raxaul_exchange" name="motihari_raxaul_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>I.S.</td>
+                                                <td>Bihar Sharif- Begusarai</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_begusarai_import" name="bihar_sharif_begusarai_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_begusarai_export" name="bihar_sharif_begusarai_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_begusarai_exchange" name="bihar_sharif_begusarai_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><b>Net Power Drawal from C.S. (N.B.)</b></td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="net_power_exchange" name="net_power_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><b>Drawal Schedule (North Bihar)</b></td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="drawal_exchange" name="drawal_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br/>
+                                    <button pButton type="button" (click)="saveNBPDCL()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                     [disabled]="!NBPDCLForm.valid"></button>
+                                     <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-6">
+                        <div class="card" style="margin-top:10px;">
+                            <div class="card-header card-header-tabs card-header-fsctcsc">
+                                SBPDCL TIE- LINE EXCHANGE (in MU)
+                            </div>
+                            <div class="card-body">
+                                <div class="ui-table" [formGroup]="SBPDCLForm" style="width:100%;">
+                                    <table>
+                                        <thead class="ui-table-thead">
+                                            <tr>
+                                                <th>Sector</th>
+                                                <th>Tie line</th>
+                                                <th>Import</th>
+                                                <th>Export</th>
+                                                <th>Exchane (in MU)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="ui-table-tbody">
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Bihar Sharif (PG)- Bihar Sharif</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_import" name="bihar_sharif_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_export" name="bihar_sharif_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_exchange" name="bihar_sharif_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Patna (PG)- Sipara</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_sipara_import" name="patna_sipara_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_sipara_export" name="patna_sipara_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_sipara_exchange" name="patna_sipara_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Patna (PG)- Fatuha</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_fatuha_import" name="patna_fatuha_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_fatuha_export" name="patna_fatuha_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_fatuha_exchange" name="patna_fatuha_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Patna (PG)- Khagaul</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_khagaul_import" name="patna_khagaul_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_khagaul_export" name="patna_khagaul_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="patna_khagual_exchange" name="patna_khagual_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Pusauli(PG)-Nadokhar</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="pusauli_nadokhar_import" name="pusauli_nadokhar_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="pusauli_nadokhar_export" name="pusauli_nadokhar_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="pusauli_nadokhar_exchange" name="pusauli_nadokhar_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Pusauli (PG)- Dehri</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number"formControlName="pusauli_dehri_import" name="pusauli_dehri_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="pusauli_dehri_export" name="pusauli_dehri_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="pusauli_dehri_exchange" name="pusauli_dehri_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Gaya (PG)- Dehri</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_dehri_import" name="gaya_dehri_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_dehri_export" name="gaya_dehri_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_dehri_exchange" name="gaya_dehri_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Gaya (PG)- Bodh Gaya</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_bodhgaya_import" name="gaya_bodhgaya_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_bodhgaya_export" name="gaya_bodhgaya_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_bodhgaya_exchange" name="gaya_bodhgaya_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Gaya (PG)- Khizasarai</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_khizasarai_import" name="gaya_khizasarai_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_khizasarai_export" name="gaya_khizasarai_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_khizasarai_exchange" name="gaya_khizasarai_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Gaya (PG)- Sonenagar</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_sonenagar_import" name="gaya_sonenagar_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_sonenagar_export" name="gaya_sonenagar_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="gaya_sonenagar_exchange" name="gaya_sonenagar_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Banka (PG)- Banka</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="banka_banka_import" name="banka_banka_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="banka_banka_export" name="banka_banka_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number"formControlName="banka_banka_exchange" name="banka_banka_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Banka (PG)- Sabour</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="banka_sabour_import" name="banka_sabour_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="banka_sabour_export" name="banka_sabour_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="banka_sabour_exchange" name="banka_sabour_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Banka (PG)- Sultanganj</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="banka_sultanganj_import" name="banka_sultanganj_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="banka_sultanganj_export" name="banka_sultanganj_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="banka_sultanganj_exchange" name="banka_sultanganj_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Kahalgaon (NTPC)- Sabour</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kahalgaon_sabour_import" name="kahalgaon_sabour_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kahalgaon_sabour_export" name="kahalgaon_sabour_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kahalgaon_sabour_exchange" name="kahalgaon_sabour_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Kahalgaon (NTPC)- Kahalgaon</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kahalgaon_kahalgaon_import" name="kahalgaon_kahalgaon_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kahalgaon_kahalgaon_export" name="kahalgaon_kahalgaon_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="kahalgaon_kahalgaon_exchange" name="kahalgaon_kahalgaon_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Lakhisarai (PG)-Lakhisarai</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lakhisarai_lakhisarai_import" name="lakhisarai_lakhisarai_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lakhisarai_lakhisarai_export" name="lakhisarai_lakhisarai_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lakhisarai_lakhisarai_exchange" name="lakhisarai_lakhisarai_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Central Sector</td>
+                                                <td>Lakhisarai (PG)-Jamui</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lakhisarai_jamui_import" name="lakhisarai_jamui_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lakhisarai_jamui_export" name="lakhisarai_jamui_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lakhisarai_jamui_exchange" name="lakhisarai_jamui_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>JSEB</td>
+                                                <td>Tenughat - Bihar Sharif</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="tenughat_bihar_sharif_import" name="tenughat_bihar_sharif_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="tenughat_bihar_sharif_export" name="tenughat_bihar_sharif_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="tenughat_bihar_sharif_exchange" name="tenughat_bihar_sharif_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>JSEB</td>
+                                                <td>Japla-Sonenagar</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="japla_sonenagar_import" name="japla_sonenagar_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="japla_sonenagar_export" name="japla_sonenagar_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="japla_sonenagar_exchange" name="japla_sonenagar_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>JSEB</td>
+                                                <td>Lalmatia-Kahalgaon</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lalmatia_kahalgaon_import" name="lalmatia_kahalgaon_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lalmatia_kahalgaon_export" name="lalmatia_kahalgaon_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="lalmatia_kahalgaon_exchange" name="lalmatia_kahalgaon_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>JSEB</td>
+                                                <td>Sultanganj- Deoghar</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sultanganj_deoghar_import" name="sultanganj_deoghar_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sultanganj_deoghar_export" name="sultanganj_deoghar_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sultanganj_deoghar_exchange" name="sultanganj_deoghar_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DVC</td>
+                                                <td> Barhi- Rajgir</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="barhi_rajgir_import" name="barhi_rajgir_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="barhi_rajgir_export" name="barhi_rajgir_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="barhi_rajgir_exchange" name="barhi_rajgir_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DVC</td>
+                                                <td> Barhi- Nalanda</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="barhi_nalanda_import" name="barhi_nalanda_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="barhi_nalanda_export" name="barhi_nalanda_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="barhi_nalanda_exchange" name="barhi_nalanda_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>I.S.</td>
+                                                <td>Bihar Sharif- Begusarai</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_begusarai_import" name="bihar_sharif_begusarai_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_begusarai_export" name="bihar_sharif_begusarai_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="bihar_sharif_begusarai_exchange" name="bihar_sharif_begusarai_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>N.R.</td>
+                                                <td>Rehand- Sone Nagar</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="rehand_sone_nagar_import" name="rehand_sone_nagar_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="rehand_sone_nagar_export" name="rehand_sone_nagar_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="rehand_sone_nagar_exchange" name="rehand_sone_nagar_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>N.R.</td>
+                                                <td>Chandauli- Karmnasa </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="chandauli_karmnasa_import" name="chandauli_karmnasa_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="chandauli_karmnasa_export" name="chandauli_karmnasa_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="chandauli_karmnasa_exchange" name="chandauli_karmnasa_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>N.R.</td>
+                                                <td>Sahupuri Karmnasa Exchange</td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sahupuri_karmnasa_import" name="sahupuri_karmnasa_import" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sahupuri_karmnasa_export" name="sahupuri_karmnasa_export" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" formControlName="sahupuri_karmnasa_exchange" name="sahupuri_karmnasa_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><b>Net Power Drawal from C.S. (S.B.)</b></td>
+                                                
+                                               
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" disabled="true" formControlName="net_power_drawal_cs_exchange" name="net_power_drawal_cs_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><b>Drawal Schedule (South Bihar)</b></td>
+                                               
+                                                
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" disabled="true" formControlName="net_schedule_exchange" name="net_schedule_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><b>Net Power Drawal (Bihar)</b></td>
+                                               
+                                                
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" disabled="true" formControlName="net_power_drawal_bihar_exchange" name="net_power_drawal_bihar_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><b>Schedule (Bihar)</b></td>
+                                               
+                                                
+                                                <td>
+                                                    <div class="ui-inputgroup"> 
+                                                        <input pInputText type="number"  formControlName="schedule_exchange" name="schedule_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><b>Demand Met (Bihar)</b></td>
+                                               
+                                                
+                                                <td>
+                                                    <div class="ui-inputgroup">
+                                                        <input pInputText type="number" disabled="true" formControlName="demand_met_exchange" name="demand_met_exchange" class="ui-inputtext">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br/>
+                                    <button pButton type="button" (click)="saveSBPDCLTieLinesExchange()" label="Save" icon="pi pi-plus" class="ui-button-danger pull-right"
+                                    [disabled]="!SBPDCLForm.valid"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </p-tabPanel>
+    </p-tabView>
+</div>
+
+<div style="width:100%; height:10px; display:block; clear:both;">&nbsp;</div>
+

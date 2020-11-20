@@ -1,0 +1,38 @@
+<div [formGroup]="DesignationForm">
+  
+  <div class="ui-g">
+    <div class="ui-lg-9 ui-md-9 ui-sm-12 ui-g-nopad">
+      <label for="LogTime">Designation </label>
+      <div class="ui-inputgroup">
+        <input type="text" name="Designation" formControlName="Designation" class="ui-inputtext"/>
+      </div>
+      <div class="error-block" *ngIf="DesignationForm.get('Designation').errors">
+          <span *ngIf="DesignationForm.get('Designation').errors['required']">
+              <small class=" text-danger">Designation is required</small>
+            </span>
+    </div>
+    <div class="ui-lg-9 ui-md-9 ui-sm-12 ui-g-nopad">
+      <label for="LogTime">Order </label>
+      <div class="ui-inputgroup">
+        <input type="number" name="Order" formControlName="Order" class="ui-inputtext"/>  
+      </div>
+      <div class="error-block" *ngIf="DesignationForm.get('Order').errors">
+          <span *ngIf="DesignationForm.get('Order').errors['required']">
+              <small class=" text-danger">Order is required</small>
+            </span>
+        <span *ngIf="DesignationForm.get('Order').errors['orderExists']">
+          <small class=" text-danger">Order already exists. Please provide new order</small>
+        </span>
+      </div>
+</div>
+  </div>
+
+
+  <div class="ui-g" style="width:100%">
+    <div class="ui-lg-8 ui-md-8 ui-sm-8">&nbsp;</div>
+    <div class="ui-lg-4 ui-md-4 ui-sm-4">
+      <button pButton label="Submit" type="button" (click)="handleSubmitClick()" [disabled]="!DesignationForm.valid"  class="ui-button-success"  styleClass="ui-button-info pull-right"></button>&nbsp;
+      <button pButton label="Close" type="button" (click)="handleCloseClick()" class="ui-button-danger"  styleClass="ui-button-danger pull-right" icon="pi pi-check" iconPos="right"></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,278 @@
+<div class="card">
+    <div class="card-header card-header-tabs card-header-issue">
+        <button type="button" pButton label="Capture" (click)="captureData()" style="margin-right: 0.5em;"></button>
+        <button type="button" pButton label="Update" (click)="updateData()" style="margin-right: 0.5em;float: right;"></button>
+    </div>
+    <div class="card-body">
+        <div class="ui-g tieLine" style="width:100%;">
+            <!-- <p-table [value]="currTieLineData" [responsive]="true"> -->
+            <p-table #tieLinesData [value]="currTieLineData" [columns]="tieLineColumns" [responsive]="true" [rows]="100" [paginator]="true">
+                <ng-template pTemplate="caption">
+                    <div class="ui-inputgroup pull-right">
+                        <div style="text-align: left">
+                            <button type="button" pButton label="Download" (click)="tieLinesData.exportCSV()" style="margin-right: 0.5em;"></button>
+                        </div>
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="tieLinesData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                    </div>
+                    <div class="clearfix"></div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th *ngFor="let col of tieLineColumns">
+                            <span>{{col.header}}</span>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr [pEditableRow]="rowData">
+                        <td>{{rowData.TieLineName}}</td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time0">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time0 > 0 ? (rowData.Time0 | number:'1.0-0') : -(rowData.Time0) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time1">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time1 > 0 ? (rowData.Time1 | number:'1.0-0') : -(rowData.Time1) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time2">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time2 > 0 ? (rowData.Time2 | number:'1.0-0') : -(rowData.Time2) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time3">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time3 > 0 ? (rowData.Time3 | number:'1.0-0') : -(rowData.Time3) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time4">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time4 > 0 ? (rowData.Time4 | number:'1.0-0') : -(rowData.Time4) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time5">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time5 > 0 ? (rowData.Time5 | number:'1.0-0') : -(rowData.Time5) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time6">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time6 > 0 ? (rowData.Time6 | number:'1.0-0') : -(rowData.Time6) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time7">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time7 > 0 ? (rowData.Time7 | number:'1.0-0') : -(rowData.Time7) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time8">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time8 > 0 ? (rowData.Time8 | number:'1.0-0') : -(rowData.Time8) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time9">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time9 > 0 ? (rowData.Time9 | number:'1.0-0') : -(rowData.Time9) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time10">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time10 > 0 ? (rowData.Time10 | number:'1.0-0') : -(rowData.Time10) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time11">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time11 > 0 ? (rowData.Time11 | number:'1.0-0') : -(rowData.Time11) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time12">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time12 > 0 ? (rowData.Time12 | number:'1.0-0') : -(rowData.Time12) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time13">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time13 > 0 ? (rowData.Time13 | number:'1.0-0') : -(rowData.Time13) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time14">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time14 > 0 ? (rowData.Time14 | number:'1.0-0') : -(rowData.Time14) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time15">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time15 > 0 ? (rowData.Time15 | number:'1.0-0') : -(rowData.Time15) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time16">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time16 > 0 ? (rowData.Time16 | number:'1.0-0') : -(rowData.Time16) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time17">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time17 > 0 ? (rowData.Time17 | number:'1.0-0') : -(rowData.Time17) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time18">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time18 > 0 ? (rowData.Time18 | number:'1.0-0') : -(rowData.Time18) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time19">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time19 > 0 ? (rowData.Time19 | number:'1.0-0') : -(rowData.Time19) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time20">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time20 > 0 ? (rowData.Time20 | number:'1.0-0') : -(rowData.Time20) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time21">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time21 > 0 ? (rowData.Time21 | number:'1.0-0') : -(rowData.Time21) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time22">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time22 > 0 ? (rowData.Time22 | number:'1.0-0') : -(rowData.Time22) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time23">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time23 > 0 ? (rowData.Time23 | number:'1.0-0') : -(rowData.Time23) | number:'1.0-0'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

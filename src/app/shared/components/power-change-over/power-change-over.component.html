@@ -1,0 +1,103 @@
+<div class="card">
+  <div class="card-header card-header-tabs card-header-issue">Power Change Over Operation Section
+  </div>
+  <div class="card-body">
+    <div [formGroup]="PCOForm">
+            <div class="ui-g" style="width:100%;" *ngIf="!isFormEdit">
+              <div class="ui-g-6 ui-md-6">
+                <label for="ChangeOverDate">Code Creation Date <span class="text-danger">*</span></label>
+                <p-calendar formControlName="ChangeOverDate" [dateFormat]="dateFormat" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+              </div>
+              <div class="ui-g-6 ui-md-6">
+                <label for="ChangeOverTime">Code Creation Time <span class="text-danger">*</span></label>
+                <p-calendar formControlName="ChangeOverTime" hourFormat="24" [timeOnly]="true" inputId="timeonly"></p-calendar>
+              </div>
+            </div>
+            <div class="ui-g" style="width:100%;">
+              <div class="ui-g-6 ui-md-6">
+                <label for="ActualDate">Change Over Date </label>
+                <p-calendar formControlName="ActualDate" [dateFormat]="dateFormat" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+              </div>
+              <div class="ui-g-6 ui-md-6">
+                <label for="ActualTime">Change Over Time </label>
+                <p-calendar formControlName="ActualTime" hourFormat="24" [timeOnly]="true" inputId="timeonly"></p-calendar>
+              </div>
+            </div>
+            <div class="ui-g" style="width: 100%;">
+              <div class="ui-g-9">
+                <label for="Remarks">Remarks  <span class="text-danger">*</span></label>
+                  <input type="text" name="Remarks" placeholder="Remarks" formControlName="Remarks" class="ui-inputtext" style="width: 90% !important;">
+              </div>
+              <div class="ui-g-3">
+                <button pButton type="button" *ngIf="!isFormEdit" (click)="createCode()" label="Create Code" icon="pi pi-plus" class="ui-button-success pull-right"
+                  [disabled]="!PCOForm.valid"></button>
+                <button pButton type="button" *ngIf="isFormEdit" (click)="updateData()" label="Update" icon="pi pi-plus" class="ui-button-success pull-right"
+                [disabled]="!PCOForm.valid"></button>
+                <button pButton type="button" *ngIf="isFormEdit" (click)="cancel()" label="Cancel" icon="pi pi-times" class="ui-button-danger pull-right"
+                [disabled]="!PCOForm.valid"></button>
+              </div>
+            </div>
+    </div>
+    <div class="ui-g" style="width:100%;">
+      <p-table [value]="pcoData" [responsive]="true" dataKey="pcoid">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 3em"></th>
+            <th style="width:10%;">Code</th>
+            <th style="width:10%;">Created On Date</th>
+            <th style="width:10%;">Created On Time</th>
+            <th style="width:40%;">Remarks</th>
+            <th style="width:10%;">Change Over Date</th>
+            <th style="width:10%;">Change Over Time</th>
+            <th style="width:10%;">Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-expanded="expanded" let-rowData>
+          <tr [pEditableRow]="rowData">
+            <td>
+              <a href="#" [pRowToggler]="rowData">
+                  <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+              </a>
+            </td>
+            <td>
+              <span [ngClass]="{'strikeThroughCode': rowData.IsCancelled}">{{rowData.CodeData?.Code}}</span>
+            </td>
+            <td>{{rowData.ChangeOverDate}}</td>
+            <td>{{rowData.ChangeOverTime}}</td>
+            <td>{{rowData.Remarks}}</td>
+            <td>{{rowData.ActualDate}}</td>
+            <td>{{rowData.ActualTime}}</td>
+            <td style="text-align:center">
+              <p-splitButton label="Edit" icon="pi pi-plus" (onClick)="onRowEdit(rowData)"
+              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+           </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+          <tr>
+              <td [attr.colspan]="11" style="padding: 0px !important;">
+                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                      <ng-template pTemplate="header">
+                          <tr>
+                              <th style="width:120px;">Modified By</th>
+                              <th>Modified At</th>
+                              <th>Shift</th>
+                              <th style="width:35%;">Action</th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-audit>
+                          <tr>
+                              <td>{{audit.ModifiedBy}}</td>
+                              <td>{{audit.ModifiedAt}}</td>
+                              <td>{{audit.Shift}}</td>
+                              <td>{{audit.Message}}</td>
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </td>
+          </tr>
+      </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

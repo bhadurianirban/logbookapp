@@ -1,0 +1,48 @@
+<form [formGroup]="createForm" novalidate>
+  <div class="ui-g">
+    <div class="ui-g-4 ui-md-4 ui-sm-12">
+      <div class="form-group" [ngClass]="{'has-error': (createForm.get('LogbookDate').touched ||
+        createForm.get('LogbookDate').dirty) &&
+        !createForm.get('LogbookDate').valid }">
+        <label for="LogbookDate" style="float: left; margin-right: 8px;">Date </label>
+        <div style="width:230px;">
+          <p-calendar formControlName="LogbookDate" [dateFormat]="dateFormat" [showIcon]="true" [maxDate]="maxDateValue"
+            [disabled]="currLogbookData && currLogbookData.RequestId"></p-calendar>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g-6 ui-md-6 ui-sm-12" style="padding-top:10px;">
+      <label class="text-left pull-left" for="Shift" style="margin-right: 8px;">Shift </label>
+      <div class="form-group pull-left" [ngClass]="{'has-error': (createForm.get('Shift').touched ||
+        createForm.get('Shift').dirty) &&
+        !createForm.get('Shift').valid }">
+        <div class="form-inline radioinline" *ngFor="let entry of shifts">
+          <p-radioButton name="selectshift" [value]="entry.name" [label]="entry.name" formControlName="Shift"
+            [disabled]="currLogbookData && currLogbookData.RequestId"></p-radioButton>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-sm-12" *ngIf="currLogbookData && !currLogbookData.RequestId">
+      <button pButton (click)="createLogbook()" label="Create" icon="pi pi-check" class="ui-button-danger" [disabled]="!createForm.valid"></button>
+      &nbsp;
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-sm-12" *ngIf="currLogbookData && currLogbookData.RequestId && logbookStatus==='Draft'">
+      <button pButton (click)="submitLogbook()" label="Submit" icon="pi pi-check" class="ui-button-danger"></button>
+      &nbsp;
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-sm-12" *ngIf="currLogbookData && currLogbookData.RequestId && logbookStatus==='Submitted' && allowLogbookUpdate">
+      <button pButton (click)="submitLogbook()" label="Update" icon="pi pi-check" class="ui-button-danger"></button>
+      &nbsp;
+    </div>
+  </div>
+  <div *ngIf="currLogbookData && !currLogbookData.RequestId">
+      <label>Please confirm you have checked all items listed below - </label>
+      <div class="ui-g" *ngFor="let check of shiftChecks">
+          <div class="ui-g-12"><p-checkbox name="group1" value="{{check.name}}" label="{{check.name}}" [formControl]="createForm.controls['Checks']"></p-checkbox></div>
+      </div>
+  </div>
+</form>

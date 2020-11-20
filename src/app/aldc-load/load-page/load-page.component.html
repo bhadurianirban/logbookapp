@@ -1,0 +1,93 @@
+<div class="main-panel">
+  <div class="ui-g" style="width:100%;">
+    <div class="card">
+      <div class="card-header card-header-tabs card-header-antiTheft">&nbsp;</div>
+      <div class="card-body">
+        <p-tabView (onChange)="onTabChange($event)" styleClass="no-border innerTab bd">
+          <p-tabPanel header="Load Restriction" [selected]="true" rightIcon="pi pi-ellipsis-v">
+            <div class="ui-g" style="width:100%; display:block;">
+              <div class="ui-md-12">
+                  <div class="pull-left">
+                    <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add('LR')" label="Add"
+                      style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                    &nbsp;&nbsp;
+                  </div>
+                  <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterConstituentsData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="100" [paginator]="true" [scrollable]="true"
+                    scrollHeight="400px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterConstituentsData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </div>
+            </div>
+          </p-tabPanel>
+          <p-tabPanel header="Load Release" rightIcon="pi pi-ellipsis-v">
+            <div class="ui-g" style="width:100%; display:block;">
+              <div class="ui-md-12">
+                  <div class="pull-left">
+                    <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add('R')" label="Add"
+                      style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                    &nbsp;&nbsp;
+                  </div>
+                  <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #gridsRestrictionData [value]="tableGridRestData" [columns]="selectedReleaseColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="100" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="gridsRestrictionData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedReleaseColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedReleaseColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedReleaseColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </div>
+            </div>
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+  </div>
+  <p-toast key="saveNotification"></p-toast>
+  <p-toast key="errorNotification"></p-toast>
+</div>

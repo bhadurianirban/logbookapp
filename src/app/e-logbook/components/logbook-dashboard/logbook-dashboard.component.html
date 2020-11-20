@@ -1,0 +1,38 @@
+<div class="content">
+<div class="card whiteBG">
+              <div class="card-body">
+                  <p-table #logbookDashboard [value]="tableData" [columns]="selectedColumns" [responsive]="true" [rows]="10" [paginator]="true">
+                    <ng-template pTemplate="caption">
+                            <div class="ui-inputgroup pull-right">        
+                                    <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="logbookDashboard.filterGlobal($event.target.value, 'contains')"
+                                        class="ui-inputtext ui-corner-all ui-state-default ui-widget">    
+                                </div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th>View/Edit</th>
+                            <th *ngFor="let col of selectedColumns">
+                                <span>{{col.header}}</span>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                        <tr>
+                            <td>
+                                <button pButton (click)="openSelectedRecord(rowData)" title="View/Edit" icon="pi pi-eye"></button>
+                                <img src="../../../../assets/images/icon/small_pdf.png" class="small-img" (click)="downloadReport(rowData.RequestId, 'pdf')" title="Download pdf" />
+                                <img src="../../../../assets/images/icon/small_excel.png" class="small-img" (click)="downloadReport(rowData.RequestId, 'excel')" title="Download excel" />
+                            </td>
+                            <td *ngFor="let col of selectedColumns">
+                                    {{rowData[col.field]}}
+                            </td>
+                        </tr>
+                    </ng-template>
+                  </p-table>
+              </div>
+            </div>
+    <div class="clearfix">&nbsp;</div>
+</div>

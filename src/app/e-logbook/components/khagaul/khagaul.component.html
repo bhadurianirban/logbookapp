@@ -1,0 +1,46 @@
+<div class="card-body">
+  <div  class="ui-table" nonvalidate [formGroup]="KhagaulForm" style="width:100%;">
+    <div *ngIf="!isdelete">
+      <table>
+          <tbody class="ui-table-tbody">
+              <tr>
+                  <td>BSPTCL(ckt-1)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="BSPTCL_1" name="BSPTCL_1"  class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>BGCL(ckt-2)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="BGCL_2" name="BGCL_2"   class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>BGCL(ckt-3)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="BGCL_3" name="BGCL_3"   class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Total</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="Total" disabled="true" name="Total"  class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <br/>
+      <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+      <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+      <br/>
+  </div>
+</div>
+</div>

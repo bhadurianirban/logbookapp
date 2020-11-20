@@ -1,0 +1,175 @@
+<div class="card-body">
+  <div class="ui-table" nonvalidate [formGroup]="SolarPowerGenerationForm" style="width:100%;">
+    <div *ngIf="!isdelete">
+      <table>
+          <thead class="ui-table-thead">
+              <tr>
+                  <th>Plant Description</th>
+                  <th>Max Load (MW)</th>
+                  <th>Time (HRS)</th>
+                  <th>Import (in MU)</th>
+              </tr>
+          </thead>
+          <tbody class="ui-table-tbody">
+              <tr>
+                  <td>Magadh SPP--Banka</td>
+                  <td>15 MW </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="magadh_spp_time" name="magadh_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                  </div>
+              </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="magadh_spp_import" name="magadh_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Nalanda SPP--Banka</td>
+                  <td>15 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="nalanda_spp_time" name="nalanda_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="nalanda_spp_import" name="nalanda_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Bahera SPP--Sherghati</td>
+                  <td>15 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="bahera_spp_time" name="bahera_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="bahera_spp_import" name="bahera_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Savkala SPP--Sherghati</td>
+                  <td>25 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="savkala_spp_time" name="savkala_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="savkala_spp_import" name="savkala_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Sunmark SPP--Sherghati</td>
+                  <td>10 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="sunmark_spp_time" name="sunmark_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="sunmark_spp_import" name="sunmark_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Alfa SPP--Rafiganj</td>
+                  <td>20 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="alfa_spp_time" name="alfa_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="alfa_spp_import" name="alfa_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Response SPP-- Nawada</td>
+                  <td>10 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="response_spp_time" name="response_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="response_spp_import" name="response_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>GLAT SPP-- Nawada</td>
+                  <td>3.3 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="glat_spp_time" name="glat_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="glat_spp_import" name="glat_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Avantika SPP- Gaunha PSS (Ramnagar Gss)</td>
+                  <td>5 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="avantika_spp_time" name="avantika_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="avantika_spp_import" name="avantika_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Murera SPP--Ramnagar</td>
+                  <td>10 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="murera_spp_time" name="murera_spp_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="murera_spp_import" name="murera_spp_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Total Solar Power Generation</td>
+                  <td>103.3 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="total_solar_power_time" name="total_solar_power_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" disabled="true" formControlName="total_solar_power_import" name="total_solar_power_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+     <br/>
+     <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+    <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+  </div>
+</div>
+</div>

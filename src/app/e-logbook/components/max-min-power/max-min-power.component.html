@@ -1,0 +1,184 @@
+<div class="card-body">
+  <div class="ui-table" novalidate [formGroup]="MaxMinPowerForm" style="width:100%;">
+    <div *ngIf="!isdelete">
+      <table>
+          <thead class="ui-table-thead">
+              <tr>
+                  <th>Description</th>
+                  <th>Maximum MW</th>
+                  <th>Maximum Time</th>
+                  <th>Minimum MW</th>
+                  <th>Minimum Time</th>
+              </tr>
+          </thead>
+          <tbody class="ui-table-tbody">
+              <tr>
+                  <td>BTPS Generation</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="BTPS_gen_max_power" name="BTPS_gen_max_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="BTPS_gen_max_time" name="BTPS_gen_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="BTPS_gen_min_power" name="BTPS_gen_min_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="BTPS_gen_min_time" name="BTPS_gen_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>KBUNL Stage-I Generation </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="KBUNL_gen_max_power" name="KBUNL_gen_max_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="KBUNL_gen_max_time" name="KBUNL_gen_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="KBUNL_gen_min_power" name="KBUNL_gen_min_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="KBUNL_gen_min_time" name="KBUNL_gen_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Sugar (Total)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="sugar_max_power" name="sugar_max_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="sugar_max_time" name="sugar_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="sugar_min_power" name="sugar_min_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="sugar_min_time" name="sugar_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Solar (Total)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="solar_max_power" name="solar_max_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="solar_max_time" name="solar_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="solar_min_power" name="solar_min_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="solar_min_time" name="solar_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Net Power Drawal</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_power_max_power" name="net_power_max_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="net_power_max_time" name="net_power_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_power_min_power" name="net_power_min_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="net_power_min_time" name="net_power_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Demand Met</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="demand_max_power" name="demand_max_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="demand_max_time" name="demand_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="demand_min_power" name="demand_min_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="demand_min_time" name="demand_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div> 
+                  </td>
+              </tr>
+              <tr>
+                  <td>Nepal</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="nepal_max_power" name="nepal_max_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="nepal_max_time" name="nepal_max_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="nepal_min_power" name="nepal_min_power" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="nepal_min_time" name="nepal_min_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <br/>
+      <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+      <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+      <br/>
+  </div>
+</div>
+</div>

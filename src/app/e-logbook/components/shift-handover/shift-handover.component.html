@@ -1,0 +1,92 @@
+<div class="card">
+  <div class="card-header card-header-tabs card-header-shift">
+    <div class="ui-g">
+        <div class="ui-g-6 ui-md-6">
+            <!-- Download Shift Handover
+            <img src="../../../../assets/images/icon/down_pdf.png" class="download-img" (click)="downloadHandoverReport('pdf')" title="Download pdf" />
+            <img src="../../../../assets/images/icon/down_excel.png" class="download-img" (click)="downloadHandoverReport('excel')" title="Download excel" /> -->
+        </div>
+        <div class="ui-g-6 ui-md-6">
+            <button pButton type="button" (click)="updateShiftHandover()" label="Update Shift Handover" icon="pi pi-check" class="ui-button-danger pull-right"></button>
+        </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div [formGroup]="ShiftHandoverForm" class="ui-g" style="width:100%;">
+      <div class="ui-g-12 ui-md-12">
+        <div class="ui-g-12 ui-md-3">
+          <label for="PresentSituation">Present Situation </label>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="PresentSituation"
+            placeholder="Present Situation"></textarea>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+        <div class="ui-g-12 ui-md-3">
+          <label for="LoadCutDetails">Details of load cut and messages given in this context </label>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="LoadCutDetails"
+            placeholder="Details of load cut and messages given in this context"></textarea>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+        <div class="ui-g-12 ui-md-3">
+          <label for="DateTelemetryDetails">Data Telemetry and Communication Facility </label>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="DateTelemetryDetails"
+            placeholder="Data Telemetry and Communication Facility"></textarea>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+        <div class="ui-g-12 ui-md-3">
+          <label for="TransmissionSystemDetails">Transmission system details which are not available </label>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="TransmissionSystemDetails"
+            placeholder="Transmission system details which are not available"></textarea>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+        <div class="ui-g-12 ui-md-3">
+          <label for="IsOutageTrippingRecorded">Whether outage/revival details of major power units and transmission lines
+            filled at the right place? </label>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+            <div class="form-inline radioinline" *ngFor="let entry of radioOptions">
+                <p-radioButton name="OutageTrippingRecord" [value]="entry.name" [label]="entry.name" formControlName="IsOutageTrippingRecorded"></p-radioButton>
+              </div>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+        <div class="ui-g-12 ui-md-3">
+          <label for="NewTransmissionOutageDetails">Description of new transmission element and energy units</label>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="NewTransmissionOutageDetails"
+            placeholder="Description of new transmission element and energy units"></textarea>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+        <div class="ui-g-12 ui-md-3">
+          <label for="ImportantInformation">Other important information </label>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="ImportantInformation"
+            placeholder="Other important information"></textarea>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-12">
+        <div class="ui-g-12 ui-md-3">
+          <label for="ImportantEvents">Important events during the shift </label>
+        </div>
+        <div class="ui-g-12 ui-md-9">
+          <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="ImportantEvents"
+            placeholder="Important events during the shift"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

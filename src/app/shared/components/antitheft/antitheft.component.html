@@ -1,0 +1,1161 @@
+    <div class="ui-g" style="width:100%;">
+      <div class="card">
+        <div class="card-header card-header-tabs card-header-antiTheft">&nbsp;</div>
+        <div class="card-body">
+          <p-tabView (onChange)="onTabChange($event)" styleClass="no-border innerTab bd">
+            <p-tabPanel header="Line" [selected]="true" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of columns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #lineAntiTheftData [value]="lineData" [columns]="antiTheftColumns" [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]"
+                      [paginator]="true" dataKey="antitheftrequestid">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                          <div style="text-align: left" *ngIf="!showSearchPanel">
+                            <button type="button" pButton label="Download" (click)="lineAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                          </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="lineAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                          <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th>Opening Codes</th>
+                          <th>Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-expanded="expanded" let-rowData let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Unit" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #unitAntiTheftData [value]="unitData" [columns]="antiTheftColumns" [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]"
+                      [paginator]="true" dataKey="antitheftrequestid">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                          <div style="text-align: left" *ngIf="!showSearchPanel">
+                            <button type="button" pButton label="Download" (click)="unitAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                          </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="unitAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th>Opening Codes</th>
+                          <th>Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="HVDC" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #hvdcAntiTheftData [value]="hvdcData" [columns]="antiTheftColumns" [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]"
+                      [paginator]="true" dataKey="antitheftrequestid">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                            <div style="text-align: left" *ngIf="!showSearchPanel">
+                                <button type="button" pButton label="Download" (click)="hvdcAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                              </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="hvdcAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th>Opening Codes</th>
+                          <th>Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-expanded="expanded"  let-rowData let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Transformer" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #ictAntiTheftData [value]="ictData" [columns]="antiTheftColumns" [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]"
+                      [paginator]="true" dataKey="antitheftrequestid">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                            <div style="text-align: left" *ngIf="!showSearchPanel">
+                                <button type="button" pButton label="Download" (click)="ictAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                              </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="ictAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                          <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th>Opening Codes</th>
+                          <th>Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Line Reactor" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #lineReactorAntiTheftData [value]="lineReactorData" [columns]="antiTheftColumns" [responsive]="true"
+                    [rows]="50" [rowsPerPageOptions]="[10,25,50,100]" [paginator]="true" dataKey="antitheftrequestid">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                            <div style="text-align: left" *ngIf="!showSearchPanel">
+                                <button type="button" pButton label="Download" (click)="lineReactorAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                              </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="lineReactorAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th style="width: 120px;">Opening Codes</th>
+                          <th style="width: 120x;">Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Bus Reactor" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #busReactorAntiTheftData [value]="busReactorData" [columns]="antiTheftColumns" dataKey="antitheftrequestid"
+                    [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]" [paginator]="true">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                            <div style="text-align: left" *ngIf="!showSearchPanel">
+                                <button type="button" pButton label="Download" (click)="busReactorAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                              </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="busReactorAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                          <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th>Opening Codes</th>
+                          <th>Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                              <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                                  <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                                  <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                                </div>
+                                <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                                  <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                                  <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                                </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>               
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Bus" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #busAntiTheftData [value]="busData" [columns]="antiTheftColumns" [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]"
+                      [paginator]="true" dataKey="antitheftrequestid">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                            <div style="text-align: left" *ngIf="!showSearchPanel">
+                                <button type="button" pButton label="Download" (click)="busAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                              </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="busAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th>Opening Codes</th>
+                          <th>Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                              <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                                  <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                                  <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                                </div>
+                                <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                                  <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                                  <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                                </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Bay" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #bayAntiTheftData [value]="bayData" [columns]="antiTheftColumns" [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]"
+                      [paginator]="true" dataKey="antitheftrequestid">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                            <div style="text-align: left" *ngIf="!showSearchPanel">
+                                <button type="button" pButton label="Download" (click)="bayAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                              </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="bayAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th>Opening Codes</th>
+                          <th>Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                              <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                                  <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                                  <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                                </div>
+                                <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                                  <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                                  <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                                </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="SubStation" rightIcon="pi pi-ellipsis-v">
+              <p-fieldset *ngIf="showSearchPanel" [toggleable]="true" [collapsed]="true">
+                <p-header>Open Search Panel</p-header>
+                <div class="pull-left" style="margin-top:-42px;">
+                  <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add()" label="Add" style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+                </div>
+                <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+                  <p-table #masterAntiTheftData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+                    [(selection)]="selectedRows" [responsive]="true" [rows]="10" [paginator]="true" [scrollable]="true"
+                    scrollHeight="160px">
+                    <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">
+                        <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                          <i class="fa fa-search"></i>
+                        </span>
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                          class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                      </div>
+                      <div class="clearfix"></div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                        <th *ngFor="let col of selectedColumns">
+                          <span>{{col.header}}</span>
+                        </th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+              </p-fieldset>
+              <div class="ui-g" style="width:100%; display:block;">
+                <div class="ui-md-12">
+                    <p-table #substationAntiTheftData [value]="subStationData" [columns]="antiTheftColumns" [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]"
+                      [paginator]="true" dataKey="antitheftrequestid">
+                      <ng-template pTemplate="caption">
+                        <div class="ui-inputgroup pull-right">
+                            <div style="text-align: left" *ngIf="!showSearchPanel">
+                                <button type="button" pButton label="Download" (click)="substationAntiTheftData.exportCSV()" style="margin-right: 0.5em;"></button>
+                              </div>
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                            <i class="fa fa-search"></i>
+                          </span>
+                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="substationAntiTheftData.filterGlobal($event.target.value, 'contains')"
+                            class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        </div>
+                        <div class="clearfix"></div>
+                      </ng-template>
+                      <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th style="width: 3em"></th>
+                          <th *ngFor="let col of columns">
+                            <span>{{col.header}}</span>
+                          </th>
+                          <th>Opening Codes</th>
+                          <th>Closing Codes</th>
+                          <th style="width: 136px;">Actions</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                        <tr>
+                            <td>
+                                <a href="#" [pRowToggler]="rowData">
+                                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                                </a>
+                            </td>
+                          <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                          </td>
+                          <td>
+                              <div *ngFor="let currCode of rowData.AntiTheftOpeningCode">
+                                  <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AO')}">{{currCode.Code}}</span>
+                                  <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                                </div>
+                                <div *ngFor="let currCode of rowData.AntiTheftThirdPartyOpeningCode">
+                                  <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATO')}">{{currCode.Code}}</span>
+                                  <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATO')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                                </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let currCode of rowData.AntiTheftClosingCode" style="display: inline-block;">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'AC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'AC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                            <div *ngFor="let currCode of rowData.AntiTheftThirdPartyClosingCode">
+                              <span [ngClass]="{'strikeThroughCode': currCode.IsCancelled, 'disableCode': !isCancelCodeEnabled(rowData, 'ATC')}">{{currCode.Code}}</span>
+                              <a *ngIf="!currCode.IsCancelled && isCancelCodeEnabled(rowData, 'ATC')" (click)="cancelCode(currCode)"><i class="pi pi-times" style="color:red; background:#fff; padding:1px;"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <p-splitButton label="View/Edit" icon="pi pi-plus" (onClick)="openSelectedRecord(rowData)"
+                              [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                          <tr>
+                              <td [attr.colspan]="columns.length + 4" style="padding: 0px !important;">
+                                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                                      <ng-template pTemplate="header">
+                                          <tr>
+                                              <th>Modified By</th>
+                                              <th>Modified At</th>
+                                              <th>Shift</th>
+                                              <th>Action</th>
+                                          </tr>
+                                      </ng-template>
+                                      <ng-template pTemplate="body" let-audit>
+                                          <tr>
+                                              <td>{{audit.ModifiedBy}}</td>
+                                              <td>{{audit.ModifiedAt}}</td>
+                                              <td>{{audit.Shift}}</td>
+                                              <td>{{audit.Message}}</td>
+                                          </tr>
+                                      </ng-template>
+                                  </p-table>
+                              </td>
+                          </tr>
+                      </ng-template>
+                    </p-table>
+                </div>
+              </div>
+            </p-tabPanel>
+          </p-tabView>
+        </div>
+      </div>
+    </div>

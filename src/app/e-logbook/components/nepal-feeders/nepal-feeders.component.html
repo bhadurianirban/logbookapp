@@ -1,0 +1,204 @@
+<div class="card-body">
+  <div class="ui-table" [formGroup]="NepalFeedersForm"  novalidate style="width:100%;">
+    <div *ngIf="!isdelete">
+      <table>
+          <thead class="ui-table-thead">
+              <tr>
+                  <th>Feeder</th>
+                  <th>GSS</th>
+                  <th>Max. Load (in MW)</th>
+                  <th>Time (in Hrs)</th>
+                  <th>Energy (in MU)</th>
+              </tr>
+          </thead>
+          <tbody class="ui-table-tbody">
+              <tr>
+                  <td>132 KV Kushaha-1 (Duhabi)</td>
+                  <td>Kataiya</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kushaha_1_max_load" name="kushaha_1_max_load" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="kushaha_1_time" name="kushaha_1_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kushaha_1_energy" name="kushaha_1_energy" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>132 KV Kushaha-2 (Lahan)</td>
+                  <td>Kataiya</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kushaha_2_max_load" name="kushaha_2_max_load"  class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="kushaha_2_time" name="kushaha_2_time"  min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kushaha_2_energy" name="kushaha_2_energy"  class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>33 KV Raj Biraj</td>
+                  <td>Kataiya</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="raj_biraj_max_load" name="raj_biraj_max_load"  class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="raj_biraj_time" name="raj_biraj_time"  min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="raj_biraj_energy" name="raj_biraj_energy"  class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>132 KV Surajpura </td>
+                  <td>Ramnagar</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="surajpura_max_load" name="surajpura_max_load" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="surajpura_time" name="surajpura_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="surajpura_energy" name="surajpura_energy" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>33 KV Jaleshwar </td>
+                  <td>Sitamarhi</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="jaleshwar_sitamarhi_max_load" name="jaleshwar_sitamarhi_max_load" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="jaleshwar_sitamarhi_time" name="jaleshwar_sitamarhi_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="jaleshwar_sitamarhi_energy" name="jaleshwar_sitamarhi_energy" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>33 KV Jaleshwar </td>
+                  <td>Sursand (Pupri)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="jaleshwar_sursand_max_load" name="jaleshwar_sursand_max_load" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="jaleshwar_sursand_time" name="jaleshwar_sursand_time"  min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="jaleshwar_sursand_energy" name="jaleshwar_sursand_energy" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>33 KV Birganj </td>
+                  <td>Raxaul</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="birganj_max_load" name="birganj_max_load" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="birganj_time" name="birganj_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="birganj_energy" name="birganj_energy" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>132KV Parwanipur</td>
+                  <td>Raxaul</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="parwanipur_max_load" name="parwanipur_max_load" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="parwanipur_time" name="parwanipur_time" min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="parwanipur_energy" name="parwanipur_energy" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>33 KV Sirha</td>
+                  <td>Jainagar</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="sirha_max_load" name="sirha_max_load" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="sirha_time" name="sirha_time"  min="00:00:00" max="23:59:59" class="ui-inputdate">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="sirha_energy" name="sirha_energy"  class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Total Nepal </td>
+                  <td></td>
+                  <td></td>
+                  <td>Export to Nepal</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" disabled="true" formControlName="nepal_energy" name="nepal_energy" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <br/>
+      <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+        <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+  </div>
+</div>
+</div>

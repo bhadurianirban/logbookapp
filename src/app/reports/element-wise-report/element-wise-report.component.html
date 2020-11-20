@@ -1,0 +1,61 @@
+<div class="main-panel">
+  <div class="content">
+    <div class="ui-g panelheader">
+      <div class="ui-g-4">
+        <h4 class="card-title"> Element Wise Report</h4>
+      </div>
+    </div>
+    <div class="ui-g panelheader">
+      <div class="ui-g-5">
+        <label>Select Element: </label>
+        <p-autoComplete [(ngModel)]="element" [suggestions]="filteredElements" (completeMethod)="search($event)"
+          [dropdown]="true" [forceSelection]="true" field="Name" [style]="{'width':'90%'}" [inputStyle]="{'width':'90%'}"></p-autoComplete>
+      </div>
+      <div class="ui-g-5">
+        <label>Period Range: </label>
+        <p-calendar [showIcon]="true" [(ngModel)]="rangeDates" dateFormat="dd/mm/yy" selectionMode="range"
+          [readonlyInput]="true" [style]="{'width':'90%'}" [inputStyle]="{'width':'94%'}" ></p-calendar>
+      </div>
+      <div class="ui-g-2">
+        <label style="height: 20px;width: 100%;display: block;">&nbsp;</label>
+        <button pButton (click)="getReport()" label="Get Report" class="ui-button-danger"></button>
+      </div>
+    </div>
+    <div class="ui-g" style="width:100%; display:block;">
+      <div class="ui-md-12">
+        <p-table #reportsData [value]="reportData" [columns]="selectedColumns" [responsive]="true"
+          [rows]="10" [paginator]="true">
+          <ng-template pTemplate="caption">
+            <div class="ui-inputgroup pull-right">
+              <div style="text-align: left">
+                <button type="button" pButton label="Download" (click)="reportsData.exportCSV()" style="margin-right: 0.5em;"></button>
+              </div>
+              <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                <i class="fa fa-search"></i>
+              </span>
+              <input type="text" pInputText size="50" placeholder="Global Filter" (input)="reportsData.filterGlobal($event.target.value, 'contains')"
+                class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+            </div>
+            <div class="clearfix"></div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                <span>{{col.header}}</span>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+  <p-toast key="saveNotification"></p-toast>
+  <p-toast key="errorNotification"></p-toast>
+</div>

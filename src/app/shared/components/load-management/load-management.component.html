@@ -1,0 +1,124 @@
+<div class="ui-g" style="width:100%;">
+  <div class="card">
+    <div class="card-header card-header-tabs card-header-violationmsg">&nbsp;
+    </div>
+    <div class="card-body">
+      <p-fieldset [toggleable]="true" [collapsed]="true">
+        <p-header>Open Grid Panel</p-header>
+        <div class="pull-left">
+          <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add('LR')" label="Add"
+            style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+          &nbsp;&nbsp;
+          <!-- <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add('LS')" label="Create Load Shading Code"
+            style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button>
+          &nbsp;&nbsp;
+          <button pButton class="ui-button-secondary" icon="pi pi-plus" (click)="add('R')" label="Create Load Release Code"
+            style="color: #ffffff; background-color: #1f7ed0; border: 1px solid #1f7ed0;"></button> -->
+        </div>
+        <div style="clear:both; width:100%; height:12px; display:block;">&nbsp;</div>
+        <p-table #masterConstituentsData [value]="tableData" [columns]="selectedColumns" selectionMode="multiple"
+          [(selection)]="selectedRows" [responsive]="true" [rows]="100" [paginator]="true" [scrollable]="true"
+          scrollHeight="160px">
+          <ng-template pTemplate="caption">
+            <div class="ui-inputgroup pull-right">
+              <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                <i class="fa fa-search"></i>
+              </span>
+              <input type="text" pInputText size="50" placeholder="Global Filter" (input)="masterConstituentsData.filterGlobal($event.target.value, 'contains')"
+                class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+            </div>
+            <div class="clearfix"></div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of selectedColumns">
+                <span>{{col.header}}</span>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+            <tr [pSelectableRow]="rowData">
+              <td *ngFor="let col of selectedColumns">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-fieldset>
+      <div class="ui-g" style="width:100%; display:block;">
+        <div class="ui-md-12">
+          <p-table #logbookLoadData [value]="currLoadData" [columns]="loadDataColumns" [responsive]="true"  [rows]="50" [rowsPerPageOptions]="[10,25,50,100]"
+            [paginator]="true" dataKey="loadrequestid">
+            <ng-template pTemplate="caption">
+              <div class="ui-inputgroup pull-right">
+                <div style="text-align: left" *ngIf="!showSearchPanel">
+                  <button type="button" pButton label="Download" (click)="logbookLoadData.exportCSV()" style="margin-right: 0.5em;"></button>
+                </div>
+                <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                  <i class="fa fa-search"></i>
+                </span>
+                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="logbookLoadData.filterGlobal($event.target.value, 'contains')"
+                  class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+              </div>
+              <div class="clearfix"></div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th style="width: 3em"></th>
+                <th *ngFor="let col of columns">
+                  <span>{{col.header}}</span>
+                </th>
+                <th>Code</th>
+                <th style="width: 136px;">Actions</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-expanded="expanded" let-rowData let-columns="columns">
+              <tr>
+                <td>
+                  <a href="#" [pRowToggler]="rowData">
+                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                  </a>
+                </td>
+                <td *ngFor="let col of columns">
+                  {{rowData[col.field]}}
+                </td>
+                <td>
+                  <div style="display: inline-block;">
+                    <span>{{rowData.Code?.Code}}</span>
+                  </div>
+                </td>
+                <td>
+                  <button pButton label="View/Edit" icon="pi pi-pencil" (click)="openSelectedRecord(rowData)" styleClass="ui-button-success"></button>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+              <tr>
+                <td [attr.colspan]="columns.length + 4" style="padding:0px !important;" class="tst">
+                  <p-table [value]="rowData.AuditHistory" class="second-lavel-table">
+                    <ng-template pTemplate="header">
+              <tr>
+                <th>Modified By</th>
+                <th>Modified At</th>
+                <th>Shift</th>
+                <th>Action</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-audit>
+              <tr>
+                <td>{{audit.ModifiedBy}}</td>
+                <td>{{audit.ModifiedAt}}</td>
+                <td>{{audit.Shift}}</td>
+                <td>{{audit.Message}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+          </td>
+          </tr>
+          </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+export interface LogbookNepalFeeder {
+    Id: number;
+    LogbookId: string;
+    kushaha_1_max_load: number;
+    kushaha_1_time: string;
+    kushaha_1_energy: number;
+    kushaha_2_max_load: number;
+    kushaha_2_time: string;
+    kushaha_2_energy: number;
+    raj_biraj_max_load: number;
+    raj_biraj_time: string;
+    raj_biraj_energy: number;
+    surajpura_max_load: number;
+    surajpura_time: string;
+    surajpura_energy: number;
+    jaleshwar_sitamarhi_max_load: number;
+    jaleshwar_sitamarhi_time: string;
+    jaleshwar_sitamarhi_energy: number;
+    jaleshwar_sursand_max_load: number;
+    jaleshwar_sursand_time: string;
+    jaleshwar_sursand_energy: number;
+    birganj_max_load: number;
+    birganj_time: string;
+    birganj_energy: number;
+    parwanipur_max_load: number;
+    parwanipur_time: string;
+    parwanipur_energy: number;
+    sirha_max_load: number;
+    sirha_time: string;
+    sirha_energy: number;
+    nepal_max_load: number;
+    nepal_time: string;
+    nepal_energy: number;
+}

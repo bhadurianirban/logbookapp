@@ -1,0 +1,36 @@
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .nav-tabs .nav-link.active {
+    font-weight:bold;
+    background-color: transparent;
+    border-bottom:3px solid #0a75e0;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+
+::ng-deep body .ui-tabview .ui-tabview-panels {color:#000;}
+::ng-deep body .tabs-style-linetriangle .ui-tabview .ui-tabview-panels {color:#000;}
+
+::ng-deep body .ui-tabview .ui-tabview-panels {background-color: transparent !important;  border: 0px solid #d4d4d4 !important;}
+
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li a, 
+::ng-deep body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li a, 
+::ng-deep body .ui-tabview.ui-tabview-left .ui-tabview-nav li a, 
+::ng-deep body .ui-tabview.ui-tabview-right .ui-tabview-nav li a {color: #000 !important }
+
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a { color: #fff !important;}
+
+
+::ng-deep .tabFourthclass .innerTab ul { margin-top: -62px !important; z-index: 999 !important; position: absolute !important;}
+
+/* Fieldset*/
+::ng-deep body .ui-fieldset { border: 0px solid #191919 !important; background-color: transparent !important;}
+::ng-deep .ui-fieldset-toggleable .ui-fieldset-legend {text-align: right !important;}
+::ng-deep body .ui-fieldset .ui-fieldset-legend a {border: 1px solid #1869af !important; color: #fff !important; background-color: #1f7ed0 !important; border-bottom: 2px solid #1869af !important;}
+::ng-deep body .ui-fieldset .ui-fieldset-legend a .ui-fieldset-toggler {color: #ffffff !important;}
+
+::ng-deep .ui-calendar .ui-inputtext {width: 83% !important;}

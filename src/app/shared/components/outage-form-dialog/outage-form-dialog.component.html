@@ -1,0 +1,86 @@
+<div class="ui-g" style="width:100%;">
+      <p-table #outageDialogData [value]="dialogTableData" [columns]="selectedColumns" [responsive]="true" [rows]="10" [paginator]="true">
+          <ng-template pTemplate="header" let-columns>
+              <tr>
+                  <th *ngFor="let col of selectedColumns">
+                      <span>{{col.header}}</span>
+                  </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+              <tr>
+                  <td *ngFor="let col of selectedColumns">
+                          {{rowData[col.field]}}
+                  </td>
+              </tr>
+          </ng-template>
+        </p-table>
+</div>
+<div class="clearfix">&nbsp;</div>
+    <div [formGroup]="OutageForm">
+      <div class="ui-g">
+        <div class="ui-lg-3 ui-md-3 ui-sm-12 ui-g-nopad">
+            <label for="LogDate">Outage Date <span class="text-danger">*</span></label>  
+            <p-calendar formControlName="LogDate" [dateFormat]="dateFormat" [maxDate]="maxDateValue" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12 ui-g-nopad">
+            <label for="LogTime">Outage Time <span class="text-danger">*</span></label>
+            <input formControlName="LogTime" [ngxTimepicker]="LogTimePicker" [format]="24"class="ui-inputtext" style="width: 80% !important; float: left !important;" readonly>
+            <ngx-material-timepicker-toggle [for]="LogTimePicker">
+              <i class="pi pi-clock"></i>
+            </ngx-material-timepicker-toggle>
+            <ngx-material-timepicker #LogTimePicker></ngx-material-timepicker>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12 ui-g-nopad">
+            <label for="RestoreDate">Restored Date <span class="text-danger">*</span></label>
+            <p-calendar formControlName="RestoreDate" [dateFormat]="dateFormat" [minDate]="minRestoreDateValue" [maxDate]="maxDateValue" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+        </div>
+        <div class="ui-lg-3 ui-md-3 ui-sm-12 ui-g-nopad">
+          <label for="RestoreTime">Restored Time <span class="text-danger">*</span></label>  
+          <input formControlName="RestoreTime" [ngxTimepicker]="RestoreTimePicker"class="ui-inputtext" style="width: 80% !important; float: left !important;" [format]="24" readonly>
+          <ngx-material-timepicker-toggle [for]="RestoreTimePicker">
+            <i class="pi pi-clock"></i>
+          </ngx-material-timepicker-toggle>
+          <ngx-material-timepicker #RestoreTimePicker></ngx-material-timepicker>
+        </div>
+      </div>
+
+      <div class="ui-g" style="width:100%;">
+        <div class="ui-lg-12 ui-md-12 ui-sm-12">
+            <label for="Constituent"> Constituent </label>
+            <div class="input-group">
+                <p-autoComplete formControlName="Constituent" [suggestions]="selectedConstituent" [dropdown]="true"
+                 (completeMethod)="search($event, 'constituent')" field="Name" placeholder="Choose agency"  [forceSelection]="true"
+                 [style]="{'width':'90%'}" [inputStyle]="{'width':'90%'}"></p-autoComplete>
+            </div>
+          </div>
+        <div class="ui-lg-12 ui-md-12 ui-sm-12">
+          <label for="Reason"> Reason <span class="text-danger">*</span></label>
+          <div class="input-group">
+              <p-autoComplete formControlName="Reason" [suggestions]="selectedOutageReasons" (completeMethod)="search($event, 'reason')"  [multiple]="true"   [style]="{'width':'100%'}" [inputStyle]="{'width':'94%'}"></p-autoComplete>
+          </div>
+        </div>
+        <div class="ui-lg-12 ui-md-12 ui-sm-12">
+          <label for="Remarks">Remarks </label>
+          <div class="input-group">
+              <p-autoComplete formControlName="Remarks" [suggestions]="selectedOutageRemarks" (completeMethod)="search($event, 'remarks')"  [multiple]="true"   [style]="{'width':'100%'}" [inputStyle]="{'width':'94%'}"></p-autoComplete>
+          </div>
+        </div>
+        <div class="ui-lg-12 ui-md-12 ui-sm-12">
+          <label for="RestoredRemarks">Restore Remarks <span class="text-danger">*</span></label>
+          <div class="input-group">
+              <p-autoComplete formControlName="RestoredRemarks" [suggestions]="selectedRestoreRemarks" (completeMethod)="search($event, 'restoreRemarks')"  [multiple]="true"   [style]="{'width':'100%'}" [inputStyle]="{'width':'94%'}"></p-autoComplete>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-g" style="width:100%">
+          <div class="ui-lg-10 ui-md-10 ui-sm-10">&nbsp;</div>
+        <div class="ui-lg-2 ui-md-2 ui-sm-2">
+            <button pButton label="Submit" type="button" (click)="handleSubmitClick()" [disabled]="!OutageForm.valid" class="ui-button-success"></button>&nbsp;
+            <button pButton label="Close" type="button" (click)="handleCloseClick()" class="ui-button-danger"></button>
+        </div>
+      </div>
+
+    </div>
+

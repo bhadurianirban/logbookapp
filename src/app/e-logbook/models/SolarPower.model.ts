@@ -1,0 +1,37 @@
+export interface LogbookSolarPower {
+    Id: number;
+    LogbookId: string;
+    magadh_spp_time: string;
+    magadh_spp_import: number;
+    magadh_spp_max_load: number;
+    nalanda_spp_time: string;
+    nalanda_spp_import: number;
+    nalanda_spp_max_load: number;
+    bahera_spp_time: string;
+    bahera_spp_import: number;
+    bahera_spp_max_load: number;
+    savkala_spp_time: string;
+    savkala_spp_import: number;
+    savkala_spp_max_load: number;
+    sunmark_spp_time: string;
+    sunmark_spp_import: number;
+    sunmark_spp_max_load: number;
+    alfa_spp_time: string;
+    alfa_spp_import: number;
+    alfa_spp_max_load: number;
+    response_spp_time: string;
+    response_spp_import: number;
+    response_spp_max_load: number;
+    glat_spp_time: string;
+    glat_spp_import: number;
+    glat_spp_max_load: number;
+    avantika_spp_time: string;
+    avantika_spp_import: number;
+    avantika_spp_max_load: number;
+    murera_spp_time: string;
+    murera_spp_import: number;
+    murera_spp_max_load: number;
+    total_solar_power_time: string;
+    total_solar_power_import: number;
+    total_solar_power_max_load: number;
+}

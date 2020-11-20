@@ -1,0 +1,254 @@
+<div class="card-body">
+<div [formGroup]="ConstituentsGenerationForm" novalidate  class="ui-table" style="width:100%;">
+  <div *ngIf="!isdelete">
+  <table >
+      <thead class="ui-table-thead">
+          <tr>
+              <th>CENTRAL SECTOR (ISGS)</th>
+              <th>Load (in MW)</th>
+              <th>.</th>
+              <th>CONSTITUENTS</th>
+              <th>Load (in MW)</th>
+          </tr>
+      </thead>
+      <tbody class="ui-table-tbody">
+          <tr>
+              <td>Farakka STPS (Stage I,II & III)</td>
+              <td></td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number"  type="number" formControlName="farakka_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('farakka_load').touched ||
+                  ConstituentsGenerationForm.get('farakka_load').dirty) &&
+                  ConstituentsGenerationForm.get('farakka_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('farakka_load').errors">
+            Please provide farakka_load.
+          </span>
+        </span>
+                  
+              </td>
+              <td>WBSEGCL</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" type="number" formControlName="WBSEGCL_load"  class="ui-inputtext">
+                      <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('WBSEGCL_load').touched ||
+                      ConstituentsGenerationForm.get('WBSEGCL_load').dirty) &&
+                      ConstituentsGenerationForm.get('WBSEGCL_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('WBSEGCL_load').errors">
+            Please provide WBSEGCL_load.
+          </span>
+        </span>
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td>Talchar STPS</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number"  name="talchar_load" formControlName="talchar_load"  class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('talchar_load').touched ||
+                  ConstituentsGenerationForm.get('talchar_load').dirty) &&
+                  ConstituentsGenerationForm.get('talchar_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('talchar_load').errors">
+            Please provide talchar_load.
+          </span>
+        </span>
+              </td>
+              <td></td>
+              <td>GRIDCO</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="GRIDCO_load" formControlName="GRIDCO_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('GRIDCO_load').touched ||
+                  ConstituentsGenerationForm.get('GRIDCO_load').dirty) &&
+                  ConstituentsGenerationForm.get('GRIDCO_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('GRIDCO_load').errors">
+            Please provide GRIDCO_load.
+          </span>
+        </span>
+              </td>
+          </tr>
+          <tr>
+              <td>Kahalgaon STPS (Stage I&II)</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="kahalgaon_load" formControlName="kahalgaon_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('kahalgaon_load').touched ||
+                  ConstituentsGenerationForm.get('kahalgaon_load').dirty) &&
+                  ConstituentsGenerationForm.get('kahalgaon_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('kahalgaon_load').errors">
+            Please provide kahalgaon_load.
+          </span>
+        </span>
+              </td>
+              <td></td>
+              <td>BSPGCL</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="BSPGCL_load" formControlName="BSPGCL_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('BSPGCL_load').touched ||
+                  ConstituentsGenerationForm.get('BSPGCL_load').dirty) &&
+                  ConstituentsGenerationForm.get('BSPGCL_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('BSPGCL_load').errors">
+            Please provide BSPGCL_load.
+          </span>
+        </span>
+              </td>
+          </tr>
+          <tr>
+              <td>Barh</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="barh_load"  formControlName="barh_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('barh_load').touched ||
+                  ConstituentsGenerationForm.get('barh_load').dirty) &&
+                  ConstituentsGenerationForm.get('barh_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('barh_load').errors">
+            Please provide barh_load.
+          </span>
+        </span>
+              </td>
+              <td></td>
+              <td>KBUNL</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="KBUNL_load" formControlName="KBUNL_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('KBUNL_load').touched ||
+                  ConstituentsGenerationForm.get('KBUNL_load').dirty) &&
+                  ConstituentsGenerationForm.get('KBUNL_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('KBUNL_load').errors">
+            Please provide KBUNL_load.
+          </span>
+        </span>
+              </td>
+          </tr>
+          <tr>
+              <td>Chukha HPS</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="chukha_load" formControlName="chukha_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('chukha_load').touched ||
+                  ConstituentsGenerationForm.get('chukha_load').dirty) &&
+                  ConstituentsGenerationForm.get('chukha_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('chukha_load').errors">
+            Please provide chukha_load.
+          </span>
+        </span>
+              </td>
+              <td></td>
+              <td>DVC </td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="DVC_load" formControlName="DVC_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('DVC_load').touched ||
+                  ConstituentsGenerationForm.get('DVC_load').dirty) &&
+                  ConstituentsGenerationForm.get('DVC_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('DVC_load').errors">
+            Please provide DVC_load.
+          </span>
+        </span>
+              </td>
+          </tr>
+          <tr>
+              <td>Rangit HPS </td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="rangit_load" formControlName="rangit_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('rangit_load').touched ||
+                  ConstituentsGenerationForm.get('rangit_load').dirty) &&
+                  ConstituentsGenerationForm.get('rangit_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('rangit_load').errors">
+            Please provide rangit_load.
+          </span>
+        </span>
+              </td>
+              <td></td>
+              <td>CESC</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="CESC_load" formControlName="CESC_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('CESC_load').touched ||
+                  ConstituentsGenerationForm.get('CESC_load').dirty) &&
+                  ConstituentsGenerationForm.get('CESC_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('CESC_load').errors">
+            Please provide CESC_load.
+          </span>
+        </span>
+              </td>
+          </tr>
+          <tr>
+              <td>Tala HPS</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="tala_load" formControlName="tala_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('tala_load').touched ||
+                  ConstituentsGenerationForm.get('tala_load').dirty) &&
+                  ConstituentsGenerationForm.get('tala_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('tala_load').errors">
+            Please provide tala_load.
+          </span>
+        </span>
+              </td>
+              <td></td>
+              <td>JSEB</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="JSEB_load" formControlName="JSEB_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('JSEB_load').touched ||
+                  ConstituentsGenerationForm.get('JSEB_load').dirty) &&
+                  ConstituentsGenerationForm.get('JSEB_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('JSEB_load').errors">
+            Please provide JSEB_load.
+          </span>
+        </span>
+              </td>
+          </tr>
+          <tr>
+              <td>Teesta HPS</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="teesta_load" formControlName="teesta_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('teesta_load').touched ||
+                  ConstituentsGenerationForm.get('teesta_load').dirty) &&
+                  ConstituentsGenerationForm.get('teesta_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('teesta_load').errors">
+            Please provide teesta_load.
+          </span>
+        </span>
+              </td>
+              <td></td>
+              <td>kurichu</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" name="kurichu_load" formControlName="kurichu_load" class="ui-inputtext">
+                  </div>
+                  <span class="help-block" *ngIf="(ConstituentsGenerationForm.get('kurichu_load').touched ||
+                  ConstituentsGenerationForm.get('kurichu_load').dirty) &&
+                  ConstituentsGenerationForm.get('kurichu_load').errors">
+          <span *ngIf="ConstituentsGenerationForm.get('kurichu_load').errors">
+            Please provide kurichu_load.
+          </span>
+        </span>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+        <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+      </div>
+</div>
+</div>

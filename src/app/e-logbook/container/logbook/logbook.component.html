@@ -1,0 +1,231 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="ui-g" style="width:100%;">
+            <div class="ui-lg-1 ui-md-1 ui-sm-12">
+                <h4 class="card-title">Logbook</h4>
+            </div>
+            <div class="ui-lg-11 ui-md-10 ui-sm-12"  style="background: #fff; border: #ccc 1px solid; border-radius: 6px;">
+                <div class="ui-g">
+                    <div class="ui-lg-3 ui-md-3 ui-sm-12" *ngIf="logbookData && logbookData.RequestId">
+                        <label class="download-label">Download Shift Summary:</label>
+                        <img src="../../../../assets/images/icon/down_pdf.png" class="download-img" (click)="downloadReport('pdf')" title="Download pdf" />
+                        <img src="../../../../assets/images/icon/down_excel.png" class="download-img" (click)="downloadReport('excel')" title="Download excel" />
+                    </div>
+                    <div class="ui-lg-3 ui-md-3 ui-sm-12" *ngIf="logbookData && logbookData.RequestId">
+                        <label class="download-label">Download Energy Sheet:</label>
+                        <a [href]="energyExcelURL" target="_blank"> <img src="../../../../assets/images/icon/down_excel.png" class="download-img" title="Download excel" /></a>
+                    </div>
+                    <ng-container *ngIf="logbookData">
+                      <app-logbook-create [logbookData]="logbookData" (createNewLogbook)="createLogbook($event)"
+                                          (submitLogbookData)="submitLogbook($event)" class="ui-lg-6 ui-md-6 ui-sm-12"></app-logbook-create>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <div class="ui-g">
+            <div style="height:120px; width:42px; display:block; background-color:#3B3B98;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#3498db;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#2980b9;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#00a8ff;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#22a6b3;">&nbsp;</div>       
+            <div style="height:120px; width:42px; display:block; background-color:#e84118;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#c23616;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#e74c3c;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#EA2027;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#ff6b6b;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#1dd1a1;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#badc58;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#6ab04c;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#4cd137;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#0be881;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#ffdd59;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#ffd32a;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#ffa801;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#ff9f43;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#f368e0;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#9b59b6;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#B33771;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#6D214F;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#2C3A47;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#3c6382;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#222f3e;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#636e72;">&nbsp;</div>
+            <div style="height:120px; width:42px; display:block; background-color:#2c3e50;">&nbsp;</div>
+        </div>-->
+
+    <div class="ui-g" style="width:100%;">
+        <div *ngIf="masterData && masterElements && logbookData && logbookData.RequestId" style="width:100%">
+            <p-tabView styleClass="logbook-mainTab no-border">
+                <p-tabPanel header="Shift Details" leftIcon="tab-shift-user" headerStyleClass="tabOneclass" styleClass="tabOneclass">
+                    <p-tabView styleClass="logbook-mainTab no-border">
+                        <p-tabPanel header="Shift Users" headerStyleClass="tabOneclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-shift-users [masterData]="masterData" [logbookData]="logbookData"></app-shift-users>
+                            </ng-container>
+                        </p-tabPanel>
+                        <p-tabPanel header="Shift Handover Details" headerStyleClass="tabOneclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-shift-handover [logbookData]="logbookData"></app-shift-handover>
+                            </ng-container>
+                        </p-tabPanel>
+                        <p-tabPanel header="Shift Instructions" headerStyleClass="tabOneclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-shift-instructions [logbookData]="logbookData"></app-shift-instructions>
+                            </ng-container>
+                        </p-tabPanel>
+                    </p-tabView>
+                </p-tabPanel>
+                <!-- shift tab end -->
+                <!-- <p-tabPanel header="Statistics" leftIcon="tab-statistics" headerStyleClass="tabSecondclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-statistics [logbookData]="logbookData" (saveStatisticData)="saveLogbookData($event)"></app-statistics>
+                    </ng-container>
+                </p-tabPanel> -->
+                <!-- stat tab end -->
+                <p-tabPanel header="Outage/Breakdown" leftIcon="tab-outage" headerStyleClass="tabFourthclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-outage [masterData]="masterData" [elementsData]="masterElements" [outageData]="outageData" [isDashboardUpdate]="false"
+                            [logbookId]="logbookRequestId" (createNewCode)="createCode($event, 'Outage', 'logbook')" (cancelCurrentCode)="cancelCode($event, 'logbook')"
+                            [selectOptions]="ouatgeSelectOptions" [showSearchPanel]="true"></app-outage>
+                    </ng-container>
+                </p-tabPanel>
+                <!-- Outage tab end -->
+                <p-tabPanel header="Auto Reclose" leftIcon="tab-autoreclose" headerStyleClass="tabFifthclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-auto-reclose [masterData]="masterData" [elementsData]="masterElements" [autoRecloseData]="autoRecloseData" [isDashboardUpdate]="false"
+                            [logbookId]="logbookRequestId" (createNewCode)="createCode($event, 'AutoReclose', 'logbook')" (cancelCurrentCode)="cancelCode($event, 'logbook')"
+                            [selectOptions]="ouatgeSelectOptions" [showSearchPanel]="true"></app-auto-reclose>
+                    </ng-container>
+                </p-tabPanel>
+                <!-- Auto Reclose tab end -->
+                <p-tabPanel header="Anti Theft" leftIcon="tab-anti-theft" headerStyleClass="tabSixclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-antitheft [masterData]="masterData" [elementsData]="masterElements" [antiTheftData]="antiTheftData" [isDashboardUpdate]="false"
+                            [logbookId]="logbookRequestId" (createNewCode)="createCode($event, 'AntiTheft', 'logbook')" (cancelCurrentCode)="cancelCode($event, 'logbook')"
+                            [selectOptions]="ouatgeSelectOptions" [showSearchPanel]="true"></app-antitheft>
+                    </ng-container>
+                </p-tabPanel>
+                <!-- Anti theft tab end -->
+                <p-tabPanel header="Tripping" leftIcon="tab-tripping" headerStyleClass="tabSeventhclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-tripping [masterData]="masterData" [elementsData]="masterElements" [trippingData]="trippingData" [isDashboardUpdate]="false"
+                            [logbookId]="logbookRequestId" (createNewCode)="createCode($event, 'Tripping', 'logbook')" (cancelCurrentCode)="cancelCode($event, 'logbook')"
+                            [showSearchPanel]="true"></app-tripping>
+                    </ng-container>
+                </p-tabPanel>
+                 <!-- Load Management -->
+                 <p-tabPanel header="Load Management" leftIcon="tab-fsc-tcsc" headerStyleClass="tabthirteenclass">
+                    <p-tabView styleClass="logbook-mainTab no-border">
+                        <p-tabPanel header="Load Restriction/Shading" leftIcon="tab-codes" headerStyleClass="tabElevenclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-load-management [masterData]="masterData" [loadData]="loadData" [logbookId]="logbookRequestId"></app-load-management>
+                            </ng-container>
+                        </p-tabPanel>
+                        <p-tabPanel header="Load Release" leftIcon="tab-statcom" headerStyleClass="tabElevenclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-load-release [loadReleaseData]="loadReleaseData" [gridData]="gridsWithRestriction" [logbookId]="logbookRequestId"></app-load-release>
+                            </ng-container>
+                        </p-tabPanel>
+                    </p-tabView>
+                    <div class="clearfix">&nbsp;</div>
+                </p-tabPanel>
+                <!-- Load Management end -->
+                <!-- Tripping tab end -->
+                <p-tabPanel header="First Time Charge" leftIcon="tab-autoreclose" headerStyleClass="tabFifthclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-first-time-charge [masterData]="masterData"  [isDashboardUpdate]="false"
+                            [logbookId]="logbookRequestId" [elementsData]="masterElements" [selectOptions]="ouatgeSelectOptions" [firstTimeChargeData]="firstTimeChargeData" (createNewCode)="createCode($event, 'FirstTimeCharge', 'logbook')"
+                            (cancelCurrentCode)="cancelCode($event, 'logbook')" [showSearchPanel]="true"></app-first-time-charge>
+                    </ng-container>
+                </p-tabPanel>
+                <!-- First Time Charge tab end -->
+                <p-tabPanel header="Shutdown" leftIcon="tab-shutdown" headerStyleClass="tabtweleveclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-shutdown [thisShutdownData]="shutdownData" [isLogbookSubmitted]="isLogbookSubmitted" [logbookId]="logbookRequestId"
+                            [isDashboardUpdate]="false" (createNewCode)="createCode($event, 'Shutdown', 'logbook')" (cancelCurrentCode)="cancelCode($event, 'logbook')"></app-shutdown>
+                    </ng-container>
+                </p-tabPanel>
+                <!-- Shutdown tab end -->
+                <p-tabPanel header="Power Change Over" leftIcon="tab-issues" headerStyleClass="tabthirteenclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-power-change-over [logbookData]="logbookData"></app-power-change-over>
+                    </ng-container>
+                </p-tabPanel>
+                <p-tabPanel header="Codes" leftIcon="tab-codes" headerStyleClass="tabthirteenclass">
+                    <div class="clearfix">&nbsp;</div>
+                    <ng-container>
+                        <app-codes [masterData]="masterData" [Codes]="thisLogbookCodes" [selectOptions]="ouatgeSelectOptions"></app-codes>
+                    </ng-container>
+                </p-tabPanel>
+                <!-- Codes tab end -->
+                <p-tabPanel header="Misc" leftIcon="tab-misc" headerStyleClass="tabfourteenclass">
+                    <p-tabView styleClass="logbook-mainTab no-border">
+                        <p-tabPanel header="Violation Msg" leftIcon="tab-violation-msg" headerStyleClass="tabElevenclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-violation-message [masterData]="masterData" [violationMessageData]="violationMessageData" [logbookId]="logbookRequestId"></app-violation-message>
+                            </ng-container>
+                        </p-tabPanel>
+                        <!-- Violation tab end -->
+                        <p-tabPanel header="Issues" leftIcon="tab-issues" headerStyleClass="tabThirdclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-issues [masterData]="masterData" [logbookData]="logbookData"></app-issues>
+                            </ng-container>
+                        </p-tabPanel>
+                        <!-- Issues tab end -->
+                        <p-tabPanel header="Scheduling" leftIcon="tab-scheduling" headerStyleClass="tabEighthclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-scheduling [masterData]="masterData" [logbookData]="logbookData"></app-scheduling>
+                            </ng-container>
+                        </p-tabPanel>
+                        <!-- Energy Sheet -->
+                        <p-tabPanel header="Energy Sheet" leftIcon="tab-codes" headerStyleClass="tabthirteenclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-energy-sheet [logbookData]="logbookData"></app-energy-sheet>
+                            </ng-container>
+                        </p-tabPanel>
+                        <!-- Energy Sheet end -->
+                        <!-- <p-tabPanel header="FSC/TCSC" leftIcon="tab-fsc-tcsc" headerStyleClass="tabNinthclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-fsc-tcsc [fsctcscData]="fsctcscData"></app-fsc-tcsc>
+                            </ng-container>
+                        </p-tabPanel> -->
+                        <!-- Fsc/Tcsc tab end -->
+                        <!-- <p-tabPanel header="STATCOM" leftIcon="tab-statcom" headerStyleClass="tabTenthclass">
+                            <div class="clearfix">&nbsp;</div>
+                            <ng-container>
+                                <app-statcom [statcomData]="statcomData"></app-statcom>
+                            </ng-container>
+                        </p-tabPanel> -->
+                        <!-- Statcom tab end -->
+                    </p-tabView>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+        <p-toast key="saveNotification"></p-toast>
+        <p-toast key="errorNotification"></p-toast>
+        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    </div>
+</div>
+
+<br />

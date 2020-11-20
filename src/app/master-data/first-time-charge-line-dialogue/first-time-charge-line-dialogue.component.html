@@ -1,0 +1,54 @@
+<div [formGroup]="LineForm">
+  <div class="ui-g">
+    <div class="ui-lg-3 ui-md-3 ui-sm-3 ui-g-nopad">
+      <label>Voltage Level </label>
+      <div class="ui-inputgroup">
+        <p-dropdown [options]="voltageLevels" optionLabel="Name" formControlName="voltageLevel"  placeholder="Select voltage"></p-dropdown>
+      </div>
+    </div>
+  
+
+  
+    <div class="ui-lg-3 ui-md-3 ui-sm-3 ui-g-nopad">
+      <label for="LogDate">From </label>
+      <!-- <div class="input-group">
+          <p-autoComplete formControlName="from" [suggestions]="selectedConstituent" (completeMethod)="search($event, 'constituent')"  [multiple]="true"   [style]="{'width':'100%'}" [inputStyle]="{'width':'94%'}"></p-autoComplete>
+      </div> -->
+      <p-autoComplete formControlName="from" [suggestions]="selectedConstituent" placeholder="Start typing grid name"
+                 (completeMethod)="search($event, 'constituent')" field="Name"  [forceSelection]="true"
+                 [style]="{'width':'90%'}" [inputStyle]="{'width':'90%'}"></p-autoComplete>
+    </div>
+ 
+
+  
+    <div class="ui-lg-3 ui-md-3 ui-sm-3 ui-g-nopad">
+        <label for="LogDate">To </label>
+        <!-- <div class="input-group">
+            <p-autoComplete formControlName="from" [suggestions]="selectedConstituent" (completeMethod)="search($event, 'constituent')"  [multiple]="true"   [style]="{'width':'100%'}" [inputStyle]="{'width':'94%'}"></p-autoComplete>
+        </div> -->
+        <p-autoComplete formControlName="to" [suggestions]="selectedConstituent" placeholder="Start typing grid name"
+                   (completeMethod)="search($event, 'constituent')" field="Name"  [forceSelection]="true"
+                   [style]="{'width':'100%'}" [inputStyle]="{'width':'94%'}"></p-autoComplete>
+      </div>
+  
+
+  
+    <div class="ui-lg-3 ui-md-3 ui-sm-3 ui-g-nopad">
+      <label>Type of Line </label>
+      <div class="ui-inputgroup">
+        <p-dropdown [options]="lineTypes" optionLabel="value" formControlName="lineType"  placeholder="Select type"></p-dropdown>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g" style="width:100%">
+    <div class="ui-lg-8 ui-md-8 ui-sm-8">&nbsp;</div>
+    <div class="ui-lg-4 ui-md-4 ui-sm-4">
+      <button pButton label="Submit" type="button" (click)="handleSubmitClick()" [disabled]="!LineForm.valid" class="ui-button-success"
+        styleClass="ui-button-info pull-right"></button>&nbsp;
+      <button pButton label="Close" type="button" (click)="handleCloseClick()" class="ui-button-danger" styleClass="ui-button-danger pull-right"
+        icon="pi pi-check" iconPos="right"></button>
+    </div>
+  </div>
+
+</div>

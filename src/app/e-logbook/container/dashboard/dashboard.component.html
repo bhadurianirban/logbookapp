@@ -1,0 +1,24 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="ui-g panelheader">
+            <div class="ui-g-4"><h4 class="card-title"> Logbook Dashboard</h4></div>
+            <div class="ui-g-4">
+                <label>Period </label>
+                <p-calendar [showIcon]="true" [(ngModel)]="selectedPeriod" view="month"
+                 dateFormat="mm/yy" [yearNavigator]="true" yearRange="2019:2030" (onSelect)="onMonthSelect()"></p-calendar>
+            </div>
+            <div class="ui-g-4">
+                    <div class="clearfix" style="width:100%; height:10px; display: block;">&nbsp;</div>
+                <p-button label="Create Logbook" (onClick)="viewEditLogbook()" icon="pi pi-check" style="float:right;" dir="ltr"></p-button>
+            </div>
+        </div><!-- top part end-->
+        <div class="ui-g" style="margin:0px 10px;">
+            <div *ngIf="dashboardData">
+                <ng-container>
+                    <app-logbook-dashboard [logbookData]="dashboardData" (openSelectedLogbook)="viewEditLogbook($event)"></app-logbook-dashboard>
+                </ng-container>
+            </div>
+            <br />
+        </div><!-- component part end-->
+    </div><!-- content end here -->
+</div>

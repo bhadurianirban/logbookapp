@@ -1,0 +1,15 @@
+<form [formGroup]="codeForm" novalidate>
+    <div class="ui-g ui-fluid">
+      <div class="ui-md-6">
+        <div class="ui-inputgroup">
+          <span style="margin-top: 5px; margin-right: 3px; font-weight: bold;">Code: </span>
+          <input pInputText type="text" placeholder="Enter Code" formControlName="Code" class="ui-inputtext ui-corner-all ui-state-default ui-widget"/>
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+        </div>
+      </div>
+      <div class="ui-md-6">
+          <p-button label="Submit" type="button" (onClick)="handleSubmitClick()" [disabled]="!codeForm.valid" styleClass="ui-button-success"></p-button>
+          &nbsp;<p-button label="Close" type="button" (onClick)="handleCloseClick()" styleClass="ui-button-danger"></p-button>
+      </div>
+    </div>
+  </form>

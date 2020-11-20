@@ -1,0 +1,110 @@
+<div class="card-body">
+  <div class="ui-table" nonvalidate [formGroup]="SystemReportForm" style="width:100%;">
+    <div *ngIf="!isdelete">
+      <table>
+          <thead class="ui-table-thead">
+              <tr>
+                  <th>Description</th>
+                  <th>Energy (in MU)</th>
+              </tr>
+          </thead>
+          <tbody class="ui-table-tbody">
+              <tr>
+                  <td>
+                      BTPS Unit No.-6 ( 110 MW)
+                      </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="BTPS_6" name="BTPS_6" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>BTPS Unit No.-7 (110 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="BTPS_7" name="BTPS_7" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>BTPS Unit No.-8 (250 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="BTPS_8" name="BTPS_8" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>BSPGCL Generation (470 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" disabled="true" formControlName="BSPGCL_GEN" name="BSPGCL_GEN" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>KBUNL Unit No.-1 (110 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="KBUNL_1" name="KBUNL_1" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>KBUNL Unit No.-2 (110 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="KBUNL_2" name="KBUNL_2" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>KBUNL Stage-I (220 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" disabled="true" formControlName="KBUNL_STAGE_1" name="KBUNL_STAGE_1" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>KBUNL Unit No.-3 (195 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="KBUNL_3" name="KBUNL_3" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>KBUNL Unit No.-4 (195 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="KBUNL_4" name="KBUNL_4" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>KBUNL Stage-II (390 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" disabled="true" formControlName="KBUNL_STAGE_2" name="KBUNL_STAGE_2" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Kanti Bijalee Utpadan Nigam Ltd. Generation ( 610 MW)</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" disabled="true" formControlName="KBUNL_GENERATION" name="KBUNL_GENERATION" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <br/>
+      <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+      <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+      <br/>
+  </div>
+  </div>
+</div>

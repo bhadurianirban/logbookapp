@@ -1,0 +1,180 @@
+<div class="main-panel" id="main-panel">
+    <div class="ui-g">
+        <div class="ui-lg-9 ui-md-7 ui-sm-12">
+        </div>
+        <div class="ui-lg-3 ui-md-5 ui-sm-12">
+            <div style="float: left; margin-top: 12px; margin-right:6px; font-weight: bold; font-size: 14px;">Download Shift Summary Report:</div>
+            <div style="width: 40px; height: 40px; display: block; float: left; background: #fff !important; border-radius: 3px; border-color: aliceblue;">
+                <img src="../../../assets/images/icon/down_pdf.png" (click)="downloadReport('pdf')" title="Download pdf" style="margin: 6px auto; width: 28px; display: block; cursor: pointer;" />
+            </div>
+            <div style="width: 40px; height: 40px; display: block; float: left; background: #fff !important; border-radius: 3px; border-color: aliceblue; margin-left: 6px;">
+                <img src="../../../assets/images/icon/down_excel.png" (click)="downloadReport('excel')" title="Download pdf" style="margin: 6px auto; width: 28px; display: block; cursor: pointer;" />
+            </div>
+
+        </div>
+    </div>
+    <div class="content">
+    <div class="ui-g">
+        <div class="ui-col-3 ui-md-3 ui-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon"><i class="pi pi-bookmark"></i></div>
+                    <p class="card-category">Total Restriction</p>
+                    <h3 class="card-title">{{totalRestriction}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats"><i class="pi pi-cloud-upload"></i> Updated on {{currDate}} </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-col-3 ui-md-3 ui-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon"><i class="pi pi-check"></i></div>
+                    <p class="card-category">Outage/Breakdown Count</p>
+                    <h3 class="card-title">{{outageData?.length}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats"><i class="pi pi-clock text-danger"></i>Updated on {{currDate}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-col-3 ui-md-3 ui-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-rose card-header-icon">
+                    <div class="card-icon"><i class="pi pi-cog"></i></div>
+                    <p class="card-category">Tripping Count</p>
+                    <h3 class="card-title">{{trippingData?.length}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats"><i class="pi pi-clock"></i>Updated on {{currDate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-col-3 ui-md-3 ui-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon"><i class="pi pi-clone"></i></div>
+                    <p class="card-category">Approved Shutdown Count</p>
+                    <h3 class="card-title">{{shutdownData?.length}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats"><i class="pi pi-calendar"></i> Updated on {{currDate}} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div style="width: 100%;">
+        <p-tabView styleClass="logbook-mainTab no-border" [activeIndex]="index">
+            <p-tabPanel header="Shutdown" leftIcon="tab-shutdown" headerStyleClass="tabtweleveclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                <div style="margin-top:10px;">
+                    <app-shutdown [thisShutdownData]="shutdownData" [isDashboardUpdate]="true" (createNewCode)="createCode($event, 'Shutdown', 'dashboard')"
+                        (cancelCurrentCode)="cancelCode($event, 'dashboard')"></app-shutdown>
+                </div>
+            </ng-container>
+            </p-tabPanel>
+            <p-tabPanel header="Outage/Breakdown" leftIcon="tab-outage" headerStyleClass="tabFourthclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                <div *ngIf="masterData && outageData">
+                    <div class="tabs tabs-style-linetriangle outageDash">
+                        <app-outage [masterData]="masterData" [outageData]="outageData" [isDashboardUpdate]="true"
+                            (createNewCode)="createCode($event, 'Outage', 'dashboard')" (cancelCurrentCode)="cancelCode($event, 'dashboard')"
+                            [selectOptions]="ouatgeSelectOptions"></app-outage>
+                    </div>
+                </div>
+            </ng-container>
+            </p-tabPanel>
+            <p-tabPanel header="Auto Reclose" leftIcon="tab-autoreclose" headerStyleClass="tabFifthclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                <div *ngIf="masterData && autoRecloseData">
+                    <div class="tabs tabs-style-linetriangle outageDash">
+                        <app-auto-reclose [masterData]="masterData" [autoRecloseData]="autoRecloseData" [isDashboardUpdate]="true"
+                            (createNewCode)="createCode($event, 'AutoReclose', 'dashboard')" (cancelCurrentCode)="cancelCode($event, 'dashboard')"
+                            [selectOptions]="ouatgeSelectOptions"></app-auto-reclose>
+                    </div>
+                </div>
+            </ng-container>
+            </p-tabPanel>
+            <p-tabPanel header="Anti Theft" leftIcon="tab-anti-theft" headerStyleClass="tabSixclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                <div *ngIf="masterData && antiTheftData">
+                    <div class="tabs tabs-style-linetriangle outageDash">
+                            <app-antitheft [masterData]="masterData" [antiTheftData]="antiTheftData"
+                            [isDashboardUpdate]="true" (createNewCode)="createCode($event, 'AntiTheft', 'dashboard')"
+                            (cancelCurrentCode)="cancelCode($event, 'dashboard')" [selectOptions]="ouatgeSelectOptions"></app-antitheft>
+                    </div>
+                </div>
+            </ng-container>
+            </p-tabPanel>
+            <p-tabPanel header="Tripping" leftIcon="tab-tripping" headerStyleClass="tabSeventhclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                <div *ngIf="masterData && masterData.commonMaster && trippingData" class="trippingDash">
+                    <app-tripping [masterData]="masterData" [trippingData]="trippingData" [isDashboardUpdate]="true"
+                        (createNewCode)="createCode($event, 'Tripping', 'dashboard')" (cancelCurrentCode)="cancelCode($event, 'dashboard')"></app-tripping>
+                </div>
+            </ng-container>
+            </p-tabPanel>
+            <p-tabPanel header="Violation Messages" leftIcon="tab-violation-msg" headerStyleClass="tabElevenclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                <div *ngIf="masterData && violationMessageData" style="margin-top:10px;">                    
+                    <app-violation-message [masterData]="masterData" [violationMessageData]="violationMessageData"
+                        [logbookId]="logbookRequestId" [IsDashboardView]="true"></app-violation-message>
+                </div>
+            </ng-container>
+            </p-tabPanel>
+            <!-- Tie Line Data -->
+            <p-tabPanel header="Tie Lines" leftIcon="tab-codes" headerStyleClass="tabthirteenclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                    <app-tie-lines [lineData]="tieLineData"></app-tie-lines>
+                </ng-container>
+            </p-tabPanel>
+            <!-- Tie Line Data end -->
+            <p-tabPanel header="First Time Charge" leftIcon="tab-autoreclose" headerStyleClass="tabFifthclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                <div *ngIf="masterData && firstTimeChargeData">
+                    <div class="tabs tabs-style-linetriangle outageDash">
+                        <app-first-time-charge [masterData]="masterData" [firstTimeChargeData]="firstTimeChargeData" [isDashboardUpdate]="true"
+                            (createNewCode)="createCode($event, 'FirstTimeCharge', 'dashboard')" (cancelCurrentCode)="cancelCode($event, 'dashboard')"
+                            [selectOptions]="ouatgeSelectOptions"></app-first-time-charge>
+                    </div>
+                </div>
+            </ng-container>
+            </p-tabPanel>
+            <p-tabPanel header="Pending Actions" leftIcon="tab-pendingactions"  headerStyleClass="tabfourteenclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                    <app-codes [masterData]="masterData" [Codes]="pendingCodes" [selectOptions]="ouatgeSelectOptions"
+                    [IsDashboardUpdate]="true"></app-codes>
+                </ng-container>
+            </p-tabPanel>
+            <p-tabPanel header="Load Restriction" leftIcon="tab-fsc-tcsc" headerStyleClass="tabNinthclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                        <app-grids-with-restriction [currGrids]="gridsWithRestriction"></app-grids-with-restriction>
+                </ng-container>
+            </p-tabPanel>
+            <!-- <p-tabPanel header="STATCOM" leftIcon="tab-statcom" headerStyleClass="tabTenthclass">
+                <div class="clearfix">&nbsp;</div>
+                <ng-container>
+                    <app-statcom [statcomData]="statcomData"></app-statcom>
+                </ng-container>
+            </p-tabPanel> -->
+        </p-tabView>
+    </div>
+    <p-toast key="saveNotification"></p-toast>
+    <p-toast key="errorNotification"></p-toast>
+    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <div class="clearfix">&nbsp;</div>
+</div>

@@ -1,0 +1,22 @@
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+::ng-deep body .shutTable .ui-table .ui-table-thead > tr > th:nth-child(1) {width: 210px;}
+::ng-deep body .shutTable .ui-table .ui-table-thead > tr > th:nth-child(4) {width: 86px;}
+::ng-deep body .shutTable .ui-table .ui-table-thead > tr > th:nth-child(5) {width: 86px;}
+::ng-deep body .shutTable .ui-table .ui-table-thead > tr > th:nth-child(6),
+::ng-deep body .shutTable .ui-table .ui-table-thead > tr > td:nth-child(6) {width: 210px !important; display: table-cell !important; color: #ff0000 !important;}
+::ng-deep body .shutTable .ui-table .ui-table-thead > tr > th:nth-child(8) {width: 86px; }
+::ng-deep body .shutTable .ui-table .ui-table-thead > tr > th:nth-child(9) {width: 86px; }
+
+::ng-deep body .shutTable .ui-table .ui-table-tbody > tr > td{ word-wrap:word-break;}
+
+::ng-deep .ui-calendar .ui-inputtext {width: 83% !important;}
+
+::ng-deep body .ui-state-disabled, body .ui-widget:disabled {opacity: 1 !important;}
+::ng-deep textarea:disabled {opacity: 1 !important; background: #70656521 !important;border-color: #747474db !important;color: #000 !important;}
+
+::ng-deep .ui-inputtext{width:100% !important;}

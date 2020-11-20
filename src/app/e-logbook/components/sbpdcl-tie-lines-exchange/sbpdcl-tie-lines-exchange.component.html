@@ -1,0 +1,609 @@
+<div class="card-body">
+  <div class="ui-table" nonvalidate [formGroup]="SBPDCLForm" style="width:100%;">
+    <div *ngIf="!isdelete">
+      <table>
+        <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar1">
+          <thead class="ui-table-thead">
+              <tr>
+                  <th>Sector</th>
+                  <th>Tie line</th>
+                  <th>Import</th>
+                  <th>Export</th>
+                  <th>Exchane (in MU)</th>
+              </tr>
+          </thead>
+          <tbody class="ui-table-tbody">
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Bihar Sharif (PG)- Bihar Sharif</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="bihar_sharif_import" name="bihar_sharif_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="bihar_sharif_export" name="bihar_sharif_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="bihar_sharif_exchange" name="bihar_sharif_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Patna (PG)- Sipara</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_sipara_import" name="patna_sipara_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_sipara_export" name="patna_sipara_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_sipara_exchange" name="patna_sipara_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Patna (PG)- Fatuha</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_fatuha_import" name="patna_fatuha_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_fatuha_export" name="patna_fatuha_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_fatuha_exchange" name="patna_fatuha_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Patna (PG)- Khagaul</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_khagaul_import" name="patna_khagaul_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_khagaul_export" name="patna_khagaul_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="patna_khagual_exchange" name="patna_khagual_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Pusauli(PG)-Nadokhar</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="pusauli_nadokhar_import" name="pusauli_nadokhar_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="pusauli_nadokhar_export" name="pusauli_nadokhar_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="pusauli_nadokhar_exchange" name="pusauli_nadokhar_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Pusauli (PG)- Dehri</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number"formControlName="pusauli_dehri_import" name="pusauli_dehri_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="pusauli_dehri_export" name="pusauli_dehri_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="pusauli_dehri_exchange" name="pusauli_dehri_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Gaya (PG)- Dehri</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_dehri_import" name="gaya_dehri_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_dehri_export" name="gaya_dehri_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_dehri_exchange" name="gaya_dehri_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Gaya (PG)- Bodh Gaya</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_bodhgaya_import" name="gaya_bodhgaya_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_bodhgaya_export" name="gaya_bodhgaya_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_bodhgaya_exchange" name="gaya_bodhgaya_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Gaya (PG)- Khizasarai</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_khizasarai_import" name="gaya_khizasarai_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_khizasarai_export" name="gaya_khizasarai_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_khizasarai_exchange" name="gaya_khizasarai_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Gaya (PG)- Sonenagar</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_sonenagar_import" name="gaya_sonenagar_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_sonenagar_export" name="gaya_sonenagar_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="gaya_sonenagar_exchange" name="gaya_sonenagar_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Banka (PG)- Banka</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="banka_banka_import" name="banka_banka_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="banka_banka_export" name="banka_banka_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number"formControlName="banka_banka_exchange" name="banka_banka_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Banka (PG)- Sabour</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="banka_sabour_import" name="banka_sabour_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="banka_sabour_export" name="banka_sabour_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="banka_sabour_exchange" name="banka_sabour_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Banka (PG)- Sultanganj</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="banka_sultanganj_import" name="banka_sultanganj_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="banka_sultanganj_export" name="banka_sultanganj_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="banka_sultanganj_exchange" name="banka_sultanganj_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Kahalgaon (NTPC)- Sabour</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kahalgaon_sabour_import" name="kahalgaon_sabour_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kahalgaon_sabour_export" name="kahalgaon_sabour_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kahalgaon_sabour_exchange" name="kahalgaon_sabour_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Kahalgaon (NTPC)- Kahalgaon</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kahalgaon_kahalgaon_import" name="kahalgaon_kahalgaon_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kahalgaon_kahalgaon_export" name="kahalgaon_kahalgaon_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="kahalgaon_kahalgaon_exchange" name="kahalgaon_kahalgaon_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Lakhisarai (PG)-Lakhisarai</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lakhisarai_lakhisarai_import" name="lakhisarai_lakhisarai_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lakhisarai_lakhisarai_export" name="lakhisarai_lakhisarai_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lakhisarai_lakhisarai_exchange" name="lakhisarai_lakhisarai_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Central Sector</td>
+                  <td>Lakhisarai (PG)-Jamui</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lakhisarai_jamui_import" name="lakhisarai_jamui_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lakhisarai_jamui_export" name="lakhisarai_jamui_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lakhisarai_jamui_exchange" name="lakhisarai_jamui_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>JSEB</td>
+                  <td>Tenughat - Bihar Sharif</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="tenughat_bihar_sharif_import" name="tenughat_bihar_sharif_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="tenughat_bihar_sharif_export" name="tenughat_bihar_sharif_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="tenughat_bihar_sharif_exchange" name="tenughat_bihar_sharif_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>JSEB</td>
+                  <td>Japla-Sonenagar</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="japla_sonenagar_import" name="japla_sonenagar_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="japla_sonenagar_export" name="japla_sonenagar_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="japla_sonenagar_exchange" name="japla_sonenagar_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>JSEB</td>
+                  <td>Lalmatia-Kahalgaon</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lalmatia_kahalgaon_import" name="lalmatia_kahalgaon_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lalmatia_kahalgaon_export" name="lalmatia_kahalgaon_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="lalmatia_kahalgaon_exchange" name="lalmatia_kahalgaon_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>JSEB</td>
+                  <td>Sultanganj- Deoghar</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="sultanganj_deoghar_import" name="sultanganj_deoghar_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="sultanganj_deoghar_export" name="sultanganj_deoghar_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="sultanganj_deoghar_exchange" name="sultanganj_deoghar_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>DVC</td>
+                  <td> Barhi- Rajgir</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="barhi_rajgir_import" name="barhi_rajgir_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="barhi_rajgir_export" name="barhi_rajgir_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="barhi_rajgir_exchange" name="barhi_rajgir_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>DVC</td>
+                  <td> Barhi- Nalanda</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="barhi_nalanda_import" name="barhi_nalanda_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="barhi_nalanda_export" name="barhi_nalanda_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="barhi_nalanda_exchange" name="barhi_nalanda_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>I.S.</td>
+                  <td>Bihar Sharif- Begusarai</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="bihar_sharif_begusarai_import" name="bihar_sharif_begusarai_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="bihar_sharif_begusarai_export" name="bihar_sharif_begusarai_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="bihar_sharif_begusarai_exchange" name="bihar_sharif_begusarai_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>N.R.</td>
+                  <td>Rehand- Sone Nagar</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="rehand_sone_nagar_import" name="rehand_sone_nagar_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="rehand_sone_nagar_export" name="rehand_sone_nagar_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="rehand_sone_nagar_exchange" name="rehand_sone_nagar_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>N.R.</td>
+                  <td>Chandauli- Karmnasa </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="chandauli_karmnasa_import" name="chandauli_karmnasa_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="chandauli_karmnasa_export" name="chandauli_karmnasa_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="chandauli_karmnasa_exchange" name="chandauli_karmnasa_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2"><b>Net Power Drawal from C.S. (S.B.)</b></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_power_drawal_cs_import" name="net_power_drawal_cs_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_power_drawal_cs_export" name="net_power_drawal_cs_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_power_drawal_cs_exchange" name="net_power_drawal_cs_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2"><b>Drawal Schedule (South Bihar)</b></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_schedule_import" name="net_schedule_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_schedule_export" name="net_schedule_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_schedule_exchange" name="net_schedule_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2"><b>Net Power Drawal (Bihar)</b></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_power_drawal_bihal_import" name="net_power_drawal_bihal_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_power_drawal_bihar_export" name="net_power_drawal_bihar_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="net_power_drawal_bihar_exchange" name="net_power_drawal_bihar_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2"><b>Schedule (Bihar)</b></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="schedule_import" name="schedule_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="schedule_export" name="schedule_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup"> 
+                          <input pInputText type="number" formControlName="schedule_exchange" name="schedule_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2"><b>Demand Met (Bihar)</b></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="demand_met_import" name="demand_met_import" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="demand_met_export" name="demand_met_export" class="ui-inputtext">
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="demand_met_exchange" name="demand_met_exchange" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+        </p-scrollPanel>
+      </table>
+      <br/>
+      <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+      <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+      <br/>
+  </div>
+</div>
+</div>

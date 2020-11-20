@@ -1,0 +1,267 @@
+<div class="card">
+  <div class="card-header card-header-tabs card-header-stat">&nbsp;Full Bihar
+    <button pButton type="button" (click)="saveStatistics('F')" label="Save" icon="pi pi-check" class="ui-button-danger pull-right"></button>
+</div>
+<div class="card-body">
+  <div [formGroup]="FBStatisticForm">
+    <h3 class="first childHeading">Demand Profile</h3>
+        <div class="ui-g" style="width:100%;">
+          <div class="ui-g-12 ui-md-3">
+            <label for="FBDemandMaximumMW">Maximum (MW) </label>
+            <div class="ui-inputgroup">
+              <input pInputText type="number" name="FBDemandMaximumMW" placeholder="Maximum MW" formControlName="FBDemandMaximumMW" class="ui-inputtext">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="FBDemandMaximumTime">Time </label>
+            <div class="ui-inputgroup">
+                <input formControlName="FBDemandMaximumTime" [ngxTimepicker]="FBDemandMaxPicker" class="ui-inputtext" [format]="24" readonly>
+                <ngx-material-timepicker-toggle [for]="FBDemandMaxPicker">
+                  <i class="pi pi-clock"></i>
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #FBDemandMaxPicker></ngx-material-timepicker>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="FBDemandMinimumMW">Minimum (MW) </label>
+            <div class="ui-inputgroup">
+              <input pInputText type="number" name="FBDemandMinimumMW" placeholder="Minimum MW" formControlName="FBDemandMinimumMW" class="ui-inputtext">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="FBDemandMinimumTime">Time </label>
+            <div class="ui-inputgroup">
+                <input formControlName="FBDemandMinimumTime" [ngxTimepicker]="FBDemandMinPicker" class="ui-inputtext" [format]="24" readonly>
+                <ngx-material-timepicker-toggle [for]="FBDemandMinPicker">
+                  <i class="pi pi-clock"></i>
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #FBDemandMinPicker></ngx-material-timepicker>
+            </div>
+          </div>
+        </div>
+    <h3 class="first childHeading">Frequency</h3>
+        <div class="ui-g" style="width:100%;">
+          <div class="ui-g-12 ui-md-3">
+            <label for="FBFrequencyMaximumHz">Maximum (HZ) </label>
+            <div class="ui-inputgroup">
+              <input pInputText type="number" name="FBFrequencyMaximumHz" placeholder="Maximum HZ" formControlName="FBFrequencyMaximumHz"  class="ui-inputtext">
+            </div>
+            <div class="error-block" *ngIf="FBStatisticForm.get('FBFrequencyMaximumHz').errors">
+              <span *ngIf="FBStatisticForm.get('FBFrequencyMaximumHz').errors['min'] || FBStatisticForm.get('FBFrequencyMaximumHz').errors['max']">
+                <small class=" text-danger">Please provide frequency in range of 45-55.</small>
+              </span>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="FBFrequencyMaximumTime">Time </label>
+            <div class="ui-inputgroup">
+              <input formControlName="FBFrequencyMaximumTime" [ngxTimepicker]="FBFrequencyMaxPicker" class="ui-inputtext" [format]="24" readonly>
+              <ngx-material-timepicker-toggle [for]="FBFrequencyMaxPicker">
+                <i class="pi pi-clock"></i>
+              </ngx-material-timepicker-toggle>
+              <ngx-material-timepicker #FBFrequencyMaxPicker></ngx-material-timepicker>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="FBFrequencyMinimumHz">Minimum (HZ) </label>
+            <div class="ui-inputgroup">
+              <input pInputText type="number" name="FBFrequencyMinimumHz" placeholder="Minimum HZ" formControlName="FBFrequencyMinimumHz"  class="ui-inputtext">
+            </div>
+            <div class="error-block" *ngIf="FBStatisticForm.get('FBFrequencyMinimumHz').errors">
+              <span *ngIf="FBStatisticForm.get('FBFrequencyMinimumHz').errors['min'] || FBStatisticForm.get('FBFrequencyMinimumHz').errors['max']">
+                <small class=" text-danger">Please provide frequency in range of 45-55.</small>
+              </span>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="FBFrequencyMinimumTime">Time </label>
+            <div class="ui-inputgroup">
+              <input formControlName="FBFrequencyMinimumTime" [ngxTimepicker]="FBFrequencyMinPicker" class="ui-inputtext" [format]="24" readonly>
+              <ngx-material-timepicker-toggle [for]="FBFrequencyMinPicker">
+                <i class="pi pi-clock"></i>
+              </ngx-material-timepicker-toggle>
+              <ngx-material-timepicker #FBFrequencyMinPicker></ngx-material-timepicker>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="card">
+  <div class="card-header card-header-tabs card-header-stat">&nbsp;North Bihar
+      <button pButton type="button" (click)="saveStatistics('N')" label="Save" icon="pi pi-check" class="ui-button-danger pull-right"></button>
+  </div>
+  <div class="card-body">
+    <div [formGroup]="StatisticForm">
+      <h3 class="first childHeading">Demand Profile</h3>
+          <div class="ui-g" style="width:100%;">
+            <div class="ui-g-12 ui-md-3">
+              <label for="DemandMaximumMW">Maximum (MW) </label>
+              <div class="ui-inputgroup">
+                <input pInputText type="number" name="DemandMaximumMW" placeholder="Maximum MW" formControlName="DemandMaximumMW" class="ui-inputtext">
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+              <label for="DemandMaximumTime">Time </label>
+              <div class="ui-inputgroup">
+                  <input formControlName="DemandMaximumTime" [ngxTimepicker]="DemandMaxPicker" class="ui-inputtext" [format]="24" readonly>
+                  <ngx-material-timepicker-toggle [for]="DemandMaxPicker">
+                    <i class="pi pi-clock"></i>
+                  </ngx-material-timepicker-toggle>
+                  <ngx-material-timepicker #DemandMaxPicker></ngx-material-timepicker>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+              <label for="DemandMinimumMW">Minimum (MW) </label>
+              <div class="ui-inputgroup">
+                <input pInputText type="number" name="DemandMinimumMW" placeholder="Minimum MW" formControlName="DemandMinimumMW" class="ui-inputtext">
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+              <label for="DemandMinimumTime">Time </label>
+              <div class="ui-inputgroup">
+                  <input formControlName="DemandMinimumTime" [ngxTimepicker]="DemandMinPicker" class="ui-inputtext" [format]="24" readonly>
+                  <ngx-material-timepicker-toggle [for]="DemandMinPicker">
+                    <i class="pi pi-clock"></i>
+                  </ngx-material-timepicker-toggle>
+                  <ngx-material-timepicker #DemandMinPicker></ngx-material-timepicker>
+              </div>
+            </div>
+          </div>
+      <h3 class="first childHeading">Frequency</h3>
+          <div class="ui-g" style="width:100%;">
+            <div class="ui-g-12 ui-md-3">
+              <label for="FrequencyMaximumHz">Maximum (HZ) </label>
+              <div class="ui-inputgroup">
+                <input pInputText type="number" name="FrequencyMaximumHz" placeholder="Maximum HZ" formControlName="FrequencyMaximumHz"  class="ui-inputtext">
+              </div>
+              <div class="error-block" *ngIf="StatisticForm.get('FrequencyMaximumHz').errors">
+                <span *ngIf="StatisticForm.get('FrequencyMaximumHz').errors['min'] || StatisticForm.get('FrequencyMaximumHz').errors['max']">
+                  <small class=" text-danger">Please provide frequency in range of 45-55.</small>
+                </span>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+              <label for="FrequencyMaximumTime">Time </label>
+              <div class="ui-inputgroup">
+                <input formControlName="FrequencyMaximumTime" [ngxTimepicker]="FrequencyMaxPicker" class="ui-inputtext" [format]="24" readonly>
+                <ngx-material-timepicker-toggle [for]="FrequencyMaxPicker">
+                  <i class="pi pi-clock"></i>
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #FrequencyMaxPicker></ngx-material-timepicker>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+              <label for="FrequencyMinimumHz">Minimum (HZ) </label>
+              <div class="ui-inputgroup">
+                <input pInputText type="number" name="FrequencyMinimumHz" placeholder="Minimum HZ" formControlName="FrequencyMinimumHz"  class="ui-inputtext">
+              </div>
+              <div class="error-block" *ngIf="StatisticForm.get('FrequencyMinimumHz').errors">
+                <span *ngIf="StatisticForm.get('FrequencyMinimumHz').errors['min'] || StatisticForm.get('FrequencyMinimumHz').errors['max']">
+                  <small class=" text-danger">Please provide frequency in range of 45-55.</small>
+                </span>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-3">
+              <label for="FrequencyMinimumTime">Time </label>
+              <div class="ui-inputgroup">
+                <input formControlName="FrequencyMinimumTime" [ngxTimepicker]="FrequencyMinPicker" class="ui-inputtext" [format]="24" readonly>
+                <ngx-material-timepicker-toggle [for]="FrequencyMinPicker">
+                  <i class="pi pi-clock"></i>
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #FrequencyMinPicker></ngx-material-timepicker>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="card">
+  <div class="card-header card-header-tabs card-header-stat">&nbsp;South Bihar
+    <button pButton type="button" (click)="saveStatistics('S')" label="Save" icon="pi pi-check" class="ui-button-danger pull-right"></button>
+</div>
+<div class="card-body">
+  <div [formGroup]="SBStatisticForm">
+    <h3 class="first childHeading">Demand Profile</h3>
+        <div class="ui-g" style="width:100%;">
+          <div class="ui-g-12 ui-md-3">
+            <label for="SBDemandMaximumMW">Maximum (MW) </label>
+            <div class="ui-inputgroup">
+              <input pInputText type="number" name="SBDemandMaximumMW" placeholder="Maximum MW" formControlName="SBDemandMaximumMW" class="ui-inputtext">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="SBDemandMaximumTime">Time </label>
+            <div class="ui-inputgroup">
+                <input formControlName="SBDemandMaximumTime" [ngxTimepicker]="SBDemandMaxPicker" class="ui-inputtext" [format]="24" readonly>
+                <ngx-material-timepicker-toggle [for]="SBDemandMaxPicker">
+                  <i class="pi pi-clock"></i>
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #SBDemandMaxPicker></ngx-material-timepicker>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="SBDemandMinimumMW">Minimum (MW) </label>
+            <div class="ui-inputgroup">
+              <input pInputText type="number" name="SBDemandMinimumMW" placeholder="Minimum MW" formControlName="SBDemandMinimumMW" class="ui-inputtext">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="SBDemandMinimumTime">Time </label>
+            <div class="ui-inputgroup">
+                <input formControlName="SBDemandMinimumTime" [ngxTimepicker]="SBDemandMinPicker" class="ui-inputtext" [format]="24" readonly>
+                <ngx-material-timepicker-toggle [for]="SBDemandMinPicker">
+                  <i class="pi pi-clock"></i>
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #SBDemandMinPicker></ngx-material-timepicker>
+            </div>
+          </div>
+        </div>
+    <h3 class="first childHeading">Frequency</h3>
+        <div class="ui-g" style="width:100%;">
+          <div class="ui-g-12 ui-md-3">
+            <label for="SBFrequencyMaximumHz">Maximum (HZ) </label>
+            <div class="ui-inputgroup">
+              <input pInputText type="number" name="SBFrequencyMaximumHz" placeholder="Maximum HZ" formControlName="SBFrequencyMaximumHz"  class="ui-inputtext">
+            </div>
+            <div class="error-block" *ngIf="SBStatisticForm.get('SBFrequencyMaximumHz').errors">
+              <span *ngIf="SBStatisticForm.get('SBFrequencyMaximumHz').errors['min'] || SBStatisticForm.get('SBFrequencyMaximumHz').errors['max']">
+                <small class=" text-danger">Please provide frequency in range of 45-55.</small>
+              </span>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="SBFrequencyMaximumTime">Time </label>
+            <div class="ui-inputgroup">
+              <input formControlName="SBFrequencyMaximumTime" [ngxTimepicker]="SBFrequencyMaxPicker" class="ui-inputtext" [format]="24" readonly>
+              <ngx-material-timepicker-toggle [for]="SBFrequencyMaxPicker">
+                <i class="pi pi-clock"></i>
+              </ngx-material-timepicker-toggle>
+              <ngx-material-timepicker #SBFrequencyMaxPicker></ngx-material-timepicker>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="SBFrequencyMinimumHz">Minimum (HZ) </label>
+            <div class="ui-inputgroup">
+              <input pInputText type="number" name="SBFrequencyMinimumHz" placeholder="Minimum HZ" formControlName="SBFrequencyMinimumHz"  class="ui-inputtext">
+            </div>
+            <div class="error-block" *ngIf="SBStatisticForm.get('SBFrequencyMinimumHz').errors">
+              <span *ngIf="SBStatisticForm.get('SBFrequencyMinimumHz').errors['min'] || SBStatisticForm.get('SBFrequencyMinimumHz').errors['max']">
+                <small class=" text-danger">Please provide frequency in range of 45-55.</small>
+              </span>
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label for="SBFrequencyMinimumTime">Time </label>
+            <div class="ui-inputgroup">
+              <input formControlName="SBFrequencyMinimumTime" [ngxTimepicker]="SBFrequencyMinPicker" class="ui-inputtext" [format]="24" readonly>
+              <ngx-material-timepicker-toggle [for]="SBFrequencyMinPicker">
+                <i class="pi pi-clock"></i>
+              </ngx-material-timepicker-toggle>
+              <ngx-material-timepicker #SBFrequencyMinPicker></ngx-material-timepicker>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

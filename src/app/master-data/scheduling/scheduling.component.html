@@ -1,0 +1,52 @@
+<div class="main-panel" id="main-panel">
+  <div class="content">
+      <div class="ui-g" style="width:100%;">
+          <div class="ui-g-6">
+              <h4 class="card-title">Scheduling Type </h4>
+          </div>
+          <div class="ui-g-6">
+              <button pButton type="button" (click)="addUpdateScheduling()" label="Add"  class="ui-button-danger pull-right"></button>
+          </div>
+      </div>
+      <div class="card whiteBG">
+          <div class="card-body">
+              <p-table #schedulingValuesData [value]="SchedulingType" [columns]="selectedColumns" [responsive]="true"
+                  [rows]="10" [paginator]="true">
+                  <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup">        
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                              <i class="fa fa-search"></i>
+                          </span>
+                      <input type="text" pInputText size="50" placeholder="Global Filter" (input)="schedulingValuesData.filterGlobal($event.target.value, 'contains')"
+                              class="ui-inputtext ui-corner-all ui-state-default ui-widget">    
+                      </div>
+                  </ng-template>
+                  <ng-template pTemplate="header" let-columns>
+                      <tr>
+                          <th *ngFor="let col of selectedColumns">
+                              <span>{{col.header}}</span>
+                          </th>
+                          <th>Edit</th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                      <tr>
+                          <td *ngFor="let col of selectedColumns">
+                              {{rowData[col.field]}}
+                          </td>
+                          <td>
+                              <button pButton (click)="addUpdateScheduling(rowData)" title="Edit" label="Edit" icon="pi pi-eye"></button>&nbsp;
+                              <p-button icon="pi pi-trash" class="ui-button-danger" (click)="deleteScheduling(rowData)"></p-button>
+                          </td>
+                        
+   
+                      </tr>
+                  </ng-template>
+              </p-table>
+          </div>
+      </div>
+  </div>
+  <p-toast key="saveNotification"></p-toast>
+  <p-toast key="errorNotification"></p-toast>
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+</div>

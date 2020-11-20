@@ -1,0 +1,124 @@
+/* Tabs */
+::ng-deep .tabs-style-iconbox .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a {color: #fff !important;}
+::ng-deep .tabs-style-iconbox .ui-tabview.ui-tabview-top .ui-tabview-nav {margin: 0 auto;}
+/*::ng-deep .tabs-style-iconbox .ui-tabview.ui-tabview-top .ui-tabview-nav li {margin: 0 auto; width: 100%;}*/
+::ng-deep .abcdEf .ui-tabview.ui-tabview-top ul.ui-tabview-nav {width: 100% !important; }
+::ng-deep .ui-tabview .ui-tabview-panels {padding: 0px 10px !important;}
+::ng-deep .ui-tabview .ui-tabview-panels {border: 0px solid #fff !important; border-color: #fff !important;}
+::ng-deep .no-border .ui-tabview-panels {border: 0px solid #fff !important; border-color: #fff !important; background-color: transparent !important;}
+
+/* Final Tabs */
+::ng-deep body .logbook-mainTab  .ui-tabview-nav { background: #FFF !important; margin:10px -3px 10px -5px !important;}
+
+::ng-deep body .logbook-mainTab  .ui-tabview-nav .tabOneclass { margin-left: 20px;}
+
+::ng-deep .tabOneclass span.ui-tabview-left-icon, 
+::ng-deep .tabSecondclass span.ui-tabview-left-icon, 
+::ng-deep .tabThirdclass span.ui-tabview-left-icon, 
+::ng-deep .tabFourthclass span.ui-tabview-left-icon, 
+::ng-deep .tabFifthclass span.ui-tabview-left-icon, 
+::ng-deep .tabSixclass span.ui-tabview-left-icon, 
+::ng-deep .tabSeventhclass span.ui-tabview-left-icon, 
+::ng-deep .tabEighthclass span.ui-tabview-left-icon, 
+::ng-deep .tabNinthclass span.ui-tabview-left-icon, 
+::ng-deep .tabTenthclass span.ui-tabview-left-icon, 
+::ng-deep .tabElevenclass span.ui-tabview-left-icon,
+::ng-deep .tabtweleveclass span.ui-tabview-left-icon,
+::ng-deep .tabthirteenclass span.ui-tabview-left-icon,
+::ng-deep .tabfourteenclass span.ui-tabview-left-icon
+{display: block !important; text-align: center !important; font-size: 36px; margin-right: 0px !important;}
+
+::ng-deep .tabOneclass span.ui-tabview-title, 
+::ng-deep .tabOneclass span.ui-tabview-left-icon { color:#74b9ff !important; text-align: center !important;}
+::ng-deep body .card-header-shift {box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4); background: linear-gradient(60deg, #08415c, #003ca7) !important; background:#74b9ff !important;}
+
+::ng-deep .tabSecondclass span.ui-tabview-title,
+::ng-deep .tabSecondclass span.ui-tabview-left-icon { color:#3498db !important; text-align: center !important;}
+::ng-deep body .card-header-stat {background: #3498db !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabThirdclass span.ui-tabview-title,
+::ng-deep .tabThirdclass span.ui-tabview-left-icon { color:#2980b9 !important; text-align: center !important;}
+::ng-deep body .card-header-issue {background:#2980b9 !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabFourthclass span.ui-tabview-title,
+::ng-deep .tabFourthclass span.ui-tabview-left-icon { color:#00a8ff !important; text-align: center !important;}
+::ng-deep body .card-header-outage {background:#00a8ff !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabFifthclass span.ui-tabview-title,
+::ng-deep .tabFifthclass span.ui-tabview-left-icon { color:#22a6b3 !important; text-align: center !important;}
+::ng-deep body .card-header-antiTheft {background:#22a6b3 !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabSixclass span.ui-tabview-title,
+::ng-deep .tabSixclass span.ui-tabview-left-icon { color:#1976D2 !important; text-align: center !important;}
+::ng-deep body .card-header-autoreclose {background:#1976D2 !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabSeventhclass span.ui-tabview-title,
+::ng-deep .tabSeventhclass span.ui-tabview-left-icon { color:#c23616 !important; text-align: center !important;}
+::ng-deep body .card-header-tripping {background:#c23616 !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabEighthclass span.ui-tabview-title,
+::ng-deep .tabEighthclass span.ui-tabview-left-icon { color:#e74c3c !important; text-align: center !important;}
+::ng-deep body .card-header-scheduling {background:#e74c3c !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabNinthclass span.ui-tabview-title,
+::ng-deep .tabNinthclass span.ui-tabview-left-icon { color:#EA2027 !important; text-align: center !important;}
+::ng-deep body .card-header-fsctcsc {background:#EA2027 !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabTenthclass span.ui-tabview-title,
+::ng-deep .tabTenthclass span.ui-tabview-left-icon { color:#ff6b6b !important; text-align: center !important;}
+::ng-deep body .card-header-statcom {background:#ff6b6b !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabElevenclass span.ui-tabview-title,
+::ng-deep .tabElevenclass span.ui-tabview-left-icon { color:#F44336 !important; text-align: center !important;}
+::ng-deep body .card-header-violationmsg {background:#F44336 !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabtweleveclass span.ui-tabview-title,
+::ng-deep .tabtweleveclass span.ui-tabview-left-icon { color:#badc58 !important; text-align: center !important;}
+::ng-deep body .card-header-shutdown {background:#badc58 !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabthirteenclass span.ui-tabview-title,
+::ng-deep .tabthirteenclass span.ui-tabview-left-icon { color:#6ab04c !important; text-align: center !important;}
+::ng-deep body .card-header-codes {background:#6ab04c !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+::ng-deep .tabfourteenclass span.ui-tabview-title,
+::ng-deep .tabfourteenclass span.ui-tabview-left-icon { color:#4cd137 !important; text-align: center !important;}
+::ng-deep body .card-header-pendingactions {background:#4cd137 !important; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(153, 153, 153);}
+
+
+:host .tabElevenclass span.ui-tabview-title, .tabElevenclass span.ui-tabview-left-icon { color:#0275d8 !important; text-align: center !important;}
+
+ ::ng-deep .tab-scheduling::before {content:url("/assets/images/icon/scheduling.png"); width: 37px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-anti-theft::before {content:url('/assets/images/icon/anti-theft.png'); width: 37px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-issues::before {content:url('/assets/images/icon/issues.png'); width: 37px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-outage::before {content:url('/assets/images/icon/outage.png'); width: 37px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-autoreclose::before {content:url('/assets/images/icon/auto-close.png'); width: 38px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-shift-user::before {content:url('/assets/images/icon/shifting-user.png'); width: 37px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-statistics::before {content:url('/assets/images/icon/statistics.png'); width: 37px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-violation-msg::before {content:url('/assets/images/icon/violation-msg.png'); width: 36px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-fsc-tcsc::before {content:url('/assets/images/icon/fsc-tcsc.png'); width: 26px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-shutdown::before {content:url('/assets/images/icon/shutdown.png'); width: 26px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-statcom::before {content:url('/assets/images/icon/statcom.png'); width: 34px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-tripping::before {content:url('/assets/images/icon/tripping.png'); width: 20px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-codes::before {content:url('/assets/images/icon/codes.png'); width: 38px; height: 38px; display: block; margin:0 auto !important;}
+ ::ng-deep .tab-pendingactions::before {content:url('/assets/images/icon/pending-action.png'); width: 41px; height: 38px; display: block; margin:0 auto !important;}
+
+ ::ng-deep .tab-misc::before {content:url('/assets/images/icon/misc-file.png'); width: 42px; height: 38px; display: block; margin:0 auto !important;}
+
+::ng-deep .ui-state-active .tab-scheduling::before,
+::ng-deep .ui-state-active .tab-anti-theft::before,
+::ng-deep .ui-state-active .tab-issues::before,
+::ng-deep .ui-state-active .tab-outage::before,
+::ng-deep .ui-state-active .tab-autoreclose::before,
+::ng-deep .ui-state-active .tab-shift-user::before,
+::ng-deep .ui-state-active .tab-statistics::before,
+::ng-deep .ui-state-active .tab-violation-msg::before,
+::ng-deep .ui-state-active .tab-fsc-tcsc::before,
+::ng-deep .ui-state-active .tab-shutdown::before,
+::ng-deep .ui-state-active .tab-statcom::before,
+::ng-deep .ui-state-active .tab-tripping::before,
+::ng-deep .ui-state-active .tab-codes::before,
+::ng-deep .ui-state-active .ui-tabview-title
+{-khtml-opacity:.40; -moz-opacity:.40; -ms-filter:"alpha(opacity=40)";
+    filter:alpha(opacity=40); filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.4); opacity:.40; }
+
+    .tabSeventhclass div.innerTab ul.ui-tabview-nav li.ui-state-default .ui-tabview-nav li a .ui-tabview-title {color:#fff !important;}

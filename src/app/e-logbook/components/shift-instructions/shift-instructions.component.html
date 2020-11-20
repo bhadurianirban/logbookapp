@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header card-header-tabs card-header-issue">&nbsp;
+    </div>
+    <div class="card-body">
+      <div class="ui-g">
+        <div class="ui-g-6">
+          <div [formGroup]="instructionForm"class="ui-g" style="width:100%;">
+            <div class="ui-g-12 ui-md-12">
+              <label for="Instruction">Instruction  <span class="text-danger">*</span></label>
+              <input type="text" name="Instruction" placeholder="Instruction" formControlName="Instruction" class="ui-inputtext" style="width: 100% !important;">
+            </div>
+            <div class="ui-g-12 ui-md-12">
+              <label for="EndDate">Instruction Upto <span class="text-danger">*</span></label>
+              <div class="form-group" [ngClass]="{'has-error': (instructionForm.get('EndDate').touched ||
+              instructionForm.get('EndDate').dirty) &&
+              !instructionForm.get('EndDate').valid }">
+              <label for="EndDate" style="float: left; margin-right: 8px;">Date </label>
+              <div style="width:230px;">
+                <p-calendar formControlName="EndDate" [dateFormat]="dateFormat" [showIcon]="true" [minDate]="minDateValue"></p-calendar>
+              </div>
+            </div>
+            </div>
+            <div class="ui-g-12 ui-md-2" style="float:left;">
+              <button pButton type="button" (click)="addInstruction()" label="Add" icon="pi pi-plus" 
+              class="ui-button-danger pull-right" [disabled]="!instructionForm.valid"></button>
+            </div>
+          </div>
+        </div>
+        <div class="ui-g-6">
+          <div class="container">
+            <div class="timeline">
+              <ul>
+                <li *ngFor="let item of instructions">
+                  <div class="bullet pink"></div>
+                  <div class="time"><strong>Instructed on</strong> {{item.CreatedOn}}</div>
+                  <div class="desc">
+                    <h3>{{item.CreatedBy}}</h3>
+                    <h4>{{item.Instruction}}</h4>
+                  </div>       
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+<nav class="site-header sticky-top bg-inverse ui-g">
+    <object type="image/svg+xml" data="assets/images/logo.svg" class="logo" height="42px" width="42px">
+        BSPTCL Logo <!-- fallback image in CSS -->
+    </object>
+    <div class="ui-g-10 zeropad">
+        <p-megaMenu [model]="topmenu">
+          <!--  <button pButton type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right" class="ui-button-raised ui-button-rounded"></button>-->
+        </p-megaMenu>
+    </div>
+    <div class="1">
+        <p-megaMenu [model]="toprightmenu"></p-megaMenu>
+    </div>
+</nav>
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+    <h1 style="font-weight:normal">Left Sidebar</h1>
+    <button pButton type="button" (click)="visibleSidebar1 = false" label="Save" class="ui-button-success"></button>
+    <button pButton type="button" (click)="visibleSidebar1 = false" label="Cancel" class="ui-button-secondary"></button>
+</p-sidebar>

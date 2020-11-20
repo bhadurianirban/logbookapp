@@ -1,0 +1,268 @@
+<div class="main-panel" id="main-panel">
+  <div class="content">
+      <div class="ui-g" style="width:100%;">
+        <div class="ui-md-6">
+          <h4 class="card-title"><i class="pi pi-th-large"></i> Shift Users</h4>
+        </div>
+        <div class="ui-md-3">
+          <div class="topCal">
+          <p-calendar [(ngModel)]="dateValue" view="month" dateFormat="mm/yy" (ngModelChange)="onBlurMethod()" [showIcon]="true"></p-calendar>
+        </div>
+        </div>
+        <div class="ui-md-3">
+            <button pButton type="button" (click)="generateRpt()" label="Generate PDF" class="ui-button-info"></button>
+            <button pButton type="button" (click)="generateRpt(true)" label="Generate Excel" class="ui-button-info"></button>
+        </div>
+      </div><!--heading row end-->
+
+      <div class="clearfix" style="width:100%; height:10px; display: block;">&nbsp;</div>
+    <div class="ui-g">
+      <div class="card card-stats">
+        <div class="card-header card-header-info" style="background: linear-gradient(60deg, #007ad9, #075494) !important;padding: 3px !important;">
+            <div class="ui-g">
+              <div class="ui-md-8">
+                  <h3 class="card-title pull-left" style="color: #fff !important;">Duty Roaster</h3>
+              </div>
+              <div class="ui-md-4">
+                  <button pButton type="button" (click)="submitRoaster()" label="SUBMIT ROASTER" icon="pi pi-plus" class="ui-button-info pull-right"></button>
+              </div>                
+            </div>
+        </div>
+        <div class="card-body">
+                <p-table [value]="dutyRoasterRows" [columns]="dutyRoastercols" styleClass="dutyRoster">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th *ngFor="let col of dutyRoasterColumns">
+                        {{col}}
+                      </th>
+                    </tr>
+                    <tr>
+                      <th *ngFor="let col2nd of dutyRoasterColumns2nd">
+                        {{col2nd}}
+                      </th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+                    <tr>
+                      <td *ngFor="let col of columns" pEditableColumn [ngSwitch]="col.field">
+                        <div *ngSwitchCase="'GroupName'">
+                          {{rowData[col.field]}}
+                        </div>
+                        <div *ngSwitchDefault>
+                          <p-cellEditor>
+                            <ng-template pTemplate="input">
+                              <p-dropdown appendTo="body" [options]="rowArrayOption" (ngModelChange)="cellChanged($event,(rowIndex+1),col.field)" 
+                              [(ngModel)]="rowData[col.field]" class="smallDrop"></p-dropdown>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                               {{rowData[col.field]}}
+                            </ng-template>
+                          </p-cellEditor>
+                        </div>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+            <div class="clearfix" style="width:100%; height:10px; display: block;">&nbsp;</div>
+            <h3 class="card-title text-left innerHeading">Special Instructions</h3>
+            <form novalidate>
+              <div class="ui-g" style="width:100% !important;" *ngFor="let instruction of specialInstruction; let i = index; let isLast = last; let isFirst = first; trackBy:trackByFn">
+                <div class="ui-g-1">
+                  <span>Paragaph - {{i+1}}</span>
+                </div>
+                <div class="ui-g-10">
+                    <div class="ui-inputgroup">
+                        <textarea name="specialInstruction_{{i}}" pInputTextarea style="width:100% !important;" [(ngModel)]="specialInstruction[i]" (change)="onTextareaValueChange($event, i)"></textarea>
+                    </div>
+                </div>
+                <div class="ui-g-1">
+                  <button pButton *ngIf="!isFirst" type="button" icon="pi pi-minus" (click)="removeParagraph(i)" class="ui-button-danger"></button>&nbsp;
+                  <button pButton *ngIf="isLast" type="button" icon="pi pi-plus" (click)="addParagraph()" class="ui-button-success"></button>
+                </div>
+              </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <div class="stats">&nbsp;</div>
+        </div>
+    </div><!--card end-->
+
+<div class="ui-g" style="width: 100%;">
+  <div class="ui-g-3 ui-md-3 ui-sm-6">
+      <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+              <div class="card-icon"><i class="pi pi-info-circle"></i></div>
+              <p class="card-category">Group-A </p>
+              <h3 class="title-card text-warning">{{group1ShiftInCharge[0].Name}} ({{group1ShiftInCharge[0].Designation}})</h3>
+          </div>
+          <div class="card-body">
+              <p-table [value]="group1Data">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Name</th>
+                      <th>Designation</th>
+                      <th style="width:62px !important;">Action</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-group1Data>
+                    <tr>
+                      <td>{{ group1Data.Name }}</td>
+                      <td>{{ group1Data.Designation }}</td>
+                      <td>
+                        <button (click)="onDeleteCombination(group1Data)" pButton icon="pi pi-trash" class="ui-button-danger"></button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+          </div>
+      </div><!--card end-->
+  </div>
+  <div class="ui-g-3 ui-md-3 ui-sm-6">
+      <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+              <div class="card-icon"><i class="pi pi-users"></i></div>
+              <p class="card-category">Group-B</p>
+              <h3 class="title-card text-success">{{ group2ShiftInCharge[0].Name }} ({{group2ShiftInCharge[0].Designation}})</h3>
+          </div>
+          <div class="card-body">
+              <p-table [value]="group2Data">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Name</th>
+                      <th>Designation</th>
+                      <th style="width:62px !important;">Action</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-group2Data>
+                    <tr>
+                      <td>{{ group2Data.Name }}</td>
+                      <td>{{ group2Data.Designation }}</td>
+                      <td>
+                        <button (click)="onDeleteCombination(group2Data)" pButton icon="pi pi-trash" class="ui-button-danger"></button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+          </div>
+      </div><!--card end-->
+  </div>
+  <div class="ui-g-3 ui-md-3 ui-sm-6">
+      <div class="card card-stats">
+          <div class="card-header card-header-danger card-header-icon">
+              <div class="card-icon"><i class="pi pi-check"></i></div>
+              <p class="card-category">Group-C </p>
+              <h3 class="title-card text-danger">{{ group3ShiftInCharge[0].Name }} ({{group3ShiftInCharge[0].Designation}})</h3>
+          </div>
+          <div class="card-body">
+              <p-table [value]="group3Data">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Name</th>
+                      <th>Designation</th>
+                      <th style="width:62px !important;">Action</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-group3Data>
+                    <tr>
+                      <td>{{ group3Data.Name }}</td>
+                      <td>{{ group3Data.Designation }}</td>
+                      <td>
+                        <button (click)="onDeleteCombination(group3Data)" pButton icon="pi pi-trash" class="ui-button-danger"></button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+          </div>
+      </div><!--card end-->
+  </div>
+  <div class="ui-g-3 ui-md-3 ui-sm-6">
+      <div class="card card-stats">
+          <div class="card-header card-header-info card-header-icon">
+              <div class="card-icon"><i class="pi pi-user"></i></div>
+              <p class="card-category">Group-D</p>
+              <h3 class="title-card text-info">{{ group4ShiftInCharge[0].Name }} ({{group4ShiftInCharge[0].Designation}})</h3>
+          </div>
+          <div class="card-body">
+              <p-table [value]="group4Data">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Name</th>
+                      <th>Designation</th>
+                      <th style="width:62px !important;">Action</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-group4Data>
+                    <tr>
+                      <td>{{ group4Data.Name }}</td>
+                      <td>{{ group4Data.Designation }}</td>
+                      <td>
+                        <button (click)="onDeleteCombination(group4Data)" pButton icon="pi pi-trash" class="ui-button-danger"></button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+          </div>
+      </div><!--card end-->
+  </div>
+</div><!--row end-->
+    
+
+      <div class="card whiteBG">
+        <div class="card-body">
+          <h3 class="card-title innerHeading">Manage Shift Incharge</h3>
+          <div class="ui-g ui-grid">
+            <div class="ui-col-5 ui-md-5 ui-sm-12">
+                <p-autoComplete [(ngModel)]="selectedUserShiftInCharge" [suggestions]="selectedUsers" (completeMethod)="filterUser($event)"
+                field="Name" dataKey="Id" [dropdown]="true" (onDropdownClick)="showUserDropdown()" placeholder="User" [minLength]="1"   [style]="{'width':'94% !important'}" [inputStyle]="{'width':'94% !important'}"></p-autoComplete>
+            </div>
+            <div class="ui-col-5 ui-md-5 ui-sm-12">
+                <p-autoComplete [(ngModel)]="selectedGroupShiftInCharge" [suggestions]="selectedGroups" (completeMethod)="filterGroup($event)"
+                field="GroupName" dataKey="Id" [dropdown]="true" (onDropdownClick)="showGroupDropdown()" placeholder="Group" [minLength]="1"   [style]="{'width':'94% !important'}" [inputStyle]="{'width':'94% !important'}"></p-autoComplete>
+            </div>
+            <div class="ui-col-2 ui-md-2 ui-sm-12">
+                <button pButton type="button" label="UPDATE SHIFT IN CHARGE" (click)="updateShiftInCharge()"></button>
+            </div>
+          </div><!--row end-->
+          <div class="clearfix" style="width:100%; height:2px; display: block;">&nbsp;</div>
+          <h3 class="card-title innerHeading">Manage Groups</h3>
+          <div class="ui-g ui-grid">
+              <div class="ui-col-8 ui-md-8 ui-sm-12">
+                  <p-autoComplete [(ngModel)]="selectedGroup" [suggestions]="selectedGroups" (completeMethod)="filterGroup($event)" field="GroupName"
+              dataKey="Id" [dropdown]="true" (onDropdownClick)="showGroupDropdown()" placeholder="Group" [minLength]="1"  [style]="{'width':'94% !important'}" [inputStyle]="{'width':'94% !important'}"></p-autoComplete>
+              
+              
+            </div>
+              <div class="ui-col-4 ui-md-4 ui-sm-12">
+                  <button pButton type="button" label="Add to Group" (click)="addToGroup()" class="pull-right"></button>  
+              </div>
+          </div><!--row end-->
+          <div class="clearfix" style="width:100%; height:4px; display: block;">&nbsp;</div>
+
+          <div class="ui-grid">            
+              <p-table [columns]="cols" [value]="users" selectionMode="multiple" [(selection)]="selectedRows" [paginator]="true" [rows]="10">
+                <ng-template pTemplate="header" let-columns>
+                  <tr>
+                    <th *ngFor="let col of columns">
+                      {{col.header}}
+                    </th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+                  <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+                    <td *ngFor="let col of columns">
+                      {{rowData[col.field]}}
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+          </div><!--grid end-->
+        </div>
+      </div><!--card end-->
+
+
+
+
+  </div><!--content end-->
+</div><!--main panel end-->
+<p-toast key="saveNotification"></p-toast>
+<p-toast key="errorNotification"></p-toast>

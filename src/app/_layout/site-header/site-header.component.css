@@ -1,0 +1,20 @@
+.sticky-top {-webkit-box-shadow: 3px 6px 11px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 6px 11px -9px rgba(0,0,0,0.75);
+    box-shadow: 3px 6px 11px -9px rgba(0,0,0,0.75); 
+    background: #a00000 !important;
+    height:50px;
+}
+body {background: #f1f4f6 !important;}
+.app-main-inner {
+    padding: 30px 30px 0;
+    flex: 1;
+}
+.dropdown-menu {-webkit-box-shadow: 0px 4px 2px 1px rgba(0,0,0,0.17);
+-moz-box-shadow: 0px 4px 2px 1px rgba(0,0,0,0.17);
+box-shadow: 0px 4px 2px 1px rgba(0,0,0,0.17);
+}
+
+.table .thead-light th {
+    color: #8898aa;
+    background-color: #f6f9fc;
+}

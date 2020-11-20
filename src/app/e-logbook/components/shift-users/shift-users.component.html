@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header card-header-tabs card-header-shift">&nbsp;
+        <button pButton type="button" (click)="confirmShiftUsers()" label="Confirm Shift Users" icon="pi pi-check" class="ui-button-danger pull-right"></button>
+    </div>
+    <div class="card-body">
+        <div class="ui-g" style="width:100%;">
+            <div [formGroup]="ShiftUserForm" class="ui-g-12 ui-md-6">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-10">
+                        <p-autoComplete formControlName="Employee" [suggestions]="selectedShiftUsers" (completeMethod)="searchEmployee($event)"
+                            field="Name" [forceSelection]="true" [placeholder]="'Start typing employee name and select from the suggested list'"   [style]="{'width':'100%'}" [inputStyle]="{'width':'94%'}"></p-autoComplete>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <button pButton type="button" (click)="addEmployee()" label="Add" icon="pi pi-plus" class="ui-button-danger pull-right"
+                            [disabled]="!ShiftUserForm.valid"></button>
+                    </div>
+                </div>
+            </div>
+            <div [formGroup]="ShiftInchargeForm" class="ui-g-12 ui-md-6">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-10">
+                        <label>Shift Incharge &nbsp;</label>
+                        <p-dropdown [options]="allShiftInchargeData" optionLabel="Name" formControlName="ShiftIncharge" [placeholder]="'Choose Shift Incharge'" [style]="{'width':'380px'}"></p-dropdown>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <button pButton type="button" (click)="updateShiftIncharge()" label="Update" icon="pi pi-check" class="ui-button-danger pull-right"
+                            [disabled]="!ShiftInchargeForm.valid"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-g" style="width:100%;">
+            <p-table [value]="shiftUsers">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Employee Id</th>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr>
+                        <td>{{rowData?.EmployeeId}}</td>
+                        <td>{{rowData?.Name}}</td>
+                        <td>{{rowData?.Designation}}</td>
+                        <td>
+                            <p-button icon="pi pi-trash" class="ui-button-danger" (click)="deleteUser(rowData)"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

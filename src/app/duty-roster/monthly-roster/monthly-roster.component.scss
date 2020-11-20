@@ -1,0 +1,25 @@
+.error {
+    background-color: red;
+  }  
+::ng-deep .topCal{width:290px !important; float: right !important;}
+::ng-deep input.ui-inputtext {}
+::ng-deep .topCal .ui-inputtext {width: 90% !important;}
+::ng-deep textarea {width:100% !important;}
+::ng-deep body .dutyRoster .ui-table .ui-table-thead > tr > th {width: 65px !important; padding-left: 5px !important; padding-right: 5px !important;}
+::ng-deep body .dutyRoster .ui-table-thead > tr > th:nth-child(1) {width:80px !important; }
+
+::ng-deep .table-responsive { min-height: .01%; display: block; width: 100%; overflow-x: auto; }
+
+::ng-deep .smallDrop {width:66px !important; display: inline-block;}
+::ng-deep .smallDrop .ui-dropdown {min-width: 66px !important;}
+::ng-deep .smallDrop .ui-dropdown .ui-dropdown-label {color: #000 !important; padding: 0px !important; text-align: left;}
+::ng-deep .smallDrop .ui-datepicker-trigger {width: 3.45em !important;}
+
+::ng-deep .topCal .ui-datepicker .ui-monthpicker .ui-monthpicker-month {color: #000;}
+body .ui-datepicker:not(.ui-state-disabled) .ui-monthpicker a.ui-monthpicker-month:not(.ui-state-active):hover {color: #fff !important;}
+
+.card-category {font-size: 14px !important; font-weight: 600 !important;}
+
+.innerHeading {color: #075494 !important; font-size: 16px !important; font-weight: 600 !important;}
+
+::ng-deep .ui-calendar .ui-inputtext {width: 83% !important;}

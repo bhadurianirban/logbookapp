@@ -1,0 +1,56 @@
+<div [formGroup]="ConstituentForm">
+
+  <div class="ui-g" style="width:100%">
+    <div class="ui-lg-6 ui-md-6 ui-sm-12 ui-g-nopad">
+      <label for="LogTime">Name </label>
+      <div class="ui-inputgroup">
+        <input type="text" name="Name" formControlName="Name" class="ui-inputtext" />
+      </div>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-sm-12 ui-g-nopad">
+      <label for="Region">Region </label>
+      <div class="ui-inputgroup">
+        <input type="text" name="Region" formControlName="Region" placeholder="S or N for South/North Bihar" class="ui-inputtext" />
+      </div>
+    </div>
+  </div>
+  <div class="ui-g" style="width: 100%;">
+    <div class="ui-lg-6 ui-md-6 ui-sm-12 ui-g-nopad">
+      <label for="MaxPeak">Max Peak Demand </label>
+      <div class="ui-inputgroup">
+        <input type="number" name="MaxPeak" formControlName="MaxPeak" class="ui-inputtext" />
+      </div>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-sm-12 ui-g-nopad">
+      <label for="MaxOffPeak">Max Off Peak Demand </label>
+      <div class="ui-inputgroup">
+        <input type="number" name="MaxOffPeak" formControlName="MaxOffPeak" class="ui-inputtext" />
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g" style="width: 100%;">
+    <div class="ui-lg-6 ui-md-6 ui-sm-12 ui-g-nopad">
+      <label for="MobileNumber">Mobile No </label>
+      <div class="ui-inputgroup">
+        <input type="text" name="MobileNumber" formControlName="MobileNumber" class="ui-inputtext" />
+      </div>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-sm-12 ui-g-nopad">
+      <label for="EmailId">Email Id </label>
+      <div class="ui-inputgroup">
+        <input type="text" name="EmailId" formControlName="EmailId" class="ui-inputtext" />
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g" style="width:100%">
+    <div class="ui-lg-8 ui-md-8 ui-sm-8">&nbsp;</div>
+    <div class="ui-lg-4 ui-md-4 ui-sm-4">
+      <button pButton label="Submit" type="button" (click)="handleSubmitClick()" [disabled]="!ConstituentForm.valid"
+        class="ui-button-success" styleClass="ui-button-info pull-right"></button>&nbsp;
+      <button pButton label="Close" type="button" (click)="handleCloseClick()" class="ui-button-danger"
+        styleClass="ui-button-danger pull-right" icon="pi pi-check" iconPos="right"></button>
+    </div>
+  </div>
+</div>

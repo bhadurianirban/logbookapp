@@ -1,0 +1,109 @@
+<!--
+<section class="login-block">
+  <div class="main-panel" style="background:none !important; background-color:none !important; min-height: auto !important;">
+    <div class="container" style="width:90%; display:block; margin:0 auto;">
+      <div class="ui-g">
+        <div class="ui-md-4 login-sec" style="background: #f9faf9 !important;">
+            <object type="image/svg+xml" data="assets/images/logo.svg" class="logo" width="136px" style="margin:0 auto; display: block;">
+              BSPTCL Logo
+            </object>
+         
+          <p-tabView class="login" id="login" orientation="bottom" >
+            <p-tabPanel header="Click here to Login">
+              <h2 class="text-center">Login Now</h2>
+              <form class="login-form" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                  <span class="ui-float-label" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                      <input id="float-input" class="bigInput" name="username" type="text" size="30" pInputText [(ngModel)]="model.username" #username="ngModel" required> 
+                      <label for="float-input">Username</label>
+                      <div *ngIf="f.submitted && !username.valid" class="help-block text-danger text-left">Username is required</div>
+                  </span>
+                <div class="clearfix" style="width: 100%; height:20px; display: block;">&nbsp;</div>
+                  <span class="ui-float-label" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                      <input id="float-password" class="bigInput" type="password" name="password" size="30" pInputText [(ngModel)]="model.password" #password="ngModel" required> 
+                      <label for="float-password">Password</label>
+                      <div *ngIf="f.submitted && !password.valid" class="help-block text-danger text-left">Password is required</div>
+                  </span>
+                  <div class="clearfix" style="width: 100%; height:12px; display: block;">&nbsp;</div>
+                <div class="form-check">
+                  <button pButton type="submit" styleClass="ui-button-info newBG" class="ui-button-info" label="Sign In"></button>
+                </div>
+              </form>
+            </p-tabPanel>
+            <p-tabPanel header="Forgot password ?">
+                Content 2
+            </p-tabPanel>
+        </p-tabView>
+          <div class="clearfix">&nbsp;</div>
+        <div class="copy-text">&copy; by <a href="https://bsptcl.in">BSPTCL</a></div>
+        </div>
+        <div class="ui-md-8 banner-sec">
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+-->
+
+
+  <div class="container-fluid bg-login">
+    <div class="container" style="width:60%; display:block; margin:0 auto;">
+            <div class="ui-g login-card">
+                    <div class="ui-g-5 detail-part">
+                        
+                    </div>
+                    <div class="ui-g-7 logn-part">
+                      <div class="ui-g">
+                          <div class="ui-g-12 mx-auto">
+                              <div class="logo-cover">
+                                   <img src="../../assets/images/logo-sign.png" alt="">
+                               </div>
+                              <form class="login-form" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                                  <div class="form-cover">                                    
+                                      <h3 style="color: #ef5350; margin-bottom: -12px; margin-top: 0px; 
+                                          font-family: 'Roboto Condensed', sans-serif !important; font-size: 29px;"> 
+                                          E-Logbook
+                                      </h3>
+                                      <hr class="colorgraph">
+                                      <div class="clearfix" style="margin-top: 15px;">&nbsp;</div>
+                                      <span class="input-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                                        <span class="input-group-addon">
+                                          <i class="glyphicon glyphicon-user"></i>
+                                        </span>
+                                         <input id="float-input" class="form-control" name="username" type="text" size="30" pInputText [(ngModel)]="model.username" #username="ngModel" required> 
+                                          <!--<label for="float-input">Username</label>-->
+                                          <div *ngIf="f.submitted && !username.valid" class="help-block text-danger text-left">Username is required</div>
+                                        </span>
+
+                                      <!--<div class="input-group">
+                                          <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-user"></i>
+                                          </span>
+                                          <input type="text" class="form-control" placeholder="Username"/>
+                                      </div>-->
+                                      <div class="clearfix">&nbsp;</div>
+                                      <span class="input-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-asterisk"></i>
+                                        </span>
+                                                    <input id="float-password" class="form-control" type="password" name="password" size="30" pInputText [(ngModel)]="model.password" #password="ngModel" required>
+                                                    <div *ngIf="f.submitted && !password.valid" class="help-block text-danger text-left">Password is required</div>
+                                      </span>
+                                      <div class="ui-g form-footer">
+                                          <div class="ui-g-6 forget-paswd">
+                                              <a href="">Forgot Password ?</a>    
+                                          </div>
+                                          <div class="ui-g-6 button-div">
+                                            <button pButton type="submit" styleClass="ui-button-info newBG" class="ui-button-info" label="Sign In"></button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </form>
+                    </div>
+                      </div>                        
+                    </div>
+        </div>
+    </div>
+</div>
+
+  <p-toast key="saveNotification"></p-toast>
+  <p-toast key="errorNotification"></p-toast>

@@ -1,0 +1,113 @@
+<div class="card-body">
+  <div class="ui-table" novalidate [formGroup]="SugarMillsGenerationForm" style="width:100%;">
+    <div *ngIf="!isdelete">
+      <table>
+          <thead class="ui-table-thead">
+              <tr>
+                  <th>Plant Description</th>
+                  <th>Max Load (MW)</th>
+                  <th>Time (HRS)</th>
+                  <th>Import (in MU)</th>
+              </tr>
+          </thead>
+          <tbody class="ui-table-tbody">
+              <tr>
+                  
+                  <td>
+                      Bharat Sugar Mill, Sidhwalia (Gopalganj)
+                      </td>
+                  <td>18 MW </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="bharat_sm_8_time" name="bharat_sm_8_time" min="00:00" max="23:59" class="ui-inputdate">
+                  </div>
+              </td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="bharat_sm_8_import" name="bharat_sm_8_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Hari Nagar Sugar Mill ( Ram Nagar)</td>
+                  <td>14.5 MW</td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="time" formControlName="hari_nagar_sm_14_time" name="hari_nagar_sm_14_time" min="00:00" max="23:59" class="ui-inputdate">
+                      </div>
+                  </td>
+
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="hari_nagar_sm_14_import" name="hari_nagar_sm_14_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Swadeshi Sugar Mill, Narkatiyaganj (Ramnagar)</td>
+                  <td>10 MW</td>
+                  <td><div class="ui-inputgroup">
+                      <input pInputText type="time" formControlName="swadeshi_sm_10_time" name="swadeshi_sm_10_time" min="00:00" max="23:59" class="ui-inputdate">
+                  </div></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="swadeshi_sm_10_import" name="swadeshi_sm_10_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>HPCL Bio-Fuels Ltd., Lauria (Ramnagar)</td>
+                  <td>20 MW</td>
+                  <td><div class="ui-inputgroup">
+                      <input pInputText type="time" formControlName="HPCL_biofuels_lauria_20_time" name="HPCL_biofuels_lauria_20_time" min="00:00" max="23:59" class="ui-inputdate">
+                  </div></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="HPCL_biofuels_lauria_20_import" name="HPCL_biofuels_lauria_20_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Hasanpur Sugar Mill (Dalsinghsarai)</td>
+                  <td>15 MW</td>
+                  <td><div class="ui-inputgroup">
+                      <input pInputText type="time" formControlName="hasanpur_sm_15_time" name="hasanpur_sm_15_time" min="00:00" max="23:59" class="ui-inputdate">
+                  </div><br/></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="hasanpur_sm_15_import" name="hasanpur_sm_15_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>HPCL Bio-Fuels Ltd., Sugauli(Motihari)</td>
+                  <td>20 MW</td>
+                  <td><div class="ui-inputgroup">
+                      <input pInputText type="time" formControlName="HPCL_biofuels_sugauli_20_time" name="HPCL_biofuels_sugauli_20_time" min="00:00" max="23:59" class="ui-inputdate">
+                  </div></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" formControlName="HPCL_biofuels_sugauli_20_import" name="HPCL_biofuels_sugauli_20_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Sugar Mill Generation</td>
+                  <td>97.5 MW</td>
+                  <td><div class="ui-inputgroup">
+                      <input pInputText type="time" formControlName="sugar_mill_gen_97_time" name="sugar_mill_gen_97_time" min="00:00" max="23:59" class="ui-inputdate">
+                  </div></td>
+                  <td>
+                      <div class="ui-inputgroup">
+                          <input pInputText type="number" disabled="true" formControlName="sugar_mill_gen_97_import" name="sugar_mill_gen_97_import" class="ui-inputtext">
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <br/>
+      <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+      <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+  </div>
+</div>
+</div>

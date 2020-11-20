@@ -1,0 +1,12 @@
+.clearfix:after { content: ""; display: table; clear: both; }
+.nav-tabs .nav-link.active {font-weight:bold; background-color: transparent; border-bottom:3px solid #0a75e0; border-right: none; border-left: none; border-top: none; }
+
+
+::ng-deep .card .innerTab ul.ui-tabview-nav { margin-top: -62px !important; z-index: 999 !important; position: absolute !important; background: transparent !important;}
+
+::ng-deep body .second-lavel-table {padding: 10px !important; width: 90% !important;}
+::ng-deep body .second-lavel-table .ui-table .ui-table-thead > tr > th {border: 1px solid #fff !important; color: #dedede !important; background-color: #0d192d !important; text-align: left !important;}
+::ng-deep body .second-lavel-table .ui-table .ui-table-tbody > tr { background-color: #2159b9 !important; color: #dedede !important;}
+::ng-deep body .second-lavel-table .ui-table .ui-table-tbody > tr:nth-child(even) { background-color: #172b4d !important; }
+
+::ng-deep .ui-calendar .ui-inputtext {width: 83% !important;}

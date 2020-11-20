@@ -1,0 +1,78 @@
+<div class="card-body">
+<div class="ui-table" nonvalidate [formGroup]="SystemReportNetForm" style="width:100%;">
+  <div *ngIf="!isdelete">
+  <table>
+      <tbody class="ui-table-tbody">
+          <tr>
+              <td>Power imported from Central Sector & Bilateral (through ER)</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" formControlName="central_sector_bilateral_energy" name="central_sector_bilateral_energy" class="ui-inputtext">
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td>Power exchange from NR (C.S. Power) </td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" formControlName="NR_CS_power_exchange" name="NR_CS_power_exchange" class="ui-inputtext">
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td>Total Demand Met </td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" formControlName="total_demand_met_energy" name="total_demand_met_energy" class="ui-inputtext">
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td>Total Demand Met in NBPDCL</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" formControlName="total_demand_met_NBPDCL_energy" name="total_demand_met_NBPDCL_energy" class="ui-inputtext">
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td>Total Demand Met in SBPDCL</td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" formControlName="total_demand_met_SBPDCL" name="total_demand_met_SBPDCL" class="ui-inputtext">
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td>ERLDC Schedule (Power Availability from CS) </td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" formControlName="ERLDC_Schedule_energy" name="ERLDC_Schedule_energy" class="ui-inputtext">
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td>Energy under UI </td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" formControlName="energy_ui_energy" name="energy_ui_energy" class="ui-inputtext">
+                  </div>
+              </td>
+          </tr>
+          <tr> 
+              <td>Average frequency (In Hz) (24:00 hrs.) </td>
+              <td>
+                  <div class="ui-inputgroup">
+                      <input pInputText type="number" formControlName="average_frequency" name="average_frequency" class="ui-inputtext">
+                  </div>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <br/>
+  <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+  <button pButton type="button" (click)="submitData()" label="{{ buttonText }}" class="pull-right"></button>
+ <br/>
+</div>
+</div>
+</div>

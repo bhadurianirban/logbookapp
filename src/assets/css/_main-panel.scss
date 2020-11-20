@@ -1,0 +1,90 @@
+.wrapper{
+    position: relative;
+    top: 0;
+    height: 100vh;
+    &.wrapper-full-page{ min-height: 100vh; height: auto; }
+}
+.main-panel{
+    position: relative;
+    float: right;
+    width: 100%;
+    background-color: $light-gray;
+    background-color: #ebecf1;
+    @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
+    > .content{padding: 0 20px 0px; min-height:100%; height: auto; margin-top: 5px; }/*min-height: calc(100vh);*/
+    > .navbar{margin-bottom: 0;}
+    .header{margin-bottom: 50px;}
+}
+.perfect-scrollbar-on{
+  .main-panel{ height: 100%; max-height: 100%; }
+}
+.panel-header {
+  height: 260px;
+  padding-top: 80px;
+  padding-bottom: 45px;
+  background: #141E30;  /* fallback for old browsers */
+  background: -webkit-gradient(linear, left top, right top, from(#0c2646), color-stop(60%, #204065), to(#2a5788));
+  background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+  position: relative;
+  overflow: hidden;
+
+  .header{
+    .title{
+      color: $white-color;
+    }
+    .category{
+      max-width: 600px;
+      color: $opacity-5;
+      margin: 0 auto;
+      font-size: 13px;
+
+      a{
+        color: $white-color;
+      }
+    }
+  }
+}
+
+.panel-header-sm{
+  height: 135px;
+}
+
+.panel-header-lg{
+  height: 380px
+}
+.nav {
+
+  .caret{
+      top: 14px;
+      position: absolute;
+      right: 10px;
+  }
+  li {
+      > a + div .nav li > a {
+          margin-top: 7px;
+      }
+      > a{
+          text-decoration: none;
+          text-transform: uppercase;
+          cursor: pointer;
+          font-size: $font-size-navbar;
+          color: $white-color;
+          padding: 10px 8px;
+          line-height: $line-height-nav-link;
+      }
+      &:first-child > a{
+          margin: 0 5px;
+      }
+      &:hover:not(.active) > a,
+      &:focus:not(.active) > a{
+          background-color: $opacity-1;
+          i{
+            color: $white-color;
+          }
+      }
+      &.active > a{
+        background-color: $white-color;
+        box-shadow: $box-shadow;
+      }
+    }
+  }

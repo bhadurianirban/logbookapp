@@ -1,0 +1,25 @@
+<div [formGroup]="ConfigForm">
+    <div class="ui-g">
+      <div class="ui-lg-3 ui-md-3 ui-sm-12 ui-g-nopad">
+        <label for="LogDate">Config Key </label>
+        <div class="ui-inputgroup">
+          <input type="text" name="Key" formControlName="Key" class="ui-inputtext"/>
+        </div>
+      </div>
+      <div class="ui-lg-9 ui-md-9 ui-sm-12 ui-g-nopad">
+        <label for="LogTime">Config Value </label>
+        <div class="ui-inputgroup">
+          <input type="text" name="Value" formControlName="Value" class="ui-inputtext"/>
+        </div>
+      </div>
+    </div>
+  
+    <div class="ui-g" style="width:100%">
+      <div class="ui-lg-8 ui-md-8 ui-sm-8">&nbsp;</div>
+      <div class="ui-lg-4 ui-md-4 ui-sm-4">
+        <button pButton label="Submit" type="button" (click)="handleSubmitClick()" [disabled]="!ConfigForm.valid"  class="ui-button-success"  styleClass="ui-button-info pull-right"></button>&nbsp;
+        <button pButton label="Close" type="button" (click)="handleCloseClick()" class="ui-button-danger"  styleClass="ui-button-danger pull-right" icon="pi pi-check" iconPos="right"></button>
+      </div>
+    </div>
+  
+  </div>

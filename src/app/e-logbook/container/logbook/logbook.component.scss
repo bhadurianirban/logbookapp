@@ -1,0 +1,14 @@
+@import '_tab.scss';
+
+::ng-deep .ui-inputtext {width:inherit !important;}
+
+.ddd { position:relative; }
+.ddd:after { content:"12"; position:absolute; top:-15px; right:-18px; font-size:11px; font-family:"Roboto","Helvetica","Arial",sans-serif;
+font-weight:600; text-align:center; line-height:23px; background:#ff4081; color:white; width:22px; height:22px; border-radius:50%;}
+
+::ng-deep .ui-calendar .ui-inputtext {width: 83% !important;}
+
+::ng-deep .download-img {width: 28px; height:28px; cursor: pointer; margin: 0px 6px; vertical-align: middle;}
+::ng-deep .download-label {margin-top: -6px !important;}
+
+ 

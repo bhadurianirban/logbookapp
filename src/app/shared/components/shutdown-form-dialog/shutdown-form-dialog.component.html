@@ -1,0 +1,104 @@
+<div class="ui-g" style="width:100%;">
+  <div class="ui-lg-12 ui-md-12 ui-sm-12">
+    <div [formGroup]="ShutdownForm">
+      <div class="ui-g">
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+          <label for="ElementName">Element Name </label>
+          <div class="ui-inputgroup">
+            <input type="text" name="ElementName" formControlName="ElementName" class="ui-inputtext"/>
+          </div>
+        </div>
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+            <label for="Nature">Nature </label>
+            <div class="ui-inputgroup">
+              <input type="text" name="Nature" formControlName="Nature" class="ui-inputtext"/>
+            </div>
+          </div>
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+          <label for="PlannedOutage">Planned Outage </label>
+          <div class="ui-inputgroup">
+            <input type="text" name="PlannedOutage" formControlName="PlannedOutage" class="ui-inputtext"/>
+          </div>
+        </div>
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+          <label for="PlannedRestore">Planned Restore </label>
+          <div class="ui-inputgroup">
+            <input type="text" name="PlannedRestore" formControlName="PlannedRestore" class="ui-inputtext"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+          <label for="ShutdownAvailedBy">S/D Availed By </label>
+          <div class="ui-inputgroup">
+              <input type="text" name="ShutdownAvailedBy" formControlName="ShutdownAvailedBy" class="ui-inputtext"/>
+          </div>
+        </div>
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+            <label for="Type">Type </label>
+            <div class="ui-inputgroup">
+              <input type="text" name="Type" formControlName="Type" class="ui-inputtext"/>
+            </div>
+          </div>
+        <div class="ui-g-4 ui-md-4 ui-sm-12">
+          <label for="Reason">Reason </label>
+          <div class="ui-inputgroup">
+            <input type="text" name="Reason" formControlName="Reason" class="ui-inputtext"/>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-sm-12">
+        <label for="Conditions">Conditions </label>  
+        <div class="ui-inputgroup">
+          <textarea pInputTextarea name="Conditions" formControlName="Conditions" class="ui-inputtext" style="width: 100% !important;"></textarea>
+        </div>
+      </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+            <label for="ActualOutageDate">Actual Outage Date  <span class="text-danger">*</span></label>  
+          <div class="ui-inputgroup">
+                <p-calendar formControlName="ActualOutageDate" [maxDate]="maxDateValue" [dateFormat]="dateFormat" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+            </div>
+        </div>
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+            <label for="ActualOutageTime">Actual Outage Time  <span class="text-danger">*</span></label>
+            <div class="ui-inputgroup">
+                <!-- <p-calendar formControlName="ActualOutageTime" [readonlyInput]="true" [timeOnly]="true" [showIcon]="true"></p-calendar> -->
+                <input formControlName="ActualOutageTime" [ngxTimepicker]="ActualOutageTimePicker"class="ui-inputtext" style="width: 80% !important; float: left !important;" [format]="24" readonly>
+                <ngx-material-timepicker-toggle [for]="ActualOutageTimePicker">
+                  <i class="pi pi-clock"></i>
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #ActualOutageTimePicker></ngx-material-timepicker>
+            </div>
+        </div>
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+            <label for="ActualRestoreDate">Actual Restored Date  <span class="text-danger">*</span></label>
+            <div class="ui-inputgroup">
+              <p-calendar formControlName="ActualRestoreDate" [minDate]="minRestoreDateValue" [maxDate]="maxDateValue" [dateFormat]="dateFormat" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+            </div>
+        </div>
+        <div class="ui-g-3 ui-md-3 ui-sm-12">
+          <label for="ActualRestoreTime">Actual Restored Time  <span class="text-danger">*</span></label>  
+          <div class="ui-inputgroup">
+              <input formControlName="ActualRestoreTime" [ngxTimepicker]="ActualRestoreTimePicker"class="ui-inputtext" style="width: 80% !important; float: left !important;" [format]="24" readonly>
+              <ngx-material-timepicker-toggle [for]="ActualRestoreTimePicker">
+                <i class="pi pi-clock"></i>
+              </ngx-material-timepicker-toggle>
+              <ngx-material-timepicker #ActualRestoreTimePicker></ngx-material-timepicker>
+            </div>
+        </div>
+      </div>
+      <div class="ui-g" style="width:100%">
+          <div class="ui-g-10 ui-md-10 ui-sm-8">&nbsp;</div>
+        <div class="ui-g-2 ui-md-2 ui-sm-6">
+            <p-button label="Submit" type="button" (onClick)="handleSubmitClick()" [disabled]="!ShutdownForm.valid" styleClass="ui-button-success pull-left"></p-button>&nbsp;
+            <p-button label="Close" type="button" (onClick)="handleCloseClick()" styleClass="ui-button-danger pull-right"></p-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

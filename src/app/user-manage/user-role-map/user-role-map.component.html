@@ -1,0 +1,46 @@
+<div class="main-panel">
+    <div class="content">
+    <div class="ui-g panelheader">
+        <div class="ui-lg-12 ui-md-12 ui-sm-12">
+            <h4 class="card-title pull-left">User Role Mapping</h4>   
+            <div class="pull-right">
+                <button pButton type="button" class="ui-button-info" (click)="open()" icon="pi pi-plus" iconPos="left" label="add"></button>
+            </div>     
+        </div>
+    </div>   
+    <div class="card whiteBG">            
+            <div class="card-body">
+                <p-table #dtuserRole [columns]="userRolecols" [value]="userRoleList" [paginator]="true" [rows]="10">
+                  <ng-template pTemplate="caption">
+                      <div class="ui-inputgroup pull-right">        
+                          <span class="ui-inputgroup-addon" style="background-color: #007ad9; border: 1px solid #007ad9;">
+                              <i class="fa fa-search"></i>
+                          </span>
+                      <input type="text" pInputText size="50" placeholder="Search..." (input)="dtuserRole.filterGlobal($event.target.value, 'contains')"
+                              class="ui-inputtext ui-corner-all ui-state-default ui-widget">    
+                      </div>
+                      <div class="clearfix">&nbsp;</div>
+                  </ng-template>
+                  <ng-template pTemplate="header" let-columns>
+                    <tr>
+                      <th *ngFor="let col of columns">
+                        {{col.header}}
+                      </th>
+                      <th>Action</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-userRoleList let-col>
+                    <tr>
+                      <td>{{userRoleList.User}}</td>
+                      <td>{{userRoleList.Role}}</td>
+                      <td>
+                        <button pButton (click)="onDeleteMap(userRoleList)" styleClass="ui-button-danger" class="ui-button-danger ui-button-raised" icon="pi pi-trash">
+                        </button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+            </div>
+          </div>
+        </div>
+    </div>

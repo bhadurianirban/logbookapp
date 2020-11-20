@@ -1,0 +1,163 @@
+<div class="card">
+  <div class="card-header card-header-tabs card-header-violationmsg">&nbsp;
+  </div>
+  <div class="card-body">
+    <div *ngIf="!IsDashboardView">
+      <div [formGroup]="MessageForm">
+        <div class="ui-g" style="width:100%;">
+          <div class="ui-g-12 ui-md-4">
+            <label for="ViolationType">Violation Type  <span class="text-danger">*</span></label>
+            <p-dropdown [options]="masterViolationTypes" optionLabel="ViolationType" formControlName="ViolationType"
+              placeholder="Choose Violation Type" (onChange)="onViolationTypeChange($event)" [style]="{'width':'280px'}"></p-dropdown>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <label for="Constituent">Constituent  <span class="text-danger">*</span></label>
+            <p-autoComplete formControlName="Constituent" [suggestions]="selectedConstituents" placeholder="Start typing name of constituent and choose from list"
+              (completeMethod)="searchConstituent($event)" [multiple]="true" field="Name" [forceSelection]="true"
+              [style]="{'width':'280px'}" [inputStyle]="{'width':'90%'}" (onSelect)="onConstituentSelect($event)" ></p-autoComplete>
+          </div>
+          <div class="ui-g-12 ui-md-4" *ngIf="showSubViolationType">
+            <label for="SubViolationType">Sub Violation Type  <span class="text-danger">*</span></label>
+            <p-dropdown [options]="masterSubViolationTypes" optionLabel="Name" formControlName="SubViolationType"
+              placeholder="Choose Sub Violation Type" [style]="{'width':'280px'}"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g" style="width:100%;">
+          <div class="ui-g-12 ui-md-10">
+            <div class="ui-inputgroup">
+              <label for="Message" style="margin-top: 4px;">Message  <span class="text-danger">*</span></label>&nbsp;
+              <input type="text" name="Message" placeholder="Message Details" formControlName="Message" class="ui-inputtext"
+                style="width: 90% !important;">
+            </div>
+          </div>
+          <div class="ui-g-12 ui-md-2">
+            <button pButton type="button" (click)="addMessage()" label="Add Message" icon="pi pi-plus" class="ui-button-danger pull-right"
+              [disabled]="!MessageForm.valid"></button>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g" style="width:100%;" *ngIf="showScadaData">
+        <p-table [value]="stateDeviation" [responsive]="true">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Regional Entity</th>
+              <th>Schedule Drawal/Injection (MW)</th>
+              <th>Actual Drawal/Injection (MW)</th>
+              <th>Actual Deviation (MW)</th>
+              <th>Area Control Error (MW)</th>
+              <th>Desired Drawal/Injection (MW)</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData>
+            <tr>
+              <td>{{selectedConstituent}}</td>
+              <td>{{rowData.Scheduled}}</td>
+              <td>{{rowData.Actual}}</td>
+              <td>{{rowData.Deviation}}</td>
+              <td>{{rowData.Scheduled}}</td>
+              <td>{{rowData.Actual}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+<div class="clearfix">&nbsp;</div>
+    <div class="ui-g" style="width:100%;">
+      <p-table [value]="currViolationMessage" [responsive]="true" dataKey="messageid" editMode="row">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:44px;">S. No.</th>
+            <th style="width:100px;">Violation Type</th>
+            <th style="width:100px;">Constituent</th>
+            <th style="width:102px;">Sub Violation Type</th>
+            <th>Message</th>
+            <!-- <th style="width:100px;">Drawal / Injection Schedule (MW)</th>
+            <th style="width:100px;">Actual Drawal / Injection (MW)</th>
+            <th style="width:100px;">Actual Deviation (MW)</th>
+            <th style="width:100px;">Area Control Error (MW)</th>
+            <th style="width:100px;">Desired Drawl/ Injection (MW)</th> -->
+            <th style="width:175px;">Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+          <tr [pEditableRow]="rowData">
+            <td>{{ri+1}}</td>
+            <td>{{rowData.ViolationType}}</td>
+            <td>{{rowData.Constituent}}</td>
+            <td>{{rowData.SubViolationType}}</td>
+            <td>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input style="width:240px;" pInputText type="text" [(ngModel)]="rowData.Message" required>
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{rowData.Message}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <!-- <td>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input class="width-80px" pInputText type="number" [(ngModel)]="rowData.ScheduleMW">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{rowData.ScheduleMW}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input class="width-80px" pInputText type="number" [(ngModel)]="rowData.ActualMW">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{rowData.ActualMW}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input class="width-80px" pInputText type="number" [(ngModel)]="rowData.ActualDeviationMW">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{rowData.ActualDeviationMW}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input class="width-80px" pInputText type="number" [(ngModel)]="rowData.AreaControlErrorMW">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{rowData.AreaControlErrorMW}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input class="width-80px" pInputText type="text" [(ngModel)]="rowData.Desired">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{rowData.Desired}}
+                </ng-template>
+              </p-cellEditor>
+            </td>-->
+            <td style="text-align:center">
+              <button *ngIf="!editing && !IsDashboardView" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info"
+                style="margin-right: .5em" (click)="onRowEditInit(rowData)"></button>
+              <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success"
+                style="margin-right: .5em" (click)="onRowEditSave(rowData, ri)"></button>
+              <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
+                (click)="onRowEditCancel(rowData, ri)"></button>
+              <p-splitButton *ngIf="!editing" label="Download" icon="pi pi-download" (onClick)="downloadPDF(rowData)"
+                [model]="rowData.menuItems" styleClass="ui-button-success"></p-splitButton>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

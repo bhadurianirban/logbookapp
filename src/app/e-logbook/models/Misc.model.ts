@@ -1,0 +1,32 @@
+export interface LogbookMisc {
+    Id: number;
+    LogbookId: string;
+    lakhisarai_import: number;
+    lakhisarai_export: number;
+    lakhisarai_exchange: number;
+    jamui_import: number;
+    jamui_export: number;
+    jamui_exchange: number;
+    pusauli_import: number;
+    pusauli_export: number;
+    pusauli_exchange: number;
+    dehri_import: number;
+    dehri_export: number;
+    dehri_exchange: number;
+    pur_beg_import: number;
+    pur_beg_export: number;
+    pur_beg_exchange: number;
+    banka_import: number;
+    banka_export: number;
+    banka_exchange: number;
+    sabour_import: number;
+    sabour_export: number;
+    sabour_exchange: number;
+    sultanganj_import: number;
+    sultanganj_export: number;
+    sultanganj_exchange: number;
+    kaffain_import: number;
+    kaffain_export: number;
+    kaffain_exchange: number;
+    nepal_total: number;
+ }

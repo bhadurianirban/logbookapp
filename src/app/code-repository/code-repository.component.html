@@ -1,0 +1,19 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="ui-g  panelheader">
+            <div class="ui-g-7"><h4 class="card-title"> Code Repository</h4></div>
+            <div class="ui-g-5">
+            <div class="topCal" style="float: right !important;">
+                <label>Period </label>
+                <p-calendar [showIcon]="true" [(ngModel)]="selectedPeriod" view="month"
+                dateFormat="mm/yy" [yearNavigator]="true" yearRange="2019:2030" (onSelect)="onMonthSelect()"></p-calendar>
+            </div>
+            </div>
+        </div>
+        <div class="ui-g" style="width:100%;" *ngIf="masterData && allThisMonthCodes && ouatgeSelectOptions">
+            <ng-container>
+                <app-codes [masterData]="masterData" [Codes]="allThisMonthCodes" [selectOptions]="ouatgeSelectOptions"></app-codes>
+            </ng-container>
+        </div>
+    </div>
+</div>

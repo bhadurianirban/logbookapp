@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header card-header-tabs card-header-warning"  style="background:#f5382a !important;">&nbsp;
+  </div>
+  <div class="card-body">
+    <div [formGroup]="SchedulingForm" class="ui-g" style="width:100%;">
+            <div class="ui-g-12 ui-md-6">
+              <label for="SchedulingType" style="line-height: 28px;">Type  <span class="text-danger">*</span></label>
+                <p-dropdown [options]="masterSchedulingTypes" optionLabel="SchedulingType" formControlName="SchedulingType" 
+                placeholder="Choose Scheduling Type" styleClass="scheduling-fields"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-5">
+              <div class="ui-inputgroup">
+                <label for="SchedulingDetail" style="line-height: 28px;">Details  <span class="text-danger">*</span></label>
+                <input type="text" name="SchedulingDetail" placeholder="Details" formControlName="SchedulingDetail" class="ui-inputtext scheduling-fields" style="width: 87% !important;">
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-1">
+              <button pButton type="button" (click)="addScheduling()" label="Add" icon="pi pi-plus" class="ui-button-danger pull-right"
+                [disabled]="!SchedulingForm.valid"></button>
+            </div>
+    </div>
+    <div class="ui-g" style="width:100%;">
+      <p-table [value]="logbookSchedulingDetails" [responsive]="true" dataKey="schedulingid" editMode="row">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:100px;">S.No.</th>
+            <th style="width:220px;">Type</th>
+            <th>Details</th>
+            <th style="width:100px;">Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+          <tr [pEditableRow]="rowData">
+            <td>{{ri+1}}</td>
+            <td>{{rowData.SchedulingType}}</td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.SchedulingDetail" required>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.SchedulingDetail}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td style="text-align:center">
+                <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
+                <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData, ri)"></button>
+                <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+                <button *ngIf="!editing" pButton type="button" icon="pi pi-trash" class="ui-button-danger" style="margin-left: .5em" (click)="onRowDelete(rowData)"></button>
+             </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

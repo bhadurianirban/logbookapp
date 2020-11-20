@@ -1,0 +1,42 @@
+<form [formGroup]="userroleFormGroup" novalidate>
+  <div *ngIf="!isdelete">
+    <div class="ui-g">
+      <div class="ui-g-12 ui-lg-5 ui-md-5 ui-sm-5">
+        <label>User:</label>
+        <p-autoComplete formControlName="UserId" [suggestions]="selectedUsers" (completeMethod)="filterUser($event)" field="Name"
+          dataKey="Id" [dropdown]="true" (onDropdownClick)="showUserDropdown()" placeholder="Users" [minLength]="1"   [style]="{'width':'100%'}" [inputStyle]="{'width':'90%'}"></p-autoComplete>
+        <span class="help-block" *ngIf="(userroleFormGroup.get('UserId').touched ||
+          userroleFormGroup.get('UserId').dirty) &&
+          userroleFormGroup.get('UserId').errors">
+          <span *ngIf="userroleFormGroup.get('UserId').errors">
+            Please provide User Name.
+          </span>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-lg-5 ui-md-5 ui-sm-5">
+        <label>Role:</label>
+        <p-autoComplete formControlName="RoleId" [suggestions]="selectedRoles" (completeMethod)="filterRole($event)" field="Role"
+          dataKey="Id" [dropdown]="true" (onDropdownClick)="showRoleDropdown()" placeholder="Roles" [minLength]="1"   [style]="{'width':'100%'}" [inputStyle]="{'width':'90%'}"></p-autoComplete>
+        <span class="help-block" *ngIf="(userroleFormGroup.get('RoleId').touched ||
+          userroleFormGroup.get('RoleId').dirty) &&
+          userroleFormGroup.get('RoleId').errors">
+          <span *ngIf="userroleFormGroup.get('RoleId').errors">
+            Please provide Role.
+          </span>
+        </span>
+      </div>
+      <div class="ui-g-12 ui-lg-2 ui-md-2 ui-sm-2">
+          <div class="clearfix" style="min-height:20px; display:block; width:100%;">&nbsp;</div>
+        <button pButton type="button" (click)="submitData()" label="Add Mapping"></button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isdelete" class="ui-g">
+    <div class="ui-col-12 ui-lg-6 ui-md-6 ui-sm-6">
+      <label>Are you sure to delete this item:</label>
+    </div>
+    <div class="ui-col-12 ui-lg-6 ui-md-6 ui-sm-6">
+      <button pButton type="button" (click)="deleteData()" class="ui-button-danger" label="Delete Mapping"></button>
+    </div>
+  </div>
+</form>
